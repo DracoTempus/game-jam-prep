@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://sf1bmpopwm22"]
+
+[node name="WorldRoot" type="Node2D" unique_id=1093126602]
+
+[node name="Systems" type="Node" parent="." unique_id=1393987168]
+
+[node name="World" type="Node2D" parent="." unique_id=548114871]
+
+[node name="Level" type="Node2D" parent="World" unique_id=916398120]
+
+[node name="Entities" type="Node2D" parent="World" unique_id=1101977329]
+
+[node name="Effects" type="Node2D" parent="World" unique_id=1264377367]
+
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=991490171]
+
+[node name="HudRoot" type="Control" parent="HUDLayer" unique_id=242136802]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=214611797]
+
+[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=687596166]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1200479435]
+
+[node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=2045610096]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=389073818]
+
+[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=904158866]
+layout_mode = 3
+anchors_preset = 0
