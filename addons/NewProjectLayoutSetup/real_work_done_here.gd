@@ -3,6 +3,7 @@ extends EditorPlugin
 
 var layout_erase_check_popup: ConfirmationDialog
 var input_erase_check_popup: ConfirmationDialog
+var folder_check_popup: ConfirmationDialog
 
 func _enter_tree() -> void:
 	add_tool_menu_item("Quick Layout Setup", _on_select_me_layout)
@@ -13,6 +14,15 @@ func _enter_tree() -> void:
 	layout_erase_check_popup.cancel_button_text = "Cancel"
 	layout_erase_check_popup.confirmed.connect( _on_do_the_Magic_layout)
 	get_editor_interface().get_base_control().add_child(layout_erase_check_popup)
+	
+	add_tool_menu_item("Quick Folder Setup", _on_select_me_folder)
+	folder_check_popup = ConfirmationDialog.new()
+	folder_check_popup.title = "Start folder process?"
+	folder_check_popup.dialog_text = "This will create a ton of folders \n\nContinue?"
+	folder_check_popup.ok_button_text = "Create Folders"
+	folder_check_popup.cancel_button_text = "Cancel"
+	folder_check_popup.confirmed.connect( _on_do_the_Magic_folders)
+	get_editor_interface().get_base_control().add_child(folder_check_popup)
 	
 	#I need to fix this
 	#add_tool_menu_item("Quick Input Setup", _on_select_me_input)
@@ -28,11 +38,24 @@ func _enter_tree() -> void:
 func _exit_tree() -> void:
 	remove_tool_menu_item("Quick Layout Setup")
 
+func _on_select_me_folder() -> void:
+	folder_check_popup.popup_centered()
+
 func _on_select_me_input() -> void:
 	input_erase_check_popup.popup_centered()
 
 func _on_select_me_layout() -> void:
 	layout_erase_check_popup.popup_centered()
+
+func _on_do_the_Magic_folders() -> void:
+	print("Make some folders.")
+	#DirAccess.make_dir_recursive_absolute("res://Entities")
+	DirAccess.make_dir_recursive_absolute("res://Entities/Player")
+	DirAccess.make_dir_recursive_absolute("res://Globals")
+	DirAccess.make_dir_recursive_absolute("res://UI")
+	DirAccess.make_dir_recursive_absolute("res://Menus")
+	#DirAccess.make_dir_recursive_absolute("res://Levels")
+	DirAccess.make_dir_recursive_absolute("res://Levels/Common")
 
 func _on_do_the_Magic_input() -> void:
 	print("This one doesn't work at the moment.")
