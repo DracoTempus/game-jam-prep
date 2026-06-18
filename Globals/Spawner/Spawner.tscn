@@ -4,3 +4,5 @@
 
 [node name="Spawner" type="Node2D" unique_id=143934659]
 script = ExtResource("1_cvxw1")
+min_y = -843.0
+max_y = 419.0

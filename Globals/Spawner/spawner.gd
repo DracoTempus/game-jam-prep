@@ -5,16 +5,15 @@ extends Node
 
 @export_group("Random Spawn Range")
 
-@export_custom(PROPERTY_HINT_NONE, "RangeSlider:-1000,1000,100,Range X")
+#@export_custom(PROPERTY_HINT_NONE, "RangeSlider:-1000,1000,100,Range X")
+@export_custom(PROPERTY_HINT_NONE,"SideBySideNumbers")
 var min_x: int = -100.0
 @export var max_x: int = 100.0
 
-@export_custom(PROPERTY_HINT_NONE, "RangeSlider:-1000,1000,100,Range Y")
+@export_custom(PROPERTY_HINT_NONE,"SideBySideNumbers")
 var min_y: float = -100.0
 @export var max_y: float = 100.0
 
-
-@export var y_range: Vector2 = Vector2(-300, 300)
 
 @export_group("Spawn Timing")
 @export var spawn_on_ready: bool = true
