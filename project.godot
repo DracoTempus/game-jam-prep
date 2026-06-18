@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/NewProjectLayoutSetup/plugin.cfg")
+enabled=PackedStringArray("res://addons/NewProjectLayoutSetup/plugin.cfg", "res://addons/PropertiesForTheDiscerningIndividual/plugin.cfg")
 
 [input]
 

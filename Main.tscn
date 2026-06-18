@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://sf1bmpopwm22"]
 
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="1_r0du0"]
 [ext_resource type="Texture2D" uid="uid://dj0r4rl3hi6j0" path="res://Levels/Common/Art/Grassland@128x128.png" id="1_uu6xs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0du0"]
@@ -271,6 +272,9 @@ sources/0 = SubResource("TileSetAtlasSource_r0du0")
 [node name="WorldRoot" type="Node2D" unique_id=1093126602]
 
 [node name="Systems" type="Node" parent="." unique_id=1393987168]
+
+[node name="Spawner" parent="Systems" unique_id=1354709240 instance=ExtResource("1_r0du0")]
+max_y = 45.0
 
 [node name="World" type="Node2D" parent="." unique_id=548114871]
 
