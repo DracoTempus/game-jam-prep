@@ -9,9 +9,9 @@ extends Node
 var min_x: int = -100.0
 @export var max_x: int = 100.0
 
-@export var min_y: float = -100.0
-
-@export var max_y: float = 1002.0
+@export_custom(PROPERTY_HINT_NONE, "RangeSlider:-1000,1000,100,Range Y")
+var min_y: float = -100.0
+@export var max_y: float = 100.0
 
 
 @export var y_range: Vector2 = Vector2(-300, 300)
