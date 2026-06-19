@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://7y6w2delx47m"]
 
+[ext_resource type="AudioStream" uid="uid://c8gmcewgw5xmk" path="res://Levels/Common/Town_-_Neo_Tokyo.ogg" id="1_aygd2"]
 [ext_resource type="Texture2D" uid="uid://ctmfom0rou80c" path="res://Levels/Common/Art/wp10783505-999488466.jpg" id="1_codtk"]
 [ext_resource type="PackedScene" path="res://Entities/Props/Tree.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
@@ -20,6 +21,11 @@ size = Vector2(43, 2898)
 [node name="Base" type="Node2D" unique_id=1102677110]
 
 [node name="Systems" type="Node" parent="." unique_id=600708282]
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="Systems" unique_id=444833261]
+stream = ExtResource("1_aygd2")
+volume_db = 1.0
+autoplay = true
 
 [node name="World" type="Node2D" parent="." unique_id=1407682078]
 
