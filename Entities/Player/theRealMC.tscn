@@ -142,6 +142,12 @@ _data = {
 &"walk_down": SubResource("Animation_pecbs")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdetb"]
+size = Vector2(25, 34.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pecbs"]
+size = Vector2(37, 6)
+
 [node name="TheRealMc" type="CharacterBody2D" unique_id=2081207016]
 script = ExtResource("1_hdetb")
 
@@ -149,11 +155,17 @@ script = ExtResource("1_hdetb")
 zoom = Vector2(5, 5)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764073441]
-position = Vector2(2.3841858e-07, 2.3841858e-07)
-scale = Vector2(0.21875, 0.21875)
 texture = ExtResource("3_pecbs")
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1406715445]
 libraries/ = SubResource("AnimationLibrary_54web")
 autoplay = &"idle_down"
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=461795697]
+position = Vector2(0, 1.75)
+shape = SubResource("RectangleShape2D_hdetb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474964194]
+position = Vector2(3.5, 24)
+shape = SubResource("RectangleShape2D_pecbs")

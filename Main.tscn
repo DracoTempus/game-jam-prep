@@ -2,7 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="1_r0du0"]
+[ext_resource type="AudioStream" uid="uid://c8gmcewgw5xmk" path="res://Levels/Common/Town_-_Neo_Tokyo.ogg" id="2_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://dnii8voon5pjb" path="res://Entities/Enemies/Common/Art/Monsters - Sheet/monster_33.png" id="4_cm0pq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r0du0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
 size = Vector2(1730, 97)
@@ -20,6 +23,13 @@ size = Vector2(97, 676)
 [node name="Spawner" parent="Systems" unique_id=1354709240 instance=ExtResource("1_r0du0")]
 max_y = 45.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Systems" unique_id=845457750]
+stream = ExtResource("2_cm0pq")
+volume_db = 1.0
+autoplay = true
+mix_target = 1
+parameters/looping = true
+
 [node name="World" type="Node2D" parent="." unique_id=548114871]
 
 [node name="Level" type="Node2D" parent="World" unique_id=916398120]
@@ -27,6 +37,8 @@ max_y = 45.0
 [node name="Borders" type="Node2D" parent="World/Level" unique_id=8272216]
 
 [node name="Border4" type="StaticBody2D" parent="World/Level/Borders" unique_id=226922510]
+collision_layer = 65535
+physics_material_override = SubResource("PhysicsMaterial_r0du0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/Border4" unique_id=504032616]
 position = Vector2(387, 365)
@@ -50,6 +62,8 @@ shape = SubResource("RectangleShape2D_r0du0")
 position = Vector2(372, 318)
 shape = SubResource("RectangleShape2D_fos0i")
 
+[node name="TileMapLayer" type="TileMapLayer" parent="World/Level" unique_id=826890126]
+
 [node name="Entities" type="Node2D" parent="World" unique_id=1101977329]
 
 [node name="TheRealMc" parent="World/Entities" unique_id=2081207016 instance=ExtResource("1_glv2v")]
@@ -57,6 +71,15 @@ position = Vector2(133.81226, 191.3406)
 
 [node name="Monster33" type="Sprite2D" parent="World/Entities" unique_id=1083552957]
 position = Vector2(90, 189)
+texture = ExtResource("4_cm0pq")
+
+[node name="Monster33" type="Sprite2D" parent="World/Entities/Monster33" unique_id=1527579691]
+position = Vector2(35, 119)
+texture = ExtResource("4_cm0pq")
+
+[node name="Monster33" type="Sprite2D" parent="World/Entities/Monster33/Monster33" unique_id=217218583]
+position = Vector2(10, -70)
+scale = Vector2(1.375, 1)
 texture = ExtResource("4_cm0pq")
 
 [node name="Effects" type="Node2D" parent="World" unique_id=1264377367]
