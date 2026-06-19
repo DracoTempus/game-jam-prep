@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxbtspbcq4qy3"]
 
 [ext_resource type="Script" uid="uid://x5ud0me5tw62" path="res://Entities/Player/scripts/inputPlayerControl.gd" id="1_hdetb"]
+[ext_resource type="Texture2D" uid="uid://bokfuj2cpyatq" path="res://Entities/Player/Art/spinning.png" id="3_54web"]
 [ext_resource type="Texture2D" uid="uid://dap7jy3477jf" path="res://Entities/Player/Art/CuteFatPigeon.png" id="3_pecbs"]
 
 [sub_resource type="Animation" id="Animation_hdetb"]
@@ -40,6 +41,71 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_pecbs")]
+}
+
+[sub_resource type="Animation" id="Animation_nkmcg"]
+resource_name = "flying"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_54web")]
 }
 
 [sub_resource type="Animation" id="Animation_54web"]
@@ -81,6 +147,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [2, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_pecbs")]
 }
 
 [sub_resource type="Animation" id="Animation_pecbs"]
@@ -138,6 +216,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54web"]
 _data = {
 &"RESET": SubResource("Animation_hdetb"),
+&"flying": SubResource("Animation_nkmcg"),
 &"idle_down": SubResource("Animation_54web"),
 &"walk_down": SubResource("Animation_pecbs")
 }
@@ -162,6 +241,6 @@ autoplay = &"idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2073065065]
 shape = SubResource("RectangleShape2D_hdetb")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2079850264]
+[node name="CollisionShape2DFeet" type="CollisionShape2D" parent="." unique_id=2079850264]
 position = Vector2(1.5, 24.3125)
 shape = SubResource("RectangleShape2D_pecbs")

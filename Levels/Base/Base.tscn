@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctmfom0rou80c" path="res://Levels/Common/Art/wp10783505-999488466.jpg" id="1_codtk"]
 [ext_resource type="PackedScene" path="res://Entities/Props/Tree.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://dpavs714fpiw1" path="res://Levels/Common/Art/christian-lue-YVZX2ksshrM-unsplash.jpg" id="2_p1up5"]
+[ext_resource type="Script" uid="uid://dgoj3kql0tqis" path="res://Globals/GlobalSignalsManager/GlobalSignalsManager.gd" id="2_r3r0t"]
 [ext_resource type="Texture2D" uid="uid://deqrfmwvdm0nb" path="res://Levels/Common/Art/tallsky.jpg" id="2_uj2c8"]
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
 [ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
@@ -29,6 +30,9 @@ size = Vector2(39, 3113)
 stream = ExtResource("1_aygd2")
 volume_db = 1.0
 autoplay = true
+
+[node name="GlobalSignalsManager" type="Node" parent="Systems" unique_id=1940544452]
+script = ExtResource("2_r3r0t")
 
 [node name="World" type="Node2D" parent="." unique_id=1407682078]
 
