@@ -3,8 +3,11 @@
 [ext_resource type="AudioStream" uid="uid://c8gmcewgw5xmk" path="res://Levels/Common/Town_-_Neo_Tokyo.ogg" id="1_aygd2"]
 [ext_resource type="Texture2D" uid="uid://ctmfom0rou80c" path="res://Levels/Common/Art/wp10783505-999488466.jpg" id="1_codtk"]
 [ext_resource type="PackedScene" path="res://Entities/Props/Tree.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://dpavs714fpiw1" path="res://Levels/Common/Art/christian-lue-YVZX2ksshrM-unsplash.jpg" id="2_p1up5"]
+[ext_resource type="Texture2D" uid="uid://deqrfmwvdm0nb" path="res://Levels/Common/Art/tallsky.jpg" id="2_uj2c8"]
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
 [ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
+[ext_resource type="PackedScene" uid="uid://bjeqhgkg3158y" path="res://UI/TheHUD.tscn" id="6_7sk74"]
 
 [sub_resource type="RectangleShape2D" id="ground_shape"]
 size = Vector2(2400, 160)
@@ -13,10 +16,10 @@ size = Vector2(2400, 160)
 size = Vector2(1679, 123)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eu82j"]
-size = Vector2(45, 2949)
+size = Vector2(50, 3128)
 
 [sub_resource type="RectangleShape2D" id="wall_shape"]
-size = Vector2(43, 2898)
+size = Vector2(39, 3113)
 
 [node name="Base" type="Node2D" unique_id=1102677110]
 
@@ -33,10 +36,18 @@ autoplay = true
 layer = -1
 
 [node name="Sky" type="ColorRect" parent="World/Background" unique_id=1594223396]
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.53858024
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1575.0
+offset_right = 334.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.45, 0.6, 0.78, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Level" type="Node2D" parent="World" unique_id=252101232]
 
@@ -44,8 +55,18 @@ color = Color(0.45, 0.6, 0.78, 1)
 color = Color(0.2, 0.34, 0.18, 1)
 polygon = PackedVector2Array(0, 520, 2400, 520, 2400, 680, 0, 680)
 
+[node name="ChristianLueYvzx2KsshrMUnsplash" type="Sprite2D" parent="World/Level" unique_id=991175198]
+position = Vector2(746, -2573)
+scale = Vector2(1.2441666, 1)
+texture = ExtResource("2_p1up5")
+
+[node name="Tallsky" type="Sprite2D" parent="World/Level" unique_id=1216206758]
+position = Vector2(747.5, -985.5001)
+scale = Vector2(3.6838236, 2.7238562)
+texture = ExtResource("2_uj2c8")
+
 [node name="Wp10783505999488466" type="Sprite2D" parent="World/Level" unique_id=1263788031]
-position = Vector2(746.00006, 281)
+position = Vector2(746.00006, 203)
 scale = Vector2(0.8067708, 0.80677086)
 texture = ExtResource("1_codtk")
 
@@ -61,21 +82,21 @@ shape = SubResource("ground_shape")
 position = Vector2(-40, 560)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/TopWall" unique_id=1086875306]
-position = Vector2(765, -2748)
+position = Vector2(754, -3048)
 shape = SubResource("RectangleShape2D_aygd2")
 
 [node name="LeftWall" type="StaticBody2D" parent="World/Level/Borders" unique_id=1087841637]
 position = Vector2(-20, 280)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/LeftWall" unique_id=220516097]
-position = Vector2(-2.5, -1074.5)
+position = Vector2(-5, -1164)
 shape = SubResource("RectangleShape2D_eu82j")
 
 [node name="RightWall" type="StaticBody2D" parent="World/Level/Borders" unique_id=1937108491]
 position = Vector2(1504, 295)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/RightWall" unique_id=538510944]
-position = Vector2(-2.5, -1090)
+position = Vector2(-0.5, -1197.5)
 shape = SubResource("wall_shape")
 
 [node name="Props" type="Node2D" parent="World/Level" unique_id=2001031275]
@@ -102,6 +123,11 @@ target = NodePath("../TheRealMc")
 [node name="HudRoot" type="Control" parent="HUDLayer" unique_id=1702043227]
 layout_mode = 3
 anchors_preset = 0
+offset_left = -3.0
+offset_right = -3.0
+
+[node name="TheHud" parent="HUDLayer/HudRoot" unique_id=302070295 instance=ExtResource("6_7sk74")]
+layout_mode = 1
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]
 
