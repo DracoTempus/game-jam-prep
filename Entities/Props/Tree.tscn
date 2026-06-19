@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+; A simple placeholder tree: a brown trunk with a green canopy on top.
+; The origin (0,0) is at the base of the trunk, so place it right on the
+; ground in the level. Swap the polygons for real art later.
+
+[node name="Tree" type="Node2D"]
+
+[node name="Trunk" type="Polygon2D" parent="."]
+color = Color(0.32, 0.22, 0.12, 1)
+polygon = PackedVector2Array(-16, 0, 16, 0, 12, -170, -12, -170)
+
+[node name="Canopy" type="Polygon2D" parent="."]
+position = Vector2(0, -170)
+color = Color(0.16, 0.42, 0.2, 1)
+polygon = PackedVector2Array(140, -20, 121, 22, 70, 54, 0, 65, -70, 54, -121, 22, -140, -20, -121, -62, -70, -94, 0, -105, 70, -94, 121, -62)

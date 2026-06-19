@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3]
+
+; The shared side-scroller base level. The node layout mirrors the
+; organised structure Matthew's layout plugin sets up (Systems / World /
+; Effects / HUD / Pause / Debug) so everyone's work has an obvious home:
+;
+;   Systems   -> spawners, managers, autoload-ish helpers
+;   World     -> everything in the game world
+;     Background -> parallax / sky (does not scroll 1:1)
+;     Level      -> ground, borders, props (the static world)
+;     Entities   -> the player, enemies, projectiles (the moving things)
+;   Effects   -> particles, screen shake targets, transient visuals
+;   HUDLayer  -> score / health / on-screen UI
+;   PauseLayer / DebugLayer -> pause menu, debug overlays
+
+[ext_resource type="PackedScene" path="res://Entities/Player/Player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://Entities/Props/Tree.tscn" id="2"]
+
+[sub_resource type="RectangleShape2D" id="ground_shape"]
+size = Vector2(2400, 160)
+
+[sub_resource type="RectangleShape2D" id="wall_shape"]
+size = Vector2(40, 800)
+
+[node name="Base" type="Node2D"]
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Background" type="CanvasLayer" parent="World"]
+layer = -1
+
+[node name="Sky" type="ColorRect" parent="World/Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.45, 0.6, 0.78, 1)
+
+[node name="Level" type="Node2D" parent="World"]
+
+[node name="GroundVisual" type="Polygon2D" parent="World/Level"]
+color = Color(0.2, 0.34, 0.18, 1)
+polygon = PackedVector2Array(0, 520, 2400, 520, 2400, 680, 0, 680)
+
+[node name="Ground" type="StaticBody2D" parent="World/Level"]
+position = Vector2(1200, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Ground"]
+shape = SubResource("ground_shape")
+
+[node name="Borders" type="Node2D" parent="World/Level"]
+
+[node name="LeftWall" type="StaticBody2D" parent="World/Level/Borders"]
+position = Vector2(-20, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/LeftWall"]
+shape = SubResource("wall_shape")
+
+[node name="RightWall" type="StaticBody2D" parent="World/Level/Borders"]
+position = Vector2(2420, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/RightWall"]
+shape = SubResource("wall_shape")
+
+[node name="Props" type="Node2D" parent="World/Level"]
+
+[node name="Tree" parent="World/Level/Props" instance=ExtResource("2")]
+position = Vector2(900, 520)
+
+[node name="Entities" type="Node2D" parent="World"]
+
+[node name="Player" parent="World/Entities" instance=ExtResource("1")]
+position = Vector2(300, 440)
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HudRoot" type="Control" parent="HUDLayer"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseRoot" type="Control" parent="PauseLayer"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugRoot" type="Control" parent="DebugLayer"]
+layout_mode = 3
+anchors_preset = 0
