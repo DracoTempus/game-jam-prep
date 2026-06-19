@@ -146,8 +146,11 @@ _data = {
 script = ExtResource("1_hdetb")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=43348054]
+zoom = Vector2(5, 5)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764073441]
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+scale = Vector2(0.21875, 0.21875)
 texture = ExtResource("3_pecbs")
 hframes = 4
 
