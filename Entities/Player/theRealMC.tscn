@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://x5ud0me5tw62" path="res://Entities/Player/scripts/inputPlayerControl.gd" id="1_hdetb"]
 [ext_resource type="Texture2D" uid="uid://bokfuj2cpyatq" path="res://Entities/Player/Art/spinning.png" id="3_54web"]
 [ext_resource type="Texture2D" uid="uid://dap7jy3477jf" path="res://Entities/Player/Art/CuteFatPigeon.png" id="3_pecbs"]
+[ext_resource type="Script" uid="uid://odb3rn6qpfbv" path="res://Entities/Player/scripts/MeleeAttack.gd" id="4_54web"]
 
 [sub_resource type="Animation" id="Animation_hdetb"]
 length = 0.001
@@ -53,6 +54,46 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("3_pecbs")]
+}
+
+[sub_resource type="Animation" id="Animation_aex4m"]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_54web")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
 }
 
 [sub_resource type="Animation" id="Animation_nkmcg"]
@@ -163,7 +204,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_pecbs"]
 resource_name = "walk_down"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -216,6 +256,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54web"]
 _data = {
 &"RESET": SubResource("Animation_hdetb"),
+&"attack": SubResource("Animation_aex4m"),
 &"flying": SubResource("Animation_nkmcg"),
 &"idle_down": SubResource("Animation_54web"),
 &"walk_down": SubResource("Animation_pecbs")
@@ -252,6 +293,7 @@ shape = SubResource("RectangleShape2D_pecbs")
 [node name="GroundMeleeDamageBox" type="Area2D" parent="." unique_id=408393558]
 rotation = -1.5707964
 collision_layer = 0
+script = ExtResource("4_54web")
 
 [node name="DamageShape" type="CollisionShape2D" parent="GroundMeleeDamageBox" unique_id=1099814677]
 shape = SubResource("CapsuleShape2D_pecbs")
