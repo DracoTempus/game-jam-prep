@@ -1,11 +1,5 @@
 extends CharacterBody2D
 
-@export var ground_speed: float = 130.0
-@export var fly_speed: float = 230.0
-
-@export var fly_add_time: float = 0.25
-@export var fly_max_time: float = 2.0
-@export var launch_off_time: float = 0.2
 @export var fly_launch_velocity: float = 600.0
 
 @onready var flying_damage_box: Area2D = $FlyingDamageBox
@@ -22,10 +16,10 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity") a
 var is_flying: bool = false
 var is_attacking: bool = false
 
-
 func _physics_process(delta: float) -> void:
 	if is_attacking:
 		return
+	
 	if is_launching:
 		launch_off_timer -= delta
 		velocity.x = 0.0
@@ -52,19 +46,19 @@ func _physics_process(delta: float) -> void:
 		
 		if not was_flying:
 			is_launching = true
-			launch_off_timer = launch_off_time
+			launch_off_timer = GlobalSignalsManager.launch_off_time
 	else:
 		GlobalSignalsManager.fly_time_left = 0.0
 		is_flying = false
 
 	if is_flying:
 		var input: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		velocity.x = input.x * fly_speed
-		velocity.y = input.y * fly_speed
+		velocity.x = input.x * GlobalSignalsManager.fly_speed
+		velocity.y = input.y * GlobalSignalsManager.fly_speed
 
 	else:
 		var direction: float = Input.get_axis("move_left", "move_right")
-		velocity.x = direction * ground_speed
+		velocity.x = direction * GlobalSignalsManager.ground_speed
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		else:
