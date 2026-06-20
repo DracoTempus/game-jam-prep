@@ -28,8 +28,9 @@ size = Vector2(39, 3113)
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="Systems" unique_id=444833261]
 stream = ExtResource("1_aygd2")
-volume_db = 1.0
+volume_db = -10.0
 autoplay = true
+mix_target = 1
 
 [node name="GlobalSignalsManager" type="Node" parent="Systems" unique_id=1940544452]
 script = ExtResource("2_r3r0t")

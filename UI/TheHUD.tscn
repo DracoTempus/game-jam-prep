@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bjeqhgkg3158y"]
 
+[ext_resource type="Script" uid="uid://c63i2fxaewn4v" path="res://UI/scripts/ThrustViewer.gd" id="1_dj3i1"]
+
 [node name="TheHud" type="Control" unique_id=302070295]
 layout_mode = 3
 anchors_preset = 15
@@ -15,3 +17,4 @@ offset_top = 613.0
 offset_right = 713.0
 offset_bottom = 640.0
 show_percentage = false
+script = ExtResource("1_dj3i1")
