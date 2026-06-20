@@ -12,7 +12,7 @@ extends CharacterBody2D
 @onready var flying_damage_box: Area2D = $FlyingDamageBox
 @onready var flying_damage_shape: CollisionShape2D = $FlyingDamageBox/DamageShape
 
-@onready var ground_damage_box: Area2D = $GroundMeleeAttackBox
+@onready var ground_damage_box: Area2D = $GroundMeleeDamageBox
 @onready var ground_damage_shape: CollisionShape2D = $GroundMeleeDamageBox/DamageShape
 
 var is_launching: bool = false
