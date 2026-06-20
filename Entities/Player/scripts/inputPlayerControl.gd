@@ -27,7 +27,6 @@ var is_attacking: bool = false
 func _physics_process(delta: float) -> void:
 	if is_attacking:
 		return
-	
 	if is_launching:
 		launch_off_timer -= delta
 		velocity.x = 0.0
@@ -53,6 +52,7 @@ func _physics_process(delta: float) -> void:
 	if fly_time_left > 0.0:
 		fly_time_left -= delta
 		is_flying = true
+		
 		if not was_flying:
 			is_launching = true
 			launch_off_timer = launch_off_time
@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		play_animation("idle_down")
 		
-	if Input.is_action_just_pressed("attack") and not is_flying and not is_launching and not is_attacking:
+	if Input.is_action_just_pressed("attack") and not is_flying and not is_launching and not is_attacking and is_on_floor():
 		is_attacking = true
 		play_animation("attack")
 		ground_damage_box.attack()
