@@ -9,8 +9,11 @@ extends CharacterBody2D
 @export var launch_off_time: float = 0.2
 @export var fly_launch_velocity: float = 600.0
 
-@onready var hurt_box: Area2D = $FlyingDamageBox
-@onready var hurt_box_shape: CollisionShape2D = $FlyingDamageBox/DamageShape
+@onready var flying_damage_box: Area2D = $FlyingDamageBox
+@onready var flying_damage_shape: CollisionShape2D = $FlyingDamageBox/DamageShape
+
+@onready var ground_damage_box: Area2D = $GroundMeleeAttackBox
+@onready var ground_damage_shape: CollisionShape2D = $GroundMeleeDamageBox/DamageShape
 
 var is_launching: bool = false
 var launch_off_timer: float = 0.1
@@ -18,8 +21,13 @@ var launch_off_timer: float = 0.1
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity") as float
 var fly_time_left: float = 0.0
 var is_flying: bool = false
+var is_attacking: bool = false
+
 
 func _physics_process(delta: float) -> void:
+	if is_attacking:
+		return
+	
 	if is_launching:
 		launch_off_timer -= delta
 		velocity.x = 0.0
@@ -87,18 +95,30 @@ func _physics_process(delta: float) -> void:
 		play_animation("idle_down")
 	else:
 		play_animation("idle_down")
+		
+	if Input.is_action_just_pressed("attack") and not is_flying and not is_launching and not is_attacking:
+		is_attacking = true
+		play_animation("attack")
+		ground_damage_box.attack()
 
-func toggle_damage_box(active: bool) -> void:
-	hurt_box.monitoring = active
-	hurt_box_shape.disabled = not active
-
-func play_animation(animation: String) -> void:
-	if $AnimationPlayer.current_animation != animation:
-		$AnimationPlayer.play(animation)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimationPlayer.animation_finished.connect(_on_animation_finished)
 	toggle_damage_box(false)
 
 func _process(delta):
 	pass
+
+##Functions
+func _on_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "attack":
+		is_attacking = false
+		
+func toggle_damage_box(active: bool) -> void:
+	flying_damage_box.monitoring = active
+	flying_damage_shape.disabled = not active
+
+func play_animation(animation: String) -> void:
+	if $AnimationPlayer.current_animation != animation:
+		$AnimationPlayer.play(animation)
