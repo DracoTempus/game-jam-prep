@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjeqhgkg3158y"]
 
 [ext_resource type="Script" uid="uid://c63i2fxaewn4v" path="res://UI/scripts/ThrustViewer.gd" id="1_dj3i1"]
+[ext_resource type="Script" uid="uid://b8u5igwhba10m" path="res://UI/scripts/HealthBar.gd" id="2_health"]
 
 [node name="TheHud" type="Control" unique_id=302070295]
 layout_mode = 3
@@ -10,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1338708976]
+[node name="ThrustBar" type="ProgressBar" parent="." unique_id=1338708976]
 layout_mode = 0
 offset_left = 394.0
 offset_top = 613.0
@@ -18,3 +19,23 @@ offset_right = 713.0
 offset_bottom = 640.0
 show_percentage = false
 script = ExtResource("1_dj3i1")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 200.0
+offset_bottom = 36.0
+show_percentage = false
+script = ExtResource("2_health")
+target = "player"
+
+[node name="NestHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 44.0
+offset_right = 200.0
+offset_bottom = 64.0
+show_percentage = false
+script = ExtResource("2_health")
+target = "nest"
