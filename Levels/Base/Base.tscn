@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
+[ext_resource type="PackedScene" path="res://Entities/Enemy/Enemy.tscn" id="enemy_scene"]
+[ext_resource type="PackedScene" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
+[ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
 
 [sub_resource type="RectangleShape2D" id="ground_shape"]
 size = Vector2(2400, 160)
@@ -32,6 +35,16 @@ size = Vector2(24, 26.5)
 [node name="Base" type="Node2D" unique_id=1102677110]
 
 [node name="Systems" type="Node" parent="." unique_id=600708282]
+
+[node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent") instance=ExtResource("spawner_scene")]
+enemy_object = ExtResource("enemy_scene")
+entities_parent = NodePath("../../World/Entities")
+min_x = 200
+max_x = 900
+min_y = -400
+max_y = 100
+auto_spawn = true
+spawn_interval = 3.0
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="Systems" unique_id=444833261]
 stream = ExtResource("1_aygd2")
@@ -115,6 +128,9 @@ shape = SubResource("wall_shape")
 
 [node name="Tree" parent="World/Level/Props" unique_id=1951325676 instance=ExtResource("2")]
 position = Vector2(253, 518)
+
+[node name="Nest" parent="World/Level/Props" instance=ExtResource("nest_scene")]
+position = Vector2(253, 350)
 
 [node name="Tree1" type="Sprite2D" parent="World/Level/Props" unique_id=1074996878]
 position = Vector2(238, 278.00003)

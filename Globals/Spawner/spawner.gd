@@ -38,11 +38,12 @@ func spawn_enemy() -> void:
 	if enemy_object == null:
 		push_warning("Spawner has no enemy_scene assigned.")
 		return
-	
+
 	var enemy = enemy_object.instantiate()
 
 	var random_x = randf_range(min_x, max_x)
 	var random_y = randf_range(min_y, max_y)
 	enemy.global_position = Vector2(random_x, random_y)
-	
-	entities_parent.add_child(enemy)
+
+	var parent = entities_parent if entities_parent != null else get_parent()
+	parent.add_child(enemy)
