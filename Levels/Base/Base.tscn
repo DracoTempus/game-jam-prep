@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
 [ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
 [ext_resource type="PackedScene" uid="uid://bjeqhgkg3158y" path="res://UI/TheHUD.tscn" id="6_7sk74"]
+[ext_resource type="Texture2D" uid="uid://bx5roto7tl2jd" path="res://Levels/Common/Art/tree1.png" id="7_domu3"]
+[ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
+[ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
 
 [sub_resource type="RectangleShape2D" id="ground_shape"]
 size = Vector2(2400, 160)
@@ -107,7 +110,21 @@ shape = SubResource("wall_shape")
 [node name="Props" type="Node2D" parent="World/Level" unique_id=2001031275]
 
 [node name="Tree" parent="World/Level/Props" unique_id=1951325676 instance=ExtResource("2")]
-position = Vector2(900, 520)
+position = Vector2(253, 518)
+
+[node name="Tree1" type="Sprite2D" parent="World/Level/Props" unique_id=1074996878]
+position = Vector2(238, 278.00003)
+scale = Vector2(0.17381658, 0.17381658)
+texture = ExtResource("7_domu3")
+
+[node name="Tree2" type="Sprite2D" parent="World/Level/Props" unique_id=1049208972]
+position = Vector2(1230.375, -77.00003)
+scale = Vector2(0.20280568, 0.4250784)
+texture = ExtResource("8_7p5xg")
+
+[node name="Casinoplaceholder" type="Sprite2D" parent="World/Level" unique_id=2091080163]
+position = Vector2(1362, -380)
+texture = ExtResource("9_ruy55")
 
 [node name="Entities" type="Node2D" parent="World" unique_id=483649982]
 
