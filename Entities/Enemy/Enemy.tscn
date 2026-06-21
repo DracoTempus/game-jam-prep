@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Entities/Enemy/enemy.gd" id="1_enemy"]
+[ext_resource type="Script" path="res://Entities/Health/Health.gd" id="2_health"]
+
+[sub_resource type="RectangleShape2D" id="body_shape"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="contact_shape"]
+size = Vector2(48, 48)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_enemy")
+
+[node name="Sprite" type="Polygon2D" parent="."]
+color = Color(0.8, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("body_shape")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 3.0
+
+[node name="ContactBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="ContactShape" type="CollisionShape2D" parent="ContactBox"]
+shape = SubResource("contact_shape")

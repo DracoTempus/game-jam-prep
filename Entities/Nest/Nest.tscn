@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Entities/Nest/nest.gd" id="1_nest"]
+[ext_resource type="Script" path="res://Entities/Health/Health.gd" id="2_health"]
+
+[node name="Nest" type="Node2D" groups=["nest"]]
+script = ExtResource("1_nest")
+
+[node name="Bowl" type="Polygon2D" parent="."]
+color = Color(0.45, 0.32, 0.16, 1)
+polygon = PackedVector2Array(-45, -10, 45, -10, 35, 22, -35, 22)
+
+[node name="Eggs" type="Polygon2D" parent="."]
+color = Color(0.95, 0.93, 0.85, 1)
+polygon = PackedVector2Array(-18, -8, -2, -8, -2, 6, -18, 6)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 10.0
