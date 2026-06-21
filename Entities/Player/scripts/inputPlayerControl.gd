@@ -38,7 +38,8 @@ func _physics_process(delta: float) -> void:
 	var was_flying: bool = is_flying
 
 	if Input.is_action_just_pressed("fly"):
-		GlobalSignalsManager.fly_time_left = min(GlobalSignalsManager.fly_time_left + GlobalSignalsManager.fly_add_time, GlobalSignalsManager.max_fly_time)
+		if is_flying == true || is_on_floor():
+			GlobalSignalsManager.fly_time_left = min(GlobalSignalsManager.fly_time_left + GlobalSignalsManager.fly_add_time, GlobalSignalsManager.max_fly_time)
 
 	if GlobalSignalsManager.fly_time_left > 0.0:
 		GlobalSignalsManager.fly_time_left -= delta
@@ -46,6 +47,7 @@ func _physics_process(delta: float) -> void:
 		
 		if not was_flying:
 			is_launching = true
+			GlobalSignalsManager.fly_time_left = GlobalSignalsManager.launch_bonus_fly_time
 			launch_off_timer = GlobalSignalsManager.launch_off_time
 	else:
 		GlobalSignalsManager.fly_time_left = 0.0

@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bx5roto7tl2jd" path="res://Levels/Common/Art/tree1.png" id="7_domu3"]
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
+[ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
 
 [sub_resource type="RectangleShape2D" id="ground_shape"]
 size = Vector2(2400, 160)
@@ -24,6 +25,9 @@ size = Vector2(50, 3128)
 
 [sub_resource type="RectangleShape2D" id="wall_shape"]
 size = Vector2(39, 3113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_domu3"]
+size = Vector2(24, 26.5)
 
 [node name="Base" type="Node2D" unique_id=1102677110]
 
@@ -125,6 +129,13 @@ texture = ExtResource("8_7p5xg")
 [node name="Casinoplaceholder" type="Sprite2D" parent="World/Level" unique_id=2091080163]
 position = Vector2(1362, -380)
 texture = ExtResource("9_ruy55")
+
+[node name="Area2D" type="Area2D" parent="World/Level/Casinoplaceholder" unique_id=1755226040]
+script = ExtResource("10_7p5xg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Casinoplaceholder/Area2D" unique_id=954929380]
+position = Vector2(0, 62.25)
+shape = SubResource("RectangleShape2D_domu3")
 
 [node name="Entities" type="Node2D" parent="World" unique_id=483649982]
 

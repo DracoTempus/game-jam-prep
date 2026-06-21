@@ -23,6 +23,12 @@ GlobalSignalsManager="*uid://dgoj3kql0tqis"
 
 enabled=PackedStringArray("res://addons/NewProjectLayoutSetup/plugin.cfg", "res://addons/PropertiesForTheDiscerningIndividual/plugin.cfg")
 
+[global_group]
+
+Player="The player"
+Enemies="enemies"
+NPBs="Non playable Birds"
+
 [input]
 
 move_up={
