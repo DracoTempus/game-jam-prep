@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 
 # This is the method the player's melee calls to damage us.
 # (Keeping the same name Matthew's MeleeAttack.gd already uses.)
-func Nouh_TellMe_method(damage: float) -> void:
+func take_damage(damage: float) -> void:
 	health.take_damage(damage)
 
 
