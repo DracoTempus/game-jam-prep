@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://7y6w2delx47m"]
+
+[ext_resource type="AudioStream" uid="uid://c8gmcewgw5xmk" path="res://Levels/Common/Town_-_Neo_Tokyo.ogg" id="1_aygd2"]
+[ext_resource type="Texture2D" uid="uid://ctmfom0rou80c" path="res://Levels/Common/Art/wp10783505-999488466.jpg" id="1_codtk"]
+[ext_resource type="PackedScene" path="res://Entities/Props/Tree.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://dpavs714fpiw1" path="res://Levels/Common/Art/christian-lue-YVZX2ksshrM-unsplash.jpg" id="2_p1up5"]
+[ext_resource type="Script" uid="uid://dgoj3kql0tqis" path="res://Globals/GlobalSignalsManager/GlobalSignalsManager.gd" id="2_r3r0t"]
+[ext_resource type="Texture2D" uid="uid://deqrfmwvdm0nb" path="res://Levels/Common/Art/tallsky.jpg" id="2_uj2c8"]
+[ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
+[ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
+[ext_resource type="PackedScene" uid="uid://bjeqhgkg3158y" path="res://UI/TheHUD.tscn" id="6_7sk74"]
+[ext_resource type="Texture2D" uid="uid://bx5roto7tl2jd" path="res://Levels/Common/Art/tree1.png" id="7_domu3"]
+[ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
+[ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
+[ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
+[ext_resource type="PackedScene" path="res://Entities/Enemy/Enemy.tscn" id="enemy_scene"]
+[ext_resource type="PackedScene" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
+[ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
+
+[sub_resource type="RectangleShape2D" id="ground_shape"]
+size = Vector2(4546, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aygd2"]
+size = Vector2(1679, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu82j"]
+size = Vector2(50, 3128)
+
+[sub_resource type="RectangleShape2D" id="wall_shape"]
+size = Vector2(39, 3113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_domu3"]
+size = Vector2(24, 26.5)
+
+[node name="Base" type="Node2D" unique_id=1102677110]
+
+[node name="Systems" type="Node" parent="." unique_id=600708282]
+
+[node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent") instance=ExtResource("spawner_scene")]
+enemy_object = ExtResource("enemy_scene")
+entities_parent = NodePath("../../World/Entities")
+min_x = 200
+max_x = 900
+min_y = -400
+max_y = 100.0
+spawn_interval = 3.0
+auto_spawn = true
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="Systems" unique_id=444833261]
+stream = ExtResource("1_aygd2")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
+
+[node name="GlobalSignalsManager" type="Node" parent="Systems" unique_id=1940544452]
+script = ExtResource("2_r3r0t")
+
+[node name="World" type="Node2D" parent="." unique_id=1407682078]
+
+[node name="Background" type="CanvasLayer" parent="World" unique_id=1045564291]
+layer = -1
+
+[node name="Sky" type="ColorRect" parent="World/Background" unique_id=1594223396]
+anchors_preset = -1
+anchor_top = 0.53858024
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1575.0
+offset_right = 334.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45, 0.6, 0.78, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Level" type="Node2D" parent="World" unique_id=252101232]
+
+[node name="GroundVisual" type="Polygon2D" parent="World/Level" unique_id=164389687]
+color = Color(0.2, 0.34, 0.18, 1)
+polygon = PackedVector2Array(0, 520, 2400, 520, 2400, 680, 0, 680)
+
+[node name="ChristianLueYvzx2KsshrMUnsplash" type="Sprite2D" parent="World/Level" unique_id=991175198]
+position = Vector2(746, -2573)
+scale = Vector2(1.2441666, 1)
+texture = ExtResource("2_p1up5")
+
+[node name="Tallsky" type="Sprite2D" parent="World/Level" unique_id=1216206758]
+position = Vector2(747.5, -985.5001)
+scale = Vector2(3.6838236, 2.7238562)
+texture = ExtResource("2_uj2c8")
+
+[node name="Wp10783505999488466" type="Sprite2D" parent="World/Level" unique_id=1263788031]
+position = Vector2(746.00006, 203)
+scale = Vector2(0.8067708, 0.80677086)
+texture = ExtResource("1_codtk")
+
+[node name="Ground" type="StaticBody2D" parent="World/Level" unique_id=36474092]
+position = Vector2(1200, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Ground" unique_id=1137871754]
+position = Vector2(1073, 0)
+shape = SubResource("ground_shape")
+
+[node name="InsideCasinoBorders" type="Node2D" parent="World/Level" unique_id=1458603372]
+position = Vector2(2977, 35)
+
+[node name="TopWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=684257738]
+position = Vector2(-40, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/TopWall" unique_id=2043595730]
+position = Vector2(798, -657)
+shape = SubResource("RectangleShape2D_aygd2")
+
+[node name="LeftWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=797644873]
+position = Vector2(-20, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/LeftWall" unique_id=1373935049]
+position = Vector2(-5, -1164)
+shape = SubResource("RectangleShape2D_eu82j")
+
+[node name="RightWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=30917801]
+position = Vector2(1504, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/RightWall" unique_id=1300500384]
+position = Vector2(-0.5, -1197.5)
+shape = SubResource("wall_shape")
+
+[node name="MainBorders" type="Node2D" parent="World/Level" unique_id=1097991594]
+
+[node name="TopWall" type="StaticBody2D" parent="World/Level/MainBorders" unique_id=309184216]
+position = Vector2(-40, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainBorders/TopWall" unique_id=1086875306]
+position = Vector2(754, -3048)
+shape = SubResource("RectangleShape2D_aygd2")
+
+[node name="LeftWall" type="StaticBody2D" parent="World/Level/MainBorders" unique_id=1087841637]
+position = Vector2(-20, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainBorders/LeftWall" unique_id=220516097]
+position = Vector2(-5, -1164)
+shape = SubResource("RectangleShape2D_eu82j")
+
+[node name="RightWall" type="StaticBody2D" parent="World/Level/MainBorders" unique_id=1937108491]
+position = Vector2(1504, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainBorders/RightWall" unique_id=538510944]
+position = Vector2(-0.5, -1197.5)
+shape = SubResource("wall_shape")
+
+[node name="Props" type="Node2D" parent="World/Level" unique_id=2001031275]
+
+[node name="Tree" parent="World/Level/Props" unique_id=1951325676 instance=ExtResource("2")]
+position = Vector2(253, 518)
+
+[node name="Nest" parent="World/Level/Props" unique_id=22503869 instance=ExtResource("nest_scene")]
+position = Vector2(253, 350)
+
+[node name="Tree1" type="Sprite2D" parent="World/Level/Props" unique_id=1074996878]
+position = Vector2(238, 278.00003)
+scale = Vector2(0.17381658, 0.17381658)
+texture = ExtResource("7_domu3")
+
+[node name="Tree2" type="Sprite2D" parent="World/Level/Props" unique_id=1049208972]
+position = Vector2(1230.375, -77.00003)
+scale = Vector2(0.20280568, 0.4250784)
+texture = ExtResource("8_7p5xg")
+
+[node name="Casinoplaceholder" type="Sprite2D" parent="World/Level" unique_id=2091080163]
+position = Vector2(1362, -380)
+texture = ExtResource("9_ruy55")
+
+[node name="Area2D" type="Area2D" parent="World/Level/Casinoplaceholder" unique_id=1755226040 node_paths=PackedStringArray("target", "camera")]
+script = ExtResource("10_7p5xg")
+target = NodePath("InsideCasino")
+camera = NodePath("../../../Entities/AlfredHitchcock")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Casinoplaceholder/Area2D" unique_id=954929380]
+position = Vector2(0, 62.25)
+shape = SubResource("RectangleShape2D_domu3")
+
+[node name="InsideCasino" type="Marker2D" parent="World/Level/Casinoplaceholder/Area2D" unique_id=887802340]
+position = Vector2(1743, 844)
+
+[node name="Entities" type="Node2D" parent="World" unique_id=483649982]
+
+[node name="TheRealMc" parent="World/Entities" unique_id=2081207016 instance=ExtResource("3_codtk")]
+position = Vector2(583, 478)
+
+[node name="AlfredHitchcock" type="Camera2D" parent="World/Entities" unique_id=834001174 node_paths=PackedStringArray("left_bound", "right_bound", "bottom_bound", "target")]
+script = ExtResource("4_eu82j")
+left_bound = NodePath("../../Level/MainBorders/LeftWall")
+right_bound = NodePath("../../Level/MainBorders/RightWall")
+bottom_bound = NodePath("../../Level/Ground")
+target = NodePath("../TheRealMc")
+
+[node name="Effects" type="Node2D" parent="." unique_id=822866659]
+
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=140505128]
+
+[node name="HudRoot" type="Control" parent="HUDLayer" unique_id=1702043227]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_right = -3.0
+
+[node name="TheHud" parent="HUDLayer/HudRoot" unique_id=302070295 instance=ExtResource("6_7sk74")]
+layout_mode = 1
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]
+
+[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=1501450840]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1240786418]
+
+[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1696703165]
+layout_mode = 3
+anchors_preset = 0

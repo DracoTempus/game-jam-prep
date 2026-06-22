@@ -2,13 +2,14 @@
 
 [ext_resource type="AudioStream" uid="uid://c8gmcewgw5xmk" path="res://Levels/Common/Town_-_Neo_Tokyo.ogg" id="1_aygd2"]
 [ext_resource type="Texture2D" uid="uid://ctmfom0rou80c" path="res://Levels/Common/Art/wp10783505-999488466.jpg" id="1_codtk"]
-[ext_resource type="PackedScene" path="res://Entities/Props/Tree.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://dpavs714fpiw1" path="res://Levels/Common/Art/christian-lue-YVZX2ksshrM-unsplash.jpg" id="2_p1up5"]
 [ext_resource type="Script" uid="uid://dgoj3kql0tqis" path="res://Globals/GlobalSignalsManager/GlobalSignalsManager.gd" id="2_r3r0t"]
 [ext_resource type="Texture2D" uid="uid://deqrfmwvdm0nb" path="res://Levels/Common/Art/tallsky.jpg" id="2_uj2c8"]
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
 [ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
+[ext_resource type="Texture2D" uid="uid://crpp3564ap58s" path="res://Levels/Common/Art/slot.jpg" id="5_jljc5"]
 [ext_resource type="PackedScene" uid="uid://bjeqhgkg3158y" path="res://UI/TheHUD.tscn" id="6_7sk74"]
+[ext_resource type="Texture2D" uid="uid://d210wmslgivl4" path="res://Levels/Common/Art/retro-pixel-art-casino-table-with-chips-and-cards-in-a-vintage-gaming-setting-free-vector.jpg" id="6_l73k5"]
 [ext_resource type="Texture2D" uid="uid://bx5roto7tl2jd" path="res://Levels/Common/Art/tree1.png" id="7_domu3"]
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
@@ -16,9 +17,6 @@
 [ext_resource type="PackedScene" path="res://Entities/Enemy/Enemy.tscn" id="enemy_scene"]
 [ext_resource type="PackedScene" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
-
-[sub_resource type="RectangleShape2D" id="ground_shape"]
-size = Vector2(2400, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aygd2"]
 size = Vector2(1679, 123)
@@ -29,6 +27,12 @@ size = Vector2(50, 3128)
 [sub_resource type="RectangleShape2D" id="wall_shape"]
 size = Vector2(39, 3113)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2l1"]
+size = Vector2(1493, 3115)
+
+[sub_resource type="RectangleShape2D" id="ground_shape"]
+size = Vector2(4546, 160)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_domu3"]
 size = Vector2(24, 26.5)
 
@@ -38,13 +42,13 @@ size = Vector2(24, 26.5)
 
 [node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent") instance=ExtResource("spawner_scene")]
 enemy_object = ExtResource("enemy_scene")
-entities_parent = NodePath("../../World/Entities")
+entities_parent = NodePath("../../Entities")
 min_x = 200
 max_x = 900
 min_y = -400
-max_y = 100
-auto_spawn = true
+max_y = 100.0
 spawn_interval = 3.0
+auto_spawn = true
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="Systems" unique_id=444833261]
 stream = ExtResource("1_aygd2")
@@ -76,94 +80,181 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Level" type="Node2D" parent="World" unique_id=252101232]
 
-[node name="GroundVisual" type="Polygon2D" parent="World/Level" unique_id=164389687]
+[node name="InsideCasinoBorders" type="Node2D" parent="World/Level" unique_id=1458603372]
+position = Vector2(2977, 35)
+
+[node name="TopWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=684257738]
+position = Vector2(-40, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/TopWall" unique_id=2043595730]
+position = Vector2(798, -657)
+shape = SubResource("RectangleShape2D_aygd2")
+
+[node name="LeftWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=797644873]
+position = Vector2(-20, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/LeftWall" unique_id=1373935049]
+position = Vector2(-5, -1164)
+shape = SubResource("RectangleShape2D_eu82j")
+
+[node name="RightWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=30917801]
+position = Vector2(1504, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/RightWall" unique_id=1300500384]
+position = Vector2(-0.5, -1197.5)
+shape = SubResource("wall_shape")
+
+[node name="CasinoCameraBounds" type="Area2D" parent="World/Level/InsideCasinoBorders" unique_id=756403717]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/CasinoCameraBounds" unique_id=740865986]
+position = Vector2(736.5, -1033.5)
+shape = SubResource("RectangleShape2D_vt2l1")
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Level/InsideCasinoBorders" unique_id=1546228994]
+position = Vector2(-50, -35)
+color = Color(0.6453327, 0.15074736, 0, 1)
+polygon = PackedVector2Array(2, 0, 1576, -2, 1574, 578, -1, 585)
+
+[node name="Slot" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=636710621]
+position = Vector2(1365.5, 419.99997)
+scale = Vector2(0.1622449, 0.1622449)
+texture = ExtResource("5_jljc5")
+
+[node name="Slot2" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=56130501]
+position = Vector2(1224.5, 421.99997)
+scale = Vector2(0.1622449, 0.1622449)
+texture = ExtResource("5_jljc5")
+
+[node name="Slot3" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=1439468925]
+position = Vector2(1074.5, 422.99997)
+scale = Vector2(0.1622449, 0.1622449)
+texture = ExtResource("5_jljc5")
+
+[node name="Slot4" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=1016039742]
+position = Vector2(671.5, 418.99997)
+scale = Vector2(0.1622449, 0.1622449)
+texture = ExtResource("5_jljc5")
+
+[node name="Slot5" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=320071535]
+position = Vector2(533.5, 418.99997)
+scale = Vector2(0.1622449, 0.1622449)
+texture = ExtResource("5_jljc5")
+
+[node name="Slot6" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=535765234]
+position = Vector2(396.5, 414.99997)
+scale = Vector2(0.1622449, 0.1622449)
+texture = ExtResource("5_jljc5")
+
+[node name="RetroPixelArtCasinoTableWithChipsAndCardsInAVintageGamingSettingFreeVector" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=946023866]
+position = Vector2(871.5, 404)
+scale = Vector2(0.21632653, 0.21632653)
+texture = ExtResource("6_l73k5")
+
+[node name="Polygon2D2" type="Polygon2D" parent="World/Level/InsideCasinoBorders" unique_id=1526186430]
+position = Vector2(-101, -79)
+color = Color(1.2032688e-08, 0.41441408, 0.14524108, 1)
+polygon = PackedVector2Array(1, 552, 1630, 552, 1632, 612, 0, 615)
+
+[node name="MainLevelArea" type="Node" parent="World/Level" unique_id=731106569]
+
+[node name="GroundVisual" type="Polygon2D" parent="World/Level/MainLevelArea" unique_id=164389687]
 color = Color(0.2, 0.34, 0.18, 1)
 polygon = PackedVector2Array(0, 520, 2400, 520, 2400, 680, 0, 680)
 
-[node name="ChristianLueYvzx2KsshrMUnsplash" type="Sprite2D" parent="World/Level" unique_id=991175198]
+[node name="ChristianLueYvzx2KsshrMUnsplash" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=991175198]
 position = Vector2(746, -2573)
 scale = Vector2(1.2441666, 1)
 texture = ExtResource("2_p1up5")
 
-[node name="Tallsky" type="Sprite2D" parent="World/Level" unique_id=1216206758]
+[node name="Tallsky" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=1216206758]
 position = Vector2(747.5, -985.5001)
 scale = Vector2(3.6838236, 2.7238562)
 texture = ExtResource("2_uj2c8")
 
-[node name="Wp10783505999488466" type="Sprite2D" parent="World/Level" unique_id=1263788031]
+[node name="Wp10783505999488466" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=1263788031]
 position = Vector2(746.00006, 203)
 scale = Vector2(0.8067708, 0.80677086)
 texture = ExtResource("1_codtk")
 
-[node name="Ground" type="StaticBody2D" parent="World/Level" unique_id=36474092]
+[node name="Ground" type="StaticBody2D" parent="World/Level/MainLevelArea" unique_id=36474092]
 position = Vector2(1200, 600)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Ground" unique_id=1137871754]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/Ground" unique_id=1137871754]
+position = Vector2(1073, 0)
 shape = SubResource("ground_shape")
 
-[node name="Borders" type="Node2D" parent="World/Level" unique_id=1097991594]
+[node name="MainBorders" type="Node2D" parent="World/Level/MainLevelArea" unique_id=1097991594]
 
-[node name="TopWall" type="StaticBody2D" parent="World/Level/Borders" unique_id=309184216]
+[node name="TopWall" type="StaticBody2D" parent="World/Level/MainLevelArea/MainBorders" unique_id=309184216]
 position = Vector2(-40, 560)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/TopWall" unique_id=1086875306]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/MainBorders/TopWall" unique_id=1086875306]
 position = Vector2(754, -3048)
 shape = SubResource("RectangleShape2D_aygd2")
 
-[node name="LeftWall" type="StaticBody2D" parent="World/Level/Borders" unique_id=1087841637]
+[node name="LeftWall" type="StaticBody2D" parent="World/Level/MainLevelArea/MainBorders" unique_id=1087841637]
 position = Vector2(-20, 280)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/LeftWall" unique_id=220516097]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/MainBorders/LeftWall" unique_id=220516097]
 position = Vector2(-5, -1164)
 shape = SubResource("RectangleShape2D_eu82j")
 
-[node name="RightWall" type="StaticBody2D" parent="World/Level/Borders" unique_id=1937108491]
+[node name="RightWall" type="StaticBody2D" parent="World/Level/MainLevelArea/MainBorders" unique_id=1937108491]
 position = Vector2(1504, 295)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Borders/RightWall" unique_id=538510944]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/MainBorders/RightWall" unique_id=538510944]
 position = Vector2(-0.5, -1197.5)
 shape = SubResource("wall_shape")
 
-[node name="Props" type="Node2D" parent="World/Level" unique_id=2001031275]
+[node name="Props" type="Node2D" parent="World/Level/MainLevelArea" unique_id=2001031275]
 
-[node name="Tree" parent="World/Level/Props" unique_id=1951325676 instance=ExtResource("2")]
-position = Vector2(253, 518)
+[node name="Nest" parent="World/Level/MainLevelArea/Props" unique_id=22503869 instance=ExtResource("nest_scene")]
+z_index = 25
+position = Vector2(347, 291)
 
-[node name="Nest" parent="World/Level/Props" instance=ExtResource("nest_scene")]
-position = Vector2(253, 350)
-
-[node name="Tree1" type="Sprite2D" parent="World/Level/Props" unique_id=1074996878]
+[node name="Tree1" type="Sprite2D" parent="World/Level/MainLevelArea/Props" unique_id=1074996878]
 position = Vector2(238, 278.00003)
 scale = Vector2(0.17381658, 0.17381658)
 texture = ExtResource("7_domu3")
 
-[node name="Tree2" type="Sprite2D" parent="World/Level/Props" unique_id=1049208972]
+[node name="Tree2" type="Sprite2D" parent="World/Level/MainLevelArea/Props" unique_id=1049208972]
 position = Vector2(1230.375, -77.00003)
 scale = Vector2(0.20280568, 0.4250784)
 texture = ExtResource("8_7p5xg")
 
-[node name="Casinoplaceholder" type="Sprite2D" parent="World/Level" unique_id=2091080163]
+[node name="Casinoplaceholder" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=2091080163]
 position = Vector2(1362, -380)
 texture = ExtResource("9_ruy55")
 
-[node name="Area2D" type="Area2D" parent="World/Level/Casinoplaceholder" unique_id=1755226040]
+[node name="Area2D" type="Area2D" parent="World/Level/MainLevelArea/Casinoplaceholder" unique_id=1755226040 node_paths=PackedStringArray("target", "camera", "camera_bounds")]
 script = ExtResource("10_7p5xg")
+target = NodePath("InsideCasino")
+camera = NodePath("../../../../../Entities/AlfredHitchcock")
+camera_bounds = NodePath("../../../InsideCasinoBorders/CasinoCameraBounds")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/Casinoplaceholder/Area2D" unique_id=954929380]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/Casinoplaceholder/Area2D" unique_id=954929380]
 position = Vector2(0, 62.25)
 shape = SubResource("RectangleShape2D_domu3")
 
-[node name="Entities" type="Node2D" parent="World" unique_id=483649982]
+[node name="InsideCasino" type="Marker2D" parent="World/Level/MainLevelArea/Casinoplaceholder/Area2D" unique_id=887802340]
+position = Vector2(1743, 875)
 
-[node name="TheRealMc" parent="World/Entities" unique_id=2081207016 instance=ExtResource("3_codtk")]
+[node name="MainCameraBounds" type="Area2D" parent="World/Level/MainLevelArea" unique_id=785004763]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/MainCameraBounds" unique_id=444997525]
+position = Vector2(736.5, -1033.5)
+shape = SubResource("RectangleShape2D_vt2l1")
+
+[node name="Entities" type="Node2D" parent="." unique_id=483649982]
+
+[node name="TheRealMc" parent="Entities" unique_id=2081207016 instance=ExtResource("3_codtk")]
+z_index = 50
 position = Vector2(583, 478)
 
-[node name="AlfredHitchcock" type="Camera2D" parent="World/Entities" unique_id=834001174 node_paths=PackedStringArray("left_bound", "right_bound", "bottom_bound", "target")]
+[node name="AlfredHitchcock" type="Camera2D" parent="Entities" unique_id=834001174 node_paths=PackedStringArray("target", "current_bounds")]
 script = ExtResource("4_eu82j")
-left_bound = NodePath("../../Level/Borders/LeftWall")
-right_bound = NodePath("../../Level/Borders/RightWall")
-bottom_bound = NodePath("../../Level/Ground")
 target = NodePath("../TheRealMc")
+current_bounds = NodePath("../../World/Level/MainLevelArea/MainCameraBounds")
 
 [node name="Effects" type="Node2D" parent="." unique_id=822866659]
 
