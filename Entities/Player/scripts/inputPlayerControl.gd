@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var ground_damage_shape: CollisionShape2D = $GroundMeleeDamageBox/DamageShape
 
 @export var wind_up_animation_playing: bool = false
+@export var is_paused: bool = false;
 
 var is_launching: bool = false
 var launch_off_timer: float = 0.1
@@ -19,6 +20,9 @@ var is_flying: bool = false
 var is_attacking: bool = false
 
 func _physics_process(delta: float) -> void:
+	if is_paused:
+		return
+	
 	if is_attacking:
 		return
 	

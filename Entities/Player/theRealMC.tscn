@@ -375,7 +375,7 @@ size = Vector2(35, 4.625)
 radius = 21.0
 height = 124.0
 
-[node name="TheRealMc" type="CharacterBody2D" unique_id=2081207016 groups=["Enemies", "NPBs", "Player"]]
+[node name="TheRealMc" type="CharacterBody2D" unique_id=2081207016 groups=["Player"]]
 script = ExtResource("1_hdetb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764073441]

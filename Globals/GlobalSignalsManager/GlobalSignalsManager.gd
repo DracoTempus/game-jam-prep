@@ -9,7 +9,6 @@ signal wave_cleared
 @export_group("Global Variables")
 @export var is_day_time = true
 
-#Character Stats
 @export_group("Character Stats")
 @export var fly_time_left: float = 0.0
 @export var fly_add_time: float = 0.25
@@ -20,11 +19,10 @@ signal wave_cleared
 @export var fly_speed: float = 330.0
 @export var attack_damage: float = 1.0
 
-
 @export_group("Wave")
 @export var wave_size: int = 5
-@export var goose_fly_speed: float = 90
-@export var goose_peck_damage: float = 1
+@export var goose_fly_speed: float = 90.0
+@export var goose_peck_damage: float = 1.0
 
 var _enemies_killed: int = 0
 

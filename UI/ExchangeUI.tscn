@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dsq1gbp6oo6xp"]
+
+[ext_resource type="Texture2D" uid="uid://bac1sr4w8oj1t" path="res://UI/Art/spritesheet-double.png" id="1_ljb2u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avn1j"]
+atlas = ExtResource("1_ljb2u")
+region = Rect2(768, 256, 128, 128)
+
+[node name="ExchangeUi" type="Control" unique_id=1214968568 groups=["ExchangeUI"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=86691700]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 25.0
+offset_right = 921.0
+offset_bottom = 606.0
+texture = SubResource("AtlasTexture_avn1j")

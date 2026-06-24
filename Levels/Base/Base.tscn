@@ -14,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
-[ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPC/Sparrow/Sparrow.tscn" id="15_l73k5"]
-[ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPC/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
+[ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPB/Sparrow/Sparrow.tscn" id="15_l73k5"]
+[ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPB/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
+[ext_resource type="PackedScene" uid="uid://dsq1gbp6oo6xp" path="res://UI/ExchangeUI.tscn" id="20_se8fb"]
 [ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
 [ext_resource type="PackedScene" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
@@ -252,8 +253,8 @@ position = Vector2(3469, 443)
 [node name="SparrowNPC2" parent="Entities/NPCs" unique_id=683011082 instance=ExtResource("15_l73k5")]
 position = Vector2(4026, 443)
 
-[node name="BasicNpc" parent="Entities/NPCs" unique_id=1245124366 instance=ExtResource("16_55lwj")]
-position = Vector2(4343, 463)
+[node name="CrowShinyExchange" parent="Entities/NPCs" unique_id=1477779174 instance=ExtResource("16_55lwj")]
+position = Vector2(4336, 462)
 
 [node name="Player" type="Node" parent="Entities" unique_id=1538828935]
 
@@ -279,6 +280,9 @@ offset_left = -3.0
 offset_right = -3.0
 
 [node name="TheHud" parent="HUDLayer/HudRoot" unique_id=302070295 instance=ExtResource("6_7sk74")]
+layout_mode = 1
+
+[node name="ExchangeUi" parent="HUDLayer/HudRoot" unique_id=1214968568 instance=ExtResource("20_se8fb")]
 layout_mode = 1
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]
