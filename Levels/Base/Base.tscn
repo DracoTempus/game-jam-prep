@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
 [ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPC/Sparrow/Sparrow.tscn" id="15_l73k5"]
 [ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPC/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
-[ext_resource type="PackedScene" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
+[ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
 [ext_resource type="PackedScene" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
 
@@ -44,10 +44,10 @@ size = Vector2(24, 26.5)
 
 [node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent") instance=ExtResource("spawner_scene")]
 enemy_object = ExtResource("enemy_scene")
-entities_parent = NodePath("../../Entities")
+entities_parent = NodePath("../../Entities/Enemies")
 min_x = 200
 max_x = 900
-min_y = -400
+min_y = -100.0
 max_y = 100.0
 spawn_interval = 3.0
 auto_spawn = true

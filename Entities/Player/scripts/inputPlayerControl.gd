@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var ground_damage_box: Area2D = $GroundMeleeDamageBox
 @onready var ground_damage_shape: CollisionShape2D = $GroundMeleeDamageBox/DamageShape
 
+@export var wind_up_animation_playing: bool = false
+
 var is_launching: bool = false
 var launch_off_timer: float = 0.1
 
@@ -21,14 +23,14 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if is_launching:
-		launch_off_timer -= delta
-		velocity.x = 0.0
-		velocity.y = -fly_launch_velocity
-		is_flying = true
-		play_animation("flying")
+		if wind_up_animation_playing == false:
+			launch_off_timer -= delta
+			velocity.x = 0.0
+			velocity.y = -fly_launch_velocity
+			is_flying = true
 
-		if launch_off_timer <= 0.01:
-			is_launching = false
+			if launch_off_timer <= 0.01:
+				is_launching = false
 
 		move_and_slide()
 		if Input.is_action_just_pressed("fly"):
@@ -36,23 +38,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var was_flying: bool = is_flying
-
-	if Input.is_action_just_pressed("fly"):
-		if is_flying == true || is_on_floor():
-			GlobalSignalsManager.fly_time_left = min(GlobalSignalsManager.fly_time_left + GlobalSignalsManager.fly_add_time, GlobalSignalsManager.max_fly_time)
-
-	if GlobalSignalsManager.fly_time_left > 0.0:
-		GlobalSignalsManager.fly_time_left -= delta
-		is_flying = true
-		
-		if not was_flying:
-			is_launching = true
-			GlobalSignalsManager.fly_time_left = GlobalSignalsManager.launch_bonus_fly_time
-			launch_off_timer = GlobalSignalsManager.launch_off_time
-	else:
-		GlobalSignalsManager.fly_time_left = 0.0
-		is_flying = false
-
+	
 	if is_flying:
 		var input: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		velocity.x = input.x * GlobalSignalsManager.fly_speed
@@ -66,6 +52,25 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y = 0.0
 
+	if Input.is_action_just_pressed("fly"):
+		if is_flying == true || is_on_floor():
+			GlobalSignalsManager.fly_time_left = min(GlobalSignalsManager.fly_time_left + GlobalSignalsManager.fly_add_time, GlobalSignalsManager.max_fly_time)
+
+	if GlobalSignalsManager.fly_time_left > 0.0:
+		GlobalSignalsManager.fly_time_left -= delta
+		is_flying = true
+		
+		if not was_flying:
+			velocity.x = 0.0
+			velocity.y = 0.0
+			wind_up_animation_playing = true
+			is_launching = true
+			GlobalSignalsManager.fly_time_left = GlobalSignalsManager.launch_bonus_fly_time
+			launch_off_timer = GlobalSignalsManager.launch_off_time
+	else:
+		GlobalSignalsManager.fly_time_left = 0.0
+		is_flying = false
+
 	if velocity.x != 0.0:
 		$Sprite2D.flip_h = velocity.x > 0.0
 
@@ -78,7 +83,7 @@ func _physics_process(delta: float) -> void:
 		is_flying = false
 
 	if is_launching:
-		play_animation("flying")
+		play_animation("wind_up")
 	elif is_flying:
 		play_animation("flying")
 	elif not is_on_floor() and velocity.y > 0.0:

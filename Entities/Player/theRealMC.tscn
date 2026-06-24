@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bokfuj2cpyatq" path="res://Entities/Player/Art/spinning.png" id="3_54web"]
 [ext_resource type="Texture2D" uid="uid://dap7jy3477jf" path="res://Entities/Player/Art/CuteFatPigeon.png" id="3_pecbs"]
 [ext_resource type="Script" uid="uid://odb3rn6qpfbv" path="res://Entities/Player/scripts/MeleeAttack.gd" id="4_54web"]
+[ext_resource type="Texture2D" uid="uid://b75gydugh05yl" path="res://Entities/Common/Art/Birds/CuteFatPigeon.png" id="4_aex4m"]
+[ext_resource type="Script" uid="uid://bnftt1mx8dj75" path="res://Entities/Player/scripts/flyingAttack.gd" id="5_nkmcg"]
 
 [sub_resource type="Animation" id="Animation_hdetb"]
 length = 0.001
@@ -54,6 +56,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("3_pecbs")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer:current_animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&""]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:wind_up_animation_playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_aex4m"]
@@ -163,7 +189,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -199,7 +225,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_pecbs")]
+"values": [ExtResource("4_aex4m")]
 }
 
 [sub_resource type="Animation" id="Animation_pecbs"]
@@ -253,13 +279,90 @@ tracks/3/keys = {
 "values": [0, 1, 2]
 }
 
+[sub_resource type="Animation" id="Animation_jka5r"]
+resource_name = "wind_up"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_aex4m")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer:current_animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"flying"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:wind_up_animation_playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54web"]
 _data = {
 &"RESET": SubResource("Animation_hdetb"),
 &"attack": SubResource("Animation_aex4m"),
 &"flying": SubResource("Animation_nkmcg"),
 &"idle_down": SubResource("Animation_54web"),
-&"walk_down": SubResource("Animation_pecbs")
+&"walk_down": SubResource("Animation_pecbs"),
+&"wind_up": SubResource("Animation_jka5r")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdetb"]
@@ -292,16 +395,18 @@ shape = SubResource("RectangleShape2D_pecbs")
 
 [node name="GroundMeleeDamageBox" type="Area2D" parent="." unique_id=408393558]
 rotation = -1.5707964
-collision_layer = 0
 script = ExtResource("4_54web")
 
 [node name="DamageShape" type="CollisionShape2D" parent="GroundMeleeDamageBox" unique_id=1099814677]
 shape = SubResource("CapsuleShape2D_pecbs")
 
-[node name="FlyingDamageBox" type="Area2D" parent="." unique_id=2005505566]
+[node name="FlyingDamageBox" type="Area2D" parent="." unique_id=2005505566 groups=["Player"]]
 rotation = 1.5707964
-collision_layer = 0
+collision_layer = 7
+collision_mask = 7
 monitoring = false
+script = ExtResource("5_nkmcg")
 
 [node name="DamageShape" type="CollisionShape2D" parent="FlyingDamageBox" unique_id=1113627371]
 shape = SubResource("CapsuleShape2D_pecbs")
+debug_color = Color(0, 0.6, 0.69803923, 1)

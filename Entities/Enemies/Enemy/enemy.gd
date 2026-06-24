@@ -50,10 +50,8 @@ func _physics_process(delta: float) -> void:
 		var distance: float = to_nest.length()
 
 		if distance > peck_range:
-			# Still far: fly toward the nest.
 			velocity = to_nest.normalized() * move_speed
 		else:
-			# Close enough: stop and peck on a timer.
 			velocity = Vector2.ZERO
 			if peck_timer <= 0.0:
 				peck_nest()
@@ -61,36 +59,31 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 
+	if velocity.x > 0.0:
+		$Sprite2D.flip_h = true
+	elif velocity.x < 0.0:
+		$Sprite2D.flip_h = false
 	move_and_slide()
 
-	# Hurt the player if we are touching them.
-	check_player_contact()
-
-
-# This is the method the player's melee calls to damage us.
-# (Keeping the same name Matthew's MeleeAttack.gd already uses.)
 func take_damage(damage: float) -> void:
 	health.take_damage(damage)
+	blinkSprite()
 
+func blinkSprite() -> void:
+	var sprite := $Sprite2D
+	var blink_time := 0.3 / 6.0
+	
+	for i in 3:
+		sprite.modulate = Color(1, 0, 0, 1) # red
+		await get_tree().create_timer(blink_time).timeout
+		
+		sprite.modulate = Color(1, 1, 1, 1) # white
+		await get_tree().create_timer(blink_time).timeout
 
 func peck_nest() -> void:
 	if nest != null and nest.has_method("take_damage"):
 		nest.take_damage(peck_damage)
 
-
-func check_player_contact() -> void:
-	# Still on cooldown, skip.
-	if contact_timer > 0.0:
-		return
-
-	for body in contact_box.get_overlapping_bodies():
-		if body.is_in_group("player") and body.has_method("take_damage"):
-			body.take_damage(contact_damage)
-			contact_timer = contact_cooldown
-			return
-
-
 func _on_died() -> void:
-	# Tell the game one enemy is gone, then remove ourselves.
 	GlobalSignalsManager.enemy_was_killed()
 	queue_free()
