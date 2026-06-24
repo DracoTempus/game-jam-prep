@@ -14,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
-[ext_resource type="PackedScene" path="res://Entities/Enemy/Enemy.tscn" id="enemy_scene"]
+[ext_resource type="PackedScene" uid="uid://8rlr6caadxcc" path="res://Entities/NPC/BasicNPC.tscn" id="17_l73k5"]
+[ext_resource type="PackedScene" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
 [ext_resource type="PackedScene" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
 
@@ -229,7 +230,7 @@ texture = ExtResource("9_ruy55")
 [node name="Area2D" type="Area2D" parent="World/Level/MainLevelArea/Casinoplaceholder" unique_id=1755226040 node_paths=PackedStringArray("target", "camera", "camera_bounds")]
 script = ExtResource("10_7p5xg")
 target = NodePath("InsideCasino")
-camera = NodePath("../../../../../Entities/AlfredHitchcock")
+camera = NodePath("../../../../../Entities/Player/AlfredHitchcock")
 camera_bounds = NodePath("../../../InsideCasinoBorders/CasinoCameraBounds")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/Casinoplaceholder/Area2D" unique_id=954929380]
@@ -247,14 +248,26 @@ shape = SubResource("RectangleShape2D_vt2l1")
 
 [node name="Entities" type="Node2D" parent="." unique_id=483649982]
 
-[node name="TheRealMc" parent="Entities" unique_id=2081207016 instance=ExtResource("3_codtk")]
+[node name="NPCs" type="Node" parent="Entities" unique_id=60293786]
+
+[node name="BasicNpc2" parent="Entities/NPCs" unique_id=1632507080 instance=ExtResource("17_l73k5")]
+position = Vector2(4010, 463)
+
+[node name="BasicNpc" parent="Entities/NPCs" unique_id=1153768706 instance=ExtResource("17_l73k5")]
+position = Vector2(3605, 463)
+
+[node name="Player" type="Node" parent="Entities" unique_id=1538828935]
+
+[node name="TheRealMc" parent="Entities/Player" unique_id=2081207016 instance=ExtResource("3_codtk")]
 z_index = 50
 position = Vector2(583, 478)
 
-[node name="AlfredHitchcock" type="Camera2D" parent="Entities" unique_id=834001174 node_paths=PackedStringArray("target", "current_bounds")]
+[node name="AlfredHitchcock" type="Camera2D" parent="Entities/Player" unique_id=834001174 node_paths=PackedStringArray("target", "current_bounds")]
 script = ExtResource("4_eu82j")
 target = NodePath("../TheRealMc")
-current_bounds = NodePath("../../World/Level/MainLevelArea/MainCameraBounds")
+current_bounds = NodePath("../../../World/Level/MainLevelArea/MainCameraBounds")
+
+[node name="Enemies" type="Node" parent="Entities" unique_id=494760497]
 
 [node name="Effects" type="Node2D" parent="." unique_id=822866659]
 

@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://Entities/Enemy/enemy.gd" id="1_enemy"]
-[ext_resource type="Script" path="res://Entities/Health/Health.gd" id="2_health"]
+[ext_resource type="Script" uid="uid://kiuto6pq7dt1" path="res://Entities/Enemies/Enemy/enemy.gd" id="1_enemy"]
+[ext_resource type="Script" uid="uid://cngpidv61ibx1" path="res://Entities/Common/Scripts/Health/Health.gd" id="2_health"]
 
 [sub_resource type="RectangleShape2D" id="body_shape"]
 size = Vector2(40, 40)

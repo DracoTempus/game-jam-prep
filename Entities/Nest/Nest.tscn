@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://Entities/Nest/nest.gd" id="1_nest"]
-[ext_resource type="Script" path="res://Entities/Health/Health.gd" id="2_health"]
+[ext_resource type="Script" uid="uid://dcis0ouav0fv5" path="res://Entities/Nest/nest.gd" id="1_nest"]
+[ext_resource type="Script" uid="uid://cngpidv61ibx1" path="res://Entities/Common/Scripts/Health/Health.gd" id="2_health"]
 
 [node name="Nest" type="Node2D" groups=["nest"]]
 script = ExtResource("1_nest")
