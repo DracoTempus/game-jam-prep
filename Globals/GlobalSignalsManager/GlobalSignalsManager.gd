@@ -16,14 +16,15 @@ signal wave_cleared
 @export var max_fly_time: float = 2.0
 @export var launch_off_time: float = 0.2
 @export var launch_bonus_fly_time: float = 1.0
-
 @export var ground_speed: float = 200.0
 @export var fly_speed: float = 330.0
-
 @export var attack_damage: float = 1.0
+
 
 @export_group("Wave")
 @export var wave_size: int = 5
+@export var goose_fly_speed: float = 90
+@export var goose_peck_damage: float = 1
 
 var _enemies_killed: int = 0
 

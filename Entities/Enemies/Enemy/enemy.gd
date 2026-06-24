@@ -5,11 +5,7 @@ extends CharacterBody2D
 # and hurts the player if they touch it. The player can kill it
 # with melee attacks (see MeleeAttack.gd).
 
-# How fast it flies toward the nest.
-@export var move_speed: float = 90.0
-
 # Nest pecking.
-@export var peck_damage: float = 1.0      # damage per peck
 @export var peck_interval: float = 1.0    # seconds between pecks
 @export var peck_range: float = 60.0      # how close it must be to peck
 
@@ -50,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		var distance: float = to_nest.length()
 
 		if distance > peck_range:
-			velocity = to_nest.normalized() * move_speed
+			velocity = to_nest.normalized() * GlobalSignalsManager.goose_fly_speed
 		else:
 			velocity = Vector2.ZERO
 			if peck_timer <= 0.0:
@@ -82,7 +78,7 @@ func blinkSprite() -> void:
 
 func peck_nest() -> void:
 	if nest != null and nest.has_method("take_damage"):
-		nest.take_damage(peck_damage)
+		nest.take_damage(GlobalSignalsManager.goose_peck_damage)
 
 func _on_died() -> void:
 	GlobalSignalsManager.enemy_was_killed()
