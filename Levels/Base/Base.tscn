@@ -14,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
-[ext_resource type="PackedScene" uid="uid://8rlr6caadxcc" path="res://Entities/NPC/BasicNPC.tscn" id="17_l73k5"]
+[ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPC/Sparrow/Sparrow.tscn" id="15_l73k5"]
+[ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPC/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
 [ext_resource type="PackedScene" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
 [ext_resource type="PackedScene" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
@@ -115,11 +116,6 @@ shape = SubResource("RectangleShape2D_vt2l1")
 position = Vector2(-50, -35)
 color = Color(0.6453327, 0.15074736, 0, 1)
 polygon = PackedVector2Array(2, 0, 1576, -2, 1574, 578, -1, 585)
-
-[node name="Slot" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=636710621]
-position = Vector2(1365.5, 419.99997)
-scale = Vector2(0.1622449, 0.1622449)
-texture = ExtResource("5_jljc5")
 
 [node name="Slot2" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=56130501]
 position = Vector2(1224.5, 421.99997)
@@ -250,11 +246,14 @@ shape = SubResource("RectangleShape2D_vt2l1")
 
 [node name="NPCs" type="Node" parent="Entities" unique_id=60293786]
 
-[node name="BasicNpc2" parent="Entities/NPCs" unique_id=1632507080 instance=ExtResource("17_l73k5")]
-position = Vector2(4010, 463)
+[node name="SparrowNPC" parent="Entities/NPCs" unique_id=1632507080 instance=ExtResource("15_l73k5")]
+position = Vector2(3469, 443)
 
-[node name="BasicNpc" parent="Entities/NPCs" unique_id=1153768706 instance=ExtResource("17_l73k5")]
-position = Vector2(3605, 463)
+[node name="SparrowNPC2" parent="Entities/NPCs" unique_id=683011082 instance=ExtResource("15_l73k5")]
+position = Vector2(4026, 443)
+
+[node name="BasicNpc" parent="Entities/NPCs" unique_id=1245124366 instance=ExtResource("16_55lwj")]
+position = Vector2(4343, 463)
 
 [node name="Player" type="Node" parent="Entities" unique_id=1538828935]
 

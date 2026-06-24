@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://8rlr6caadxcc"]
+[gd_scene format=3 uid="uid://b5a3y6lkvjmdt"]
 
-[ext_resource type="Texture2D" uid="uid://cfs2xrddy7n0a" path="res://Entities/Common/Art/Birds/Crow/Crow.png" id="1_yki72"]
-[ext_resource type="Texture2D" uid="uid://cn6wwkibk132x" path="res://Entities/Common/Art/keyboard_e_outline.png" id="2_m17w1"]
+[ext_resource type="Texture2D" uid="uid://cqw51vjw3oa5w" path="res://Entities/Common/Art/Birds/Sparrow/Sparrow.png" id="1_5e37s"]
 
 [sub_resource type="Animation" id="Animation_m17w1"]
 length = 0.001
@@ -46,20 +45,18 @@ size = Vector2(367, 166)
 [sub_resource type="LabelSettings" id="LabelSettings_yki72"]
 font_size = 11
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_q21v6"]
-
-[node name="BasicNpc" type="Node2D" unique_id=1632507080]
+[node name="SparrowNPC" type="Node2D" unique_id=1632507080]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1896533432]
 libraries/ = SubResource("AnimationLibrary_h1f85")
 autoplay = &"crow_idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2075672999]
-scale = Vector2(3, 3)
-texture = ExtResource("1_yki72")
+scale = Vector2(4, 4)
+texture = ExtResource("1_5e37s")
 flip_h = true
-hframes = 8
-vframes = 8
+hframes = 6
+vframes = 10
 
 [node name="Area2D" type="Area2D" parent="." unique_id=715320000]
 
@@ -70,24 +67,16 @@ shape = SubResource("RectangleShape2D_yki72")
 [node name="textBox" type="ColorRect" parent="." unique_id=2113316602]
 offset_left = -84.0
 offset_top = -82.0
-offset_right = 84.0
-offset_bottom = -34.0
+offset_right = 43.0
+offset_bottom = -42.0
 color = Color(0, 0, 0, 1)
 
 [node name="text" type="Label" parent="textBox" unique_id=447974479]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 166.0
-offset_bottom = 45.0
-text = "Want to exchange some Shiny?"
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 125.0
+offset_bottom = 37.0
+text = "Oooooooo wweeeeeee"
 label_settings = SubResource("LabelSettings_yki72")
-autowrap_mode = 2
-
-[node name="Button" type="Sprite2D" parent="." unique_id=875029415]
-position = Vector2(65.75, -52)
-scale = Vector2(0.2890625, 0.24999999)
-texture = ExtResource("2_m17w1")
-
-[node name="blinkingE" type="AnimatedSprite2D" parent="." unique_id=1682370134]
-sprite_frames = SubResource("SpriteFrames_q21v6")
+autowrap_mode = 1
