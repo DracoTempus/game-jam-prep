@@ -2,11 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dsjc4gbljcm30" path="res://UI/scripts/SlotMachineButton.gd" id="1_ehxxv"]
 [ext_resource type="Texture2D" uid="uid://bv5g618td8l8" path="res://UI/Art/panel_grey_blue.svg" id="1_ljb2u"]
-[ext_resource type="AudioStream" uid="uid://q3p7ydypscbx" path="res://UI/Art/SlotMachine/soudns/creature5.ogg" id="2_0ncio"]
 [ext_resource type="Texture2D" uid="uid://bxssou05ft5xa" path="res://UI/Art/SlotMachine/duck.png" id="2_7oiyf"]
 [ext_resource type="Texture2D" uid="uid://c8nio1bh5tiy1" path="res://UI/Art/SlotMachine/chicken.png" id="2_avn1j"]
 [ext_resource type="Script" uid="uid://blp7ufyynodok" path="res://UI/scripts/SlotReward.gd" id="2_yfydb"]
-[ext_resource type="AudioStream" uid="uid://cphl3t12pc3st" path="res://UI/Art/SlotMachine/soudns/creature1.ogg" id="3_nwjla"]
 [ext_resource type="Texture2D" uid="uid://dqcd8nkao4jqb" path="res://UI/Art/SlotMachine/button_red.png" id="4_nkvu5"]
 [ext_resource type="Texture2D" uid="uid://b3ohpt8fnewta" path="res://UI/Art/SlotMachine/owl.png" id="4_yfydb"]
 [ext_resource type="Texture2D" uid="uid://6pd4a5friqax" path="res://UI/Art/SlotMachine/giraffe.png" id="5_4fh2a"]
@@ -84,8 +82,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ehxxv")
-good_sound = ExtResource("2_0ncio")
-bad_sound = ExtResource("3_nwjla")
 spin_button = NodePath("Button")
 reel_1 = NodePath("TextureRect2/ReelLeft/VBoxContainer")
 reel_2 = NodePath("TextureRect2/ReelMiddle/VBoxContainer")
