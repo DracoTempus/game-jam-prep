@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deqrfmwvdm0nb"
-path="res://.godot/imported/tallsky.jpg-1fbf92edc399921b07c8b7ec3efed5d6.ctex"
+uid="uid://bfsslvodkq3ts"
+path="res://.godot/imported/skyline-b.png-cbea397cb8c0f03edfe3edd5d0eed431.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Common/Art/tallsky.jpg"
-dest_files=["res://.godot/imported/tallsky.jpg-1fbf92edc399921b07c8b7ec3efed5d6.ctex"]
+source_file="res://Levels/Common/Art/skyline-b.png"
+dest_files=["res://.godot/imported/skyline-b.png-cbea397cb8c0f03edfe3edd5d0eed431.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0r4rl3hi6j0"
-path="res://.godot/imported/Grassland@128x128.png-a237fcc579a03e542e9569f4dcbbbc0f.ctex"
+uid="uid://cyf2r5s84nean"
+path="res://.godot/imported/middle.png-d2226752cdff57917ea393871bd15f1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Common/Art/Grassland@128x128.png"
-dest_files=["res://.godot/imported/Grassland@128x128.png-a237fcc579a03e542e9569f4dcbbbc0f.ctex"]
+source_file="res://Levels/Common/Art/middle.png"
+dest_files=["res://.godot/imported/middle.png-d2226752cdff57917ea393871bd15f1a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctmfom0rou80c"
-path="res://.godot/imported/wp10783505-999488466.jpg-e9a4832241612a5c3adea76164724679.ctex"
+uid="uid://bc284pfo7ckh5"
+path="res://.godot/imported/skyline-a.png-f4245531d60b7fef2c10b3d2410f950f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Common/Art/wp10783505-999488466.jpg"
-dest_files=["res://.godot/imported/wp10783505-999488466.jpg-e9a4832241612a5c3adea76164724679.ctex"]
+source_file="res://Levels/Common/Art/skyline-a.png"
+dest_files=["res://.godot/imported/skyline-a.png-f4245531d60b7fef2c10b3d2410f950f.ctex"]
 
 [params]
 

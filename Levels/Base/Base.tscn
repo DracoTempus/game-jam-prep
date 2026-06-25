@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://7y6w2delx47m"]
 
 [ext_resource type="AudioStream" uid="uid://c8gmcewgw5xmk" path="res://Levels/Common/Town_-_Neo_Tokyo.ogg" id="1_aygd2"]
-[ext_resource type="Texture2D" uid="uid://ctmfom0rou80c" path="res://Levels/Common/Art/wp10783505-999488466.jpg" id="1_codtk"]
-[ext_resource type="Texture2D" uid="uid://dpavs714fpiw1" path="res://Levels/Common/Art/christian-lue-YVZX2ksshrM-unsplash.jpg" id="2_p1up5"]
 [ext_resource type="Script" uid="uid://dgoj3kql0tqis" path="res://Globals/GlobalSignalsManager/GlobalSignalsManager.gd" id="2_r3r0t"]
-[ext_resource type="Texture2D" uid="uid://deqrfmwvdm0nb" path="res://Levels/Common/Art/tallsky.jpg" id="2_uj2c8"]
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
 [ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
 [ext_resource type="Texture2D" uid="uid://crpp3564ap58s" path="res://Levels/Common/Art/slot.jpg" id="5_jljc5"]
@@ -12,8 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://d210wmslgivl4" path="res://Levels/Common/Art/retro-pixel-art-casino-table-with-chips-and-cards-in-a-vintage-gaming-setting-free-vector.jpg" id="6_l73k5"]
 [ext_resource type="Texture2D" uid="uid://bx5roto7tl2jd" path="res://Levels/Common/Art/tree1.png" id="7_domu3"]
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
+[ext_resource type="Texture2D" uid="uid://bqcso6aj8cpyc" path="res://Levels/Common/Art/foreground-empty.png" id="9_55lwj"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
+[ext_resource type="Texture2D" uid="uid://bc284pfo7ckh5" path="res://Levels/Common/Art/skyline-a.png" id="9_se8fb"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
+[ext_resource type="Texture2D" uid="uid://bfsslvodkq3ts" path="res://Levels/Common/Art/skyline-b.png" id="10_n3211"]
 [ext_resource type="Texture2D" uid="uid://cdwt1aabrjpj8" path="res://Levels/Common/Art/door_open_top.png" id="13_n3211"]
 [ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPB/Sparrow/Sparrow.tscn" id="15_l73k5"]
 [ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPB/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
@@ -42,15 +42,19 @@ size = Vector2(4546, 160)
 
 [node name="Base" type="Node2D" unique_id=1102677110]
 
+[node name="Node2D" type="Node2D" parent="." unique_id=1987423094]
+position = Vector2(65, -2165)
+
 [node name="Systems" type="Node" parent="." unique_id=600708282]
 
 [node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent") instance=ExtResource("spawner_scene")]
+position = Vector2(1221, 0)
 enemy_object = ExtResource("enemy_scene")
 entities_parent = NodePath("../../Entities/Enemies")
-min_x = 200
-max_x = 900
+min_x = 50.0
+max_x = 1200.0
 min_y = -100.0
-max_y = 100.0
+max_y = -400.0
 spawn_interval = 3.0
 auto_spawn = true
 
@@ -174,24 +178,32 @@ position = Vector2(-2186.7808, -816.506)
 
 [node name="MainLevelArea" type="Node" parent="World/Level" unique_id=731106569]
 
-[node name="GroundVisual" type="Polygon2D" parent="World/Level/MainLevelArea" unique_id=164389687]
-color = Color(0.2, 0.34, 0.18, 1)
-polygon = PackedVector2Array(0, 520, 2400, 520, 2400, 680, 0, 680)
+[node name="SkylineA" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=650682617]
+position = Vector2(97.375, -238.71875)
+scale = Vector2(7.6933594, 7.6933594)
+texture = ExtResource("9_se8fb")
 
-[node name="ChristianLueYvzx2KsshrMUnsplash" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=991175198]
-position = Vector2(746, -2573)
-scale = Vector2(1.2441666, 1)
-texture = ExtResource("2_p1up5")
+[node name="SkylineA2" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=1517641646]
+position = Vector2(1028.75, -241.79689)
+scale = Vector2(7.6933594, 7.6933594)
+texture = ExtResource("9_se8fb")
 
-[node name="Tallsky" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=1216206758]
-position = Vector2(747.5, -985.5001)
-scale = Vector2(3.6838236, 2.7238562)
-texture = ExtResource("2_uj2c8")
+[node name="SkylineB" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=1521715808]
+position = Vector2(-131.65533, -2196.744)
+rotation = -3.1407738
+scale = Vector2(8.648359, 8.64836)
+texture = ExtResource("10_n3211")
 
-[node name="Wp10783505999488466" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=1263788031]
-position = Vector2(746.00006, 203)
-scale = Vector2(0.8067708, 0.80677086)
-texture = ExtResource("1_codtk")
+[node name="SkylineB2" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=2075819234]
+position = Vector2(963.9437, -2209.6477)
+rotation = -3.1407738
+scale = Vector2(8.764177, 8.764178)
+texture = ExtResource("10_n3211")
+
+[node name="ForegroundEmpty" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=1377593320]
+position = Vector2(1137, 172.00002)
+scale = Vector2(3.507353, 3.5073528)
+texture = ExtResource("9_55lwj")
 
 [node name="Ground" type="StaticBody2D" parent="World/Level/MainLevelArea" unique_id=36474092]
 position = Vector2(1200, 600)
@@ -262,6 +274,8 @@ position = Vector2(1810, 875)
 position = Vector2(736.5, -1033.5)
 shape = SubResource("RectangleShape2D_vt2l1")
 
+[node name="TileMapLayer" type="TileMapLayer" parent="World/Level/MainLevelArea" unique_id=330613643]
+
 [node name="Entities" type="Node2D" parent="." unique_id=483649982]
 
 [node name="NPCs" type="Node" parent="Entities" unique_id=60293786]
@@ -302,6 +316,7 @@ offset_right = -3.0
 layout_mode = 1
 
 [node name="ExchangeUi" parent="HUDLayer/HudRoot" unique_id=1214968568 instance=ExtResource("20_se8fb")]
+visible = false
 layout_mode = 1
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]

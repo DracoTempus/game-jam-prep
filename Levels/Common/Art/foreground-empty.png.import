@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be3pokkpjvvcc"
-path="res://.godot/imported/Urban City Tileset Basic 32x32 Dlou Saiyan.png-eef8af07715d6c732801eb52fc1f33f0.ctex"
+uid="uid://bqcso6aj8cpyc"
+path="res://.godot/imported/foreground-empty.png-0c043e7750133132815a95fec1ac081d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Common/Art/Urban City Tileset Basic 32x32 Dlou Saiyan.png"
-dest_files=["res://.godot/imported/Urban City Tileset Basic 32x32 Dlou Saiyan.png-eef8af07715d6c732801eb52fc1f33f0.ctex"]
+source_file="res://Levels/Common/Art/foreground-empty.png"
+dest_files=["res://.godot/imported/foreground-empty.png-0c043e7750133132815a95fec1ac081d.ctex"]
 
 [params]
 
