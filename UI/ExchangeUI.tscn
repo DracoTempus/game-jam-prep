@@ -48,10 +48,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ehxxv")
 spin_button = NodePath("Button")
-reel_1 = NodePath("ReelLeft/VBoxContainer")
-reel_2 = NodePath("ReelMiddle/VBoxContainer")
-reel_3 = NodePath("ReelRight/VBoxContainer")
+reel_1 = NodePath("TextureRect2/ReelLeft/VBoxContainer")
+reel_2 = NodePath("TextureRect2/ReelMiddle/VBoxContainer")
+reel_3 = NodePath("TextureRect2/ReelRight/VBoxContainer")
 rewards = Array[ExtResource("2_yfydb")]([SubResource("Resource_ehxxv"), SubResource("Resource_iecin"), SubResource("Resource_b1dss"), SubResource("Resource_yfydb")])
+
+[node name="Shinies" type="Label" parent="." unique_id=511695673]
+layout_mode = 0
+offset_left = 682.0
+offset_top = 571.0
+offset_right = 888.0
+offset_bottom = 611.0
+text = "0 Shinies"
+label_settings = SubResource("LabelSettings_nkvu5")
+horizontal_alignment = 2
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=86691700]
 layout_mode = 0
@@ -83,6 +93,99 @@ offset_top = 72.0
 offset_right = 597.0
 offset_bottom = 543.0
 
+[node name="ReelLeft" type="Control" parent="TextureRect2" unique_id=1418271954]
+anchors_preset = 0
+offset_left = 170.0
+offset_top = 87.0
+offset_right = 170.0
+offset_bottom = 87.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect2/ReelLeft" unique_id=1308797460]
+clip_contents = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 5.0
+offset_right = 144.0
+offset_bottom = 440.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2/ReelLeft/VBoxContainer" unique_id=1514796161]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2/ReelLeft/VBoxContainer" unique_id=1043360356]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect2/ReelLeft/VBoxContainer" unique_id=1258948839]
+layout_mode = 2
+texture = ExtResource("5_4fh2a")
+expand_mode = 5
+
+[node name="ReelMiddle" type="Control" parent="TextureRect2" unique_id=580450536]
+anchors_preset = 0
+offset_left = 392.0
+offset_top = 87.0
+offset_right = 392.0
+offset_bottom = 87.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect2/ReelMiddle" unique_id=469820735]
+clip_contents = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 144.0
+offset_bottom = 440.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2/ReelMiddle/VBoxContainer" unique_id=1751148612]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2/ReelMiddle/VBoxContainer" unique_id=1111159118]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect2/ReelMiddle/VBoxContainer" unique_id=890293298]
+layout_mode = 2
+texture = ExtResource("5_4fh2a")
+expand_mode = 5
+
+[node name="ReelRight" type="Control" parent="TextureRect2" unique_id=537796037]
+anchors_preset = 0
+offset_left = 617.0
+offset_top = 87.0
+offset_right = 617.0
+offset_bottom = 87.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect2/ReelRight" unique_id=1434625122]
+clip_contents = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 5.0
+offset_right = 144.0
+offset_bottom = 440.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2/ReelRight/VBoxContainer" unique_id=120459024]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2/ReelRight/VBoxContainer" unique_id=498476510]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect2/ReelRight/VBoxContainer" unique_id=299427712]
+layout_mode = 2
+texture = ExtResource("5_4fh2a")
+expand_mode = 5
+
 [node name="TextureRect2" type="TextureRect" parent="TextureRect2" unique_id=1004699844]
 layout_mode = 0
 offset_left = 3.0
@@ -99,100 +202,3 @@ offset_top = 565.0
 offset_right = 654.0
 offset_bottom = 621.0
 icon = ExtResource("4_nkvu5")
-
-[node name="Shinies" type="Label" parent="." unique_id=511695673]
-layout_mode = 0
-offset_left = 682.0
-offset_top = 571.0
-offset_right = 888.0
-offset_bottom = 611.0
-text = "0 Shinies"
-label_settings = SubResource("LabelSettings_nkvu5")
-horizontal_alignment = 2
-
-[node name="ReelLeft" type="Control" parent="." unique_id=1418271954]
-anchors_preset = 0
-offset_left = 301.0
-offset_top = 115.0
-offset_right = 301.0
-offset_bottom = 115.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ReelLeft" unique_id=1308797460]
-layout_mode = 0
-offset_left = 2.0
-offset_right = 144.0
-offset_bottom = 440.0
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="ReelLeft/VBoxContainer" unique_id=1514796161]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_iecin")
-expand_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="ReelLeft/VBoxContainer" unique_id=1043360356]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_iecin")
-expand_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="ReelLeft/VBoxContainer" unique_id=1258948839]
-layout_mode = 2
-texture = ExtResource("5_4fh2a")
-expand_mode = 5
-
-[node name="ReelMiddle" type="Control" parent="." unique_id=580450536]
-anchors_preset = 0
-offset_left = 523.0
-offset_top = 115.0
-offset_right = 523.0
-offset_bottom = 115.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ReelMiddle" unique_id=469820735]
-layout_mode = 0
-offset_left = 2.0
-offset_right = 144.0
-offset_bottom = 440.0
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="ReelMiddle/VBoxContainer" unique_id=1751148612]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_iecin")
-expand_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="ReelMiddle/VBoxContainer" unique_id=1111159118]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_iecin")
-expand_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="ReelMiddle/VBoxContainer" unique_id=890293298]
-layout_mode = 2
-texture = ExtResource("5_4fh2a")
-expand_mode = 5
-
-[node name="ReelRight" type="Control" parent="." unique_id=537796037]
-anchors_preset = 0
-offset_left = 748.0
-offset_top = 115.0
-offset_right = 748.0
-offset_bottom = 115.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ReelRight" unique_id=1434625122]
-layout_mode = 0
-offset_left = 2.0
-offset_right = 144.0
-offset_bottom = 440.0
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="ReelRight/VBoxContainer" unique_id=120459024]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_iecin")
-expand_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="ReelRight/VBoxContainer" unique_id=498476510]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_iecin")
-expand_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="ReelRight/VBoxContainer" unique_id=299427712]
-layout_mode = 2
-texture = ExtResource("5_4fh2a")
-expand_mode = 5
