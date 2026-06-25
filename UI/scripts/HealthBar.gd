@@ -22,8 +22,8 @@ func _ready() -> void:
 
 	# Show the starting health now (before anything takes damage).
 	if owner_node != null and owner_node.has_node("Health"):
-		var h: Health = owner_node.get_node("Health")
-		_on_health_changed(h.current_health, h.max_health)
+		var h = owner_node.get_node("Health")
+		_on_health_changed(GlobalSignalsManager.nest_current_health, GlobalSignalsManager.nest_max_health)
 
 
 func _on_health_changed(current: float, max: float) -> void:

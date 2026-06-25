@@ -11,7 +11,11 @@ signal wave_cleared
 
 @export_group("Player Stats")
 @export var trash: int = 0
-@export var shinies: int = 0
+@export var shinies: int = 1
+
+@export_group("Nest Stats")
+@export var nest_max_health: float = 3.0
+@export var nest_current_health: float = 3.0
 
 @export_group("Character Stats")
 @export var fly_time_left: float = 0.0
@@ -20,13 +24,14 @@ signal wave_cleared
 @export var launch_off_time: float = 0.2
 @export var launch_bonus_fly_time: float = 1.0
 @export var ground_speed: float = 200.0
-@export var fly_speed: float = 330.0
+@export var fly_speed: float = 300.0
 @export var attack_damage: float = 1.0
 
 @export_group("Wave")
 @export var wave_size: int = 5
 @export var goose_fly_speed: float = 90.0
 @export var goose_peck_damage: float = 1.0
+@export var goose_start_health: float = 3.0
 
 var _enemies_killed: int = 0
 

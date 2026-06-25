@@ -4,13 +4,17 @@ extends Control
 
 @onready var audio_player := AudioStreamPlayer.new()
 
+@export var shiny_label: Label
 @export var spin_button: Button
 var is_spinning: bool = false
+
 @export var reel_1: VBoxContainer
 @export var reel_2: VBoxContainer
 @export var reel_3: VBoxContainer
 
 @export var rewards: Array[SlotReward] = []
+
+@export var shinies: int = 10
 
 var rng := RandomNumberGenerator.new()
 var slot_grid: Array = []
@@ -18,11 +22,14 @@ var slot_grid: Array = []
 func _ready() -> void:
 	rng.randomize()
 	add_child(audio_player)
-	
 	if spin_button:
 		spin_button.pressed.connect(_on_spin_button_pressed)
 	else:
 		push_warning("No spin button assigned.")
+	update_shiny_label()
+
+func update_shiny_label() -> void:
+	shiny_label.text = "Shinies: " + str(shinies)
 
 func _spin_reel_visual(reel: VBoxContainer, spin_time: float) -> void:
 	if reel == null:
@@ -59,6 +66,8 @@ func _spawn_falling_reward(reel: Control, reward: SlotReward) -> void:
 
 
 func _on_spin_button_pressed() -> void:
+	shinies -= 1
+	update_shiny_label()
 	if is_spinning:
 		return
 		
@@ -102,9 +111,18 @@ func _on_spin_button_pressed() -> void:
 	_animate_reel_drop(reel_3)
 	await get_tree().create_timer(1).timeout
 	await check_each_cell()
-	await get_tree().create_timer(1).timeout
+	await check_each_row()
+	await check_each_column()
+	await check_each_diagonal()
+	await get_tree().create_timer(0.25).timeout
+	check_shinies()
 	is_spinning = false
 	spin_button.disabled = false
+
+func check_shinies() -> void:
+	if shinies <= 0:
+		visible = false
+	
 
 func _animate_reel_drop(reel: Control) -> void:
 
@@ -128,8 +146,24 @@ func _animate_reel_drop(reel: Control) -> void:
 		.set_ease(Tween.EASE_OUT)
 
 func _get_random_reward_symbol() -> SlotReward:
-	var index := rng.randi_range(0, rewards.size() - 1)
-	return rewards[index]
+	var total_weight := 0.0
+
+	for reward in rewards:
+		total_weight += reward.weight
+
+	var roll := rng.randf_range(0.0, total_weight)
+	var current_weight := 0.0
+
+	for reward in rewards:
+		if reward.weight <= 0:
+			continue
+
+		current_weight += reward.weight
+
+		if roll <= current_weight:
+			return reward
+
+	return rewards[rewards.size() - 1]
 
 func _clear_reel(reel: Control) -> void:
 	for child in reel.get_children():
@@ -172,46 +206,269 @@ func check_each_cell() -> void:
 			match reward_name:
 				"Duck":
 					print("Duck found at reel ", reel_index, " row ", row_index)
-					reward_string = "Duck +10"
+					reward_string = "Fly Speed+ and Nest+"
+					GlobalSignalsManager.fly_speed += 3
+					GlobalSignalsManager.nest_max_health +=1
 
 				"Penguin":
 					print("Penguin found at reel ", reel_index, " row ", row_index)
-					reward_string = "Penguin +10"
-					
+					reward_string = "Ground Speed++ and Nest+"
+					GlobalSignalsManager.ground_speed +=6
+					GlobalSignalsManager.nest_max_health +=1
+				
 				"Parrot":
 					print("Penguin found at reel ", reel_index, " row ", row_index)
-					reward_string = "Penguin +10"
-					
+					reward_string = "Shiny +1"
+					shinies +=1
+					update_shiny_label()
+				
 				"Owl":
 					print("Penguin found at reel ", reel_index, " row ", row_index)
-					reward_string = "Penguin +10"
+					reward_string = "Damage+ and Fly Speed+"
+					GlobalSignalsManager.fly_speed += 3
+					GlobalSignalsManager.attack_damage += .1
 					
 				"Chicken":
 					print("Penguin found at reel ", reel_index, " row ", row_index)
-					reward_string = "Penguin +10"
-
+					reward_string = "Damage++"
+					GlobalSignalsManager.attack_damage += .2
+					
 				"Giraffe":
 					is_bad = true
-					reward_string = "Giraffe -10"
-					print("Giraffe found at reel ", reel_index, " row ", row_index)
+					reward_string = "Launch Time+"
+					GlobalSignalsManager.launch_off_time += .01
 					
 				"Buffalo":
 					is_bad = true
-					reward_string = "Giraffe -10"
+					reward_string = "Geese Speed+"
+					GlobalSignalsManager.goose_fly_speed += 1
 					
 				"Hippo":
 					is_bad = true
-					reward_string = "Giraffe -10"
+					reward_string = "Geese Damage+"
+					GlobalSignalsManager.goose_peck_damage += .05
 					
 				"Sloth":
 					is_bad = true
-					reward_string = "Giraffe -10"
-				_:
-					print("Unknown reward: ", reward_name)
+					reward_string = "Fly Speed- and Ground Speed-"
+					GlobalSignalsManager.fly_speed -= 2
+					GlobalSignalsManager.ground_speed -= 3
 					
 			create_floating_label(cell, reward_string, is_bad)
 			await blink_cell(reel_index, row_index, is_bad)
 
+func check_each_row() -> void:
+	for row_index in 3:
+		var reward_name: String = slot_grid[0][row_index]["name"]
+		var matching_row := true
+
+		for reel_index in range(1, 3):
+			var cell = slot_grid[reel_index][row_index]
+
+			if cell["name"] != reward_name:
+				matching_row = false
+				break
+
+		if matching_row:
+			print("Matching row ", row_index, ": ", reward_name)
+			var is_bad : bool = false
+			var reward_string: String = ""
+			match reward_name:
+				"Duck":
+					reward_string = "Fly Speed++++ and Nest++++"
+					GlobalSignalsManager.fly_speed += 45
+					GlobalSignalsManager.nest_max_health +=5
+
+				"Penguin":
+					reward_string = "Ground Speed+++ and Nest++"
+					GlobalSignalsManager.ground_speed +=32
+					GlobalSignalsManager.nest_max_health +=3
+					
+				"Parrot":
+					reward_string = "Thrust Power+++ and Flight Time+++"
+					GlobalSignalsManager.fly_add_time +=.25
+					GlobalSignalsManager.max_fly_time +=.5
+					
+				"Owl":
+					reward_string = "Goose Damage--"
+					GlobalSignalsManager.goose_peck_damage = min(0.5,GlobalSignalsManager.goose_peck_damage - 0.5)
+					
+				"Chicken":
+					reward_string = "Damage+++"
+					GlobalSignalsManager.attack_damage += 1
+
+				"Giraffe":
+					is_bad = true
+					reward_string = "Goose Health+"
+					GlobalSignalsManager.goose_start_health += 2
+					
+				"Buffalo":
+					is_bad = true
+					reward_string = "Geese Speed++"
+					GlobalSignalsManager.goose_fly_speed += 20
+					
+				"Hippo":
+					is_bad = true
+					reward_string = "Geese Damage+++"
+					GlobalSignalsManager.goose_peck_damage += 1
+					
+				"Sloth":
+					is_bad = true
+					reward_string = "Fly Speed-- and Ground Speed--"
+					GlobalSignalsManager.fly_speed -= 20
+					GlobalSignalsManager.ground_speed -= 10
+				_:
+					print("Unknown reward: ", reward_name)
+					
+			create_floating_label(slot_grid[1][row_index], reward_string, is_bad)
+			await blink_row(row_index,is_bad)
+
+func check_each_diagonal() -> void:
+	var diagonals := [
+		[
+			Vector2i(0, 0),
+			Vector2i(1, 1),
+			Vector2i(2, 2)
+		],
+		[
+			Vector2i(0, 2),
+			Vector2i(1, 1),
+			Vector2i(2, 0)
+		]
+	]
+
+	for diagonal in diagonals:
+		var first_pos: Vector2i = diagonal[0]
+		var reward_name: String = slot_grid[first_pos.x][first_pos.y]["name"]
+		var matching_diagonal := true
+
+		for i in range(1, 3):
+			var pos: Vector2i = diagonal[i]
+			var cell = slot_grid[pos.x][pos.y]
+
+			if cell["name"] != reward_name:
+				matching_diagonal = false
+				break
+
+		if matching_diagonal:
+			var is_bad: bool = false
+			var reward_string: String = ""
+
+			match reward_name:
+				"Duck":
+					reward_string = "Fly Speed++++ and Nest++++"
+					GlobalSignalsManager.fly_speed += 55
+					GlobalSignalsManager.nest_max_health += 3
+
+				"Penguin":
+					reward_string = "Ground Speed+++ and Nest++"
+					GlobalSignalsManager.ground_speed += 60
+					GlobalSignalsManager.nest_max_health += 5
+					
+				"Parrot":
+					reward_string = "Thrust Power+++ and Flight Time+++"
+					GlobalSignalsManager.fly_add_time += 0.25
+					GlobalSignalsManager.max_fly_time += 0.5
+					
+				"Owl":
+					reward_string = "Goose Damage--"
+					GlobalSignalsManager.goose_peck_damage = min(0.5, GlobalSignalsManager.goose_peck_damage - 0.5)
+					
+				"Chicken":
+					reward_string = "Damage+++"
+					GlobalSignalsManager.attack_damage += 1
+
+				"Giraffe":
+					is_bad = true
+					reward_string = "Goose Health+"
+					GlobalSignalsManager.goose_start_health += 2
+					
+				"Buffalo":
+					is_bad = true
+					reward_string = "Geese Speed++"
+					GlobalSignalsManager.goose_fly_speed += 20
+					
+				"Hippo":
+					is_bad = true
+					reward_string = "Geese Damage+++"
+					GlobalSignalsManager.goose_peck_damage += 1
+					
+				"Sloth":
+					is_bad = true
+					reward_string = "Fly Speed-- and Ground Speed--"
+					GlobalSignalsManager.fly_speed -= 20
+					GlobalSignalsManager.ground_speed -= 10
+
+				_:
+					print("Unknown reward: ", reward_name)
+
+			create_floating_label(slot_grid[1][1], reward_string, is_bad)
+			await blink_diagonal(diagonal, is_bad)
+
+func check_each_column() -> void:
+	for reel_index in 3:
+		var reward_name: String = slot_grid[reel_index][0]["name"]
+		var matching_column := true
+
+		for row_index in range(1, 3):
+			var cell = slot_grid[reel_index][row_index]
+
+			if cell["name"] != reward_name:
+				matching_column = false
+				break
+
+		if matching_column:
+			var is_bad : bool = false
+			var reward_string: String = ""
+			match reward_name:
+				"Duck":
+					reward_string = "Fly Speed++++ and Nest++++"
+					GlobalSignalsManager.fly_speed += 45
+					GlobalSignalsManager.nest_max_health +=5
+
+				"Penguin":
+					reward_string = "Ground Speed+++ and Nest++"
+					GlobalSignalsManager.ground_speed +=32
+					GlobalSignalsManager.nest_max_health +=3
+					
+				"Parrot":
+					reward_string = "Thrust Power+++ and Flight Time+++"
+					GlobalSignalsManager.fly_add_time +=.25
+					GlobalSignalsManager.max_fly_time +=.5
+					
+				"Owl":
+					reward_string = "Goose Damage--"
+					GlobalSignalsManager.goose_peck_damage = min(0.5,GlobalSignalsManager.goose_peck_damage - 0.5)
+					
+				"Chicken":
+					reward_string = "Damage+++"
+					GlobalSignalsManager.attack_damage += 1
+
+				"Giraffe":
+					is_bad = true
+					reward_string = "Goose Health+"
+					GlobalSignalsManager.goose_start_health += 2
+					
+				"Buffalo":
+					is_bad = true
+					reward_string = "Geese Speed++"
+					GlobalSignalsManager.goose_fly_speed += 20
+					
+				"Hippo":
+					is_bad = true
+					reward_string = "Geese Damage+++"
+					GlobalSignalsManager.goose_peck_damage += 1
+					
+				"Sloth":
+					is_bad = true
+					reward_string = "Fly Speed-- and Ground Speed--"
+					GlobalSignalsManager.fly_speed -= 20
+					GlobalSignalsManager.ground_speed -= 10
+				_:
+					print("Unknown reward: ", reward_name)
+					
+			create_floating_label(slot_grid[reel_index][1], reward_string, is_bad)
+			await blink_column(reel_index,is_bad)
 
 func blink_cell(reel_index: int, row_index: int, is_bad: bool) -> void:
 	var cell = slot_grid[reel_index][row_index]
@@ -229,43 +486,89 @@ func blink_cell(reel_index: int, row_index: int, is_bad: bool) -> void:
 		else :
 			texture_rect.modulate = Color.GREEN
 			
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.09).timeout
 
 		texture_rect.modulate = Color.WHITE
+		await get_tree().create_timer(0.045).timeout
+
+func blink_row(row_index: int, is_bad: bool) -> void:
+	if is_bad:
+		audio_player.stream = bad_sound
+	else:
+		audio_player.stream = good_sound
+	
+	for i in 3:
+		for reel_index in 3:
+			var cell = slot_grid[reel_index][row_index]
+			var texture_rect: TextureRect = cell["node"]
+			audio_player.play()
+			
+			if is_bad:
+				texture_rect.modulate = Color.RED
+			else :
+				texture_rect.modulate = Color.GREEN
+
+		await get_tree().create_timer(0.15).timeout
+
+		for reel_index in 3:
+			var cell = slot_grid[reel_index][row_index]
+			var texture_rect: TextureRect = cell["node"]
+			texture_rect.modulate = Color.WHITE
+
 		await get_tree().create_timer(0.05).timeout
 
-func blink_row(row_index: int) -> void:
-	for i in 3:
-		for reel_index in 3:
-			var cell = slot_grid[reel_index][row_index]
-			var texture_rect: TextureRect = cell["node"]
-			texture_rect.modulate = Color.RED
-
-		await get_tree().create_timer(0.1).timeout
-
-		for reel_index in 3:
-			var cell = slot_grid[reel_index][row_index]
-			var texture_rect: TextureRect = cell["node"]
-			texture_rect.modulate = Color.WHITE
-
-		await get_tree().create_timer(0.1).timeout
-
-func blink_column(reel_index: int) -> void:
+func blink_column(reel_index: int,is_bad: bool) -> void:
+	if is_bad:
+		audio_player.stream = bad_sound
+	else:
+		audio_player.stream = good_sound
+	
 	for i in 3:
 		for row_index in 3:
 			var cell = slot_grid[reel_index][row_index]
 			var texture_rect: TextureRect = cell["node"]
-			texture_rect.modulate = Color.RED
+			audio_player.play()
+			
+			if is_bad:
+				texture_rect.modulate = Color.RED
+			else :
+				texture_rect.modulate = Color.GREEN
 
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.15).timeout
 
 		for row_index in 3:
 			var cell = slot_grid[reel_index][row_index]
 			var texture_rect: TextureRect = cell["node"]
 			texture_rect.modulate = Color.WHITE
 
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.05).timeout
 
+func blink_diagonal(diagonal: Array, is_bad: bool) -> void:
+	if is_bad:
+		audio_player.stream = bad_sound
+	else:
+		audio_player.stream = good_sound
+		
+	for i in 3:
+		for pos in diagonal:
+			audio_player.play()
+			var cell = slot_grid[pos.x][pos.y]
+			var texture_rect: TextureRect = cell["node"]
+
+			if is_bad:
+				texture_rect.modulate = Color.RED
+			else:
+				texture_rect.modulate = Color.GREEN
+
+		await get_tree().create_timer(0.15).timeout
+
+		for pos in diagonal:
+			var cell = slot_grid[pos.x][pos.y]
+			var texture_rect: TextureRect = cell["node"]
+			texture_rect.modulate = Color.WHITE
+
+		await get_tree().create_timer(0.05).timeout
+		
 func create_floating_label(cell: Dictionary, text: String, is_bad: bool) -> void:
 	var texture_rect: TextureRect = cell["node"]
 

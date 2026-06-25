@@ -3,7 +3,7 @@ extends Node2D
 # The nest the player must protect.
 # Enemies peck it. When its health hits zero, the game is lost.
 
-@onready var health: Health = $Health
+@onready var health : NestHealth = $Health
 
 
 func _ready() -> void:

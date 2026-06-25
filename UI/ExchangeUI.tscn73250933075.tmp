@@ -79,13 +79,13 @@ texture = ExtResource("2_7oiyf")
 weight = 10.0
 metadata/_custom_type_script = "uid://blp7ufyynodok"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iecin"]
-load_path = "res://.godot/imported/duck.png-f518fe58fad0c89f16337c41000e8e9f.ctex"
-
 [sub_resource type="LabelSettings" id="LabelSettings_nkvu5"]
 font_size = 29
 
-[node name="ExchangeUi" type="Control" unique_id=1214968568 node_paths=PackedStringArray("shiny_label", "spin_button", "reel_1", "reel_2", "reel_3") groups=["ExchangeUI"]]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iecin"]
+load_path = "res://.godot/imported/duck.png-f518fe58fad0c89f16337c41000e8e9f.ctex"
+
+[node name="ExchangeUi" type="Control" unique_id=1214968568 node_paths=PackedStringArray("spin_button", "reel_1", "reel_2", "reel_3") groups=["ExchangeUI"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,12 +95,21 @@ grow_vertical = 2
 script = ExtResource("1_ehxxv")
 good_sound = ExtResource("2_0ncio")
 bad_sound = ExtResource("3_nwjla")
-shiny_label = NodePath("Shinies")
 spin_button = NodePath("Button")
 reel_1 = NodePath("TextureRect2/ReelLeft/VBoxContainer")
 reel_2 = NodePath("TextureRect2/ReelMiddle/VBoxContainer")
 reel_3 = NodePath("TextureRect2/ReelRight/VBoxContainer")
 rewards = Array[ExtResource("2_yfydb")]([SubResource("Resource_ehxxv"), SubResource("Resource_iecin"), SubResource("Resource_b1dss"), SubResource("Resource_yfydb"), SubResource("Resource_bh6fo"), SubResource("Resource_3qupn"), SubResource("Resource_rep84"), SubResource("Resource_bl5xh"), SubResource("Resource_br4y3")])
+
+[node name="Shinies" type="Label" parent="." unique_id=511695673]
+layout_mode = 0
+offset_left = 682.0
+offset_top = 571.0
+offset_right = 888.0
+offset_bottom = 611.0
+text = "0 Shinies"
+label_settings = SubResource("LabelSettings_nkvu5")
+horizontal_alignment = 2
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=86691700]
 layout_mode = 0
@@ -233,16 +242,6 @@ offset_right = 942.0
 offset_bottom = 625.0
 texture = ExtResource("1_ljb2u")
 expand_mode = 1
-
-[node name="Shinies" type="Label" parent="." unique_id=511695673]
-layout_mode = 0
-offset_left = 682.0
-offset_top = 571.0
-offset_right = 888.0
-offset_bottom = 611.0
-text = "0 Shinies"
-label_settings = SubResource("LabelSettings_nkvu5")
-horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="." unique_id=1621819971]
 layout_mode = 0

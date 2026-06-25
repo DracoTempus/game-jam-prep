@@ -1,19 +1,18 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dixiaopgx6i75"]
 
 [ext_resource type="Script" uid="uid://dcis0ouav0fv5" path="res://Entities/Nest/nest.gd" id="1_nest"]
-[ext_resource type="Script" uid="uid://cngpidv61ibx1" path="res://Entities/Common/Scripts/Health/Health.gd" id="2_health"]
+[ext_resource type="Script" uid="uid://cb7nhlotd3b4w" path="res://Entities/Common/Scripts/Health/NestHealth.gd" id="2_ytn2g"]
 
-[node name="Nest" type="Node2D" groups=["nest"]]
+[node name="Nest" type="Node2D" unique_id=1346990350 groups=["nest"]]
 script = ExtResource("1_nest")
 
-[node name="Bowl" type="Polygon2D" parent="."]
+[node name="Bowl" type="Polygon2D" parent="." unique_id=1202298973]
 color = Color(0.45, 0.32, 0.16, 1)
 polygon = PackedVector2Array(-45, -10, 45, -10, 35, 22, -35, 22)
 
-[node name="Eggs" type="Polygon2D" parent="."]
+[node name="Eggs" type="Polygon2D" parent="." unique_id=86734149]
 color = Color(0.95, 0.93, 0.85, 1)
 polygon = PackedVector2Array(-18, -8, -2, -8, -2, 6, -18, 6)
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("2_health")
-max_health = 10.0
+[node name="Health" type="Node" parent="." unique_id=1541701525]
+script = ExtResource("2_ytn2g")

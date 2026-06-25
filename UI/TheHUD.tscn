@@ -20,7 +20,7 @@ offset_bottom = 640.0
 show_percentage = false
 script = ExtResource("1_dj3i1")
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+[node name="PlayerHealthBar" type="ProgressBar" parent="." unique_id=63837071]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -28,9 +28,8 @@ offset_right = 200.0
 offset_bottom = 36.0
 show_percentage = false
 script = ExtResource("2_health")
-target = "player"
 
-[node name="NestHealthBar" type="ProgressBar" parent="."]
+[node name="NestHealthBar" type="ProgressBar" parent="." unique_id=1838690507]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 44.0

@@ -12,6 +12,7 @@ signal died
 
 
 func _ready() -> void:
+	max_health = GlobalSignalsManager.goose_start_health
 	current_health = max_health
 
 
@@ -28,6 +29,9 @@ func heal(amount: float) -> void:
 	current_health = min(current_health + amount, max_health)
 	health_changed.emit(current_health, max_health)
 
+func change_max_health(amount: float) -> void:
+	max_health = min(1, max_health + amount)
+	health_changed.emit(current_health, max_health)
 
 func is_alive() -> bool:
 	return current_health > 0.0

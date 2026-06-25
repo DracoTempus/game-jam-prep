@@ -14,11 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
+[ext_resource type="Texture2D" uid="uid://cdwt1aabrjpj8" path="res://Levels/Common/Art/door_open_top.png" id="13_n3211"]
 [ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPB/Sparrow/Sparrow.tscn" id="15_l73k5"]
 [ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPB/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
 [ext_resource type="PackedScene" uid="uid://dsq1gbp6oo6xp" path="res://UI/ExchangeUI.tscn" id="20_se8fb"]
 [ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
-[ext_resource type="PackedScene" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
+[ext_resource type="PackedScene" uid="uid://dixiaopgx6i75" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aygd2"]
@@ -33,11 +34,11 @@ size = Vector2(39, 3113)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2l1"]
 size = Vector2(1493, 3115)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_domu3"]
+size = Vector2(51.200165, 99.70543)
+
 [sub_resource type="RectangleShape2D" id="ground_shape"]
 size = Vector2(4546, 160)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_domu3"]
-size = Vector2(24, 26.5)
 
 [node name="Base" type="Node2D" unique_id=1102677110]
 
@@ -94,7 +95,7 @@ position = Vector2(798, -657)
 shape = SubResource("RectangleShape2D_aygd2")
 
 [node name="LeftWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=797644873]
-position = Vector2(-20, 280)
+position = Vector2(-33, 277)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/LeftWall" unique_id=1373935049]
 position = Vector2(-5, -1164)
@@ -152,6 +153,24 @@ texture = ExtResource("6_l73k5")
 position = Vector2(-101, -79)
 color = Color(1.2032688e-08, 0.41441408, 0.14524108, 1)
 polygon = PackedVector2Array(1, 552, 1630, 552, 1632, 612, 0, 615)
+
+[node name="CasinoOutDoor" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=492895542]
+position = Vector2(-18, 427.00003)
+scale = Vector2(0.7421869, 0.7421869)
+texture = ExtResource("13_n3211")
+
+[node name="Area2D" type="Area2D" parent="World/Level/InsideCasinoBorders/CasinoOutDoor" unique_id=727205521 node_paths=PackedStringArray("target", "camera", "camera_bounds")]
+script = ExtResource("10_7p5xg")
+target = NodePath("InsideCasino")
+camera = NodePath("../../../../../Entities/Player/AlfredHitchcock")
+camera_bounds = NodePath("../../../MainLevelArea/MainCameraBounds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/CasinoOutDoor/Area2D" unique_id=1475972874]
+position = Vector2(8.0842285, 13.473694)
+shape = SubResource("RectangleShape2D_domu3")
+
+[node name="InsideCasino" type="Marker2D" parent="World/Level/InsideCasinoBorders/CasinoOutDoor/Area2D" unique_id=781310901]
+position = Vector2(-2186.7808, -816.506)
 
 [node name="MainLevelArea" type="Node" parent="World/Level" unique_id=731106569]
 
@@ -235,7 +254,7 @@ position = Vector2(0, 62.25)
 shape = SubResource("RectangleShape2D_domu3")
 
 [node name="InsideCasino" type="Marker2D" parent="World/Level/MainLevelArea/Casinoplaceholder/Area2D" unique_id=887802340]
-position = Vector2(1743, 875)
+position = Vector2(1810, 875)
 
 [node name="MainCameraBounds" type="Area2D" parent="World/Level/MainLevelArea" unique_id=785004763]
 
@@ -254,7 +273,7 @@ position = Vector2(3469, 443)
 position = Vector2(4026, 443)
 
 [node name="CrowShinyExchange" parent="Entities/NPCs" unique_id=1477779174 instance=ExtResource("16_55lwj")]
-position = Vector2(4336, 462)
+position = Vector2(4336, 483)
 
 [node name="Player" type="Node" parent="Entities" unique_id=1538828935]
 
