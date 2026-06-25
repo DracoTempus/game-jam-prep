@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgicb8f6bjte5"
-path="res://.godot/imported/spritesheet-default.png-6ad428a414052a33023ed57a4dc384bf.ctex"
+uid="uid://dccpjvi8hvuxc"
+path="res://.godot/imported/snake.png-6a14967720b1aacef2867ed64da2c6b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Art/spritesheet-default.png"
-dest_files=["res://.godot/imported/spritesheet-default.png-6ad428a414052a33023ed57a4dc384bf.ctex"]
+source_file="res://UI/Art/SlotMachine/snake.png"
+dest_files=["res://.godot/imported/snake.png-6a14967720b1aacef2867ed64da2c6b4.ctex"]
 
 [params]
 

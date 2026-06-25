@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bac1sr4w8oj1t"
-path="res://.godot/imported/spritesheet-double.png-0c92237084071774ad99d0eb33081f55.ctex"
+uid="uid://dm3pailp75c4b"
+path="res://.godot/imported/penguin.png-a772752825b5ea2b937c9941f715589b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Art/spritesheet-double.png"
-dest_files=["res://.godot/imported/spritesheet-double.png-0c92237084071774ad99d0eb33081f55.ctex"]
+source_file="res://UI/Art/SlotMachine/penguin.png"
+dest_files=["res://.godot/imported/penguin.png-a772752825b5ea2b937c9941f715589b.ctex"]
 
 [params]
 

@@ -1,23 +1,198 @@
 [gd_scene format=3 uid="uid://dsq1gbp6oo6xp"]
 
-[ext_resource type="Texture2D" uid="uid://bac1sr4w8oj1t" path="res://UI/Art/spritesheet-double.png" id="1_ljb2u"]
+[ext_resource type="Script" uid="uid://dsjc4gbljcm30" path="res://UI/scripts/SlotMachineButton.gd" id="1_ehxxv"]
+[ext_resource type="Texture2D" uid="uid://bv5g618td8l8" path="res://UI/Art/panel_grey_blue.svg" id="1_ljb2u"]
+[ext_resource type="Script" uid="uid://blp7ufyynodok" path="res://UI/scripts/SlotReward.gd" id="2_yfydb"]
+[ext_resource type="Texture2D" uid="uid://dqcd8nkao4jqb" path="res://UI/Art/SlotMachine/button_red.png" id="4_nkvu5"]
+[ext_resource type="Texture2D" uid="uid://b3ohpt8fnewta" path="res://UI/Art/SlotMachine/owl.png" id="4_yfydb"]
+[ext_resource type="Texture2D" uid="uid://6pd4a5friqax" path="res://UI/Art/SlotMachine/giraffe.png" id="5_4fh2a"]
+[ext_resource type="Texture2D" uid="uid://cs02dubq1uatn" path="res://UI/Art/SlotMachine/parrot.png" id="5_bh6fo"]
+[ext_resource type="Texture2D" uid="uid://dm3pailp75c4b" path="res://UI/Art/SlotMachine/penguin.png" id="6_3qupn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_avn1j"]
-atlas = ExtResource("1_ljb2u")
-region = Rect2(768, 256, 128, 128)
+[sub_resource type="Resource" id="Resource_ehxxv"]
+script = ExtResource("2_yfydb")
+reward_name = "Giraffe"
+texture = ExtResource("5_4fh2a")
+metadata/_custom_type_script = "uid://blp7ufyynodok"
 
-[node name="ExchangeUi" type="Control" unique_id=1214968568 groups=["ExchangeUI"]]
+[sub_resource type="Resource" id="Resource_iecin"]
+script = ExtResource("2_yfydb")
+reward_name = "Owl"
+texture = ExtResource("4_yfydb")
+metadata/_custom_type_script = "uid://blp7ufyynodok"
+
+[sub_resource type="Resource" id="Resource_b1dss"]
+script = ExtResource("2_yfydb")
+reward_name = "Parrot"
+texture = ExtResource("5_bh6fo")
+metadata/_custom_type_script = "uid://blp7ufyynodok"
+
+[sub_resource type="Resource" id="Resource_yfydb"]
+script = ExtResource("2_yfydb")
+reward_name = "Penguin"
+texture = ExtResource("6_3qupn")
+metadata/_custom_type_script = "uid://blp7ufyynodok"
+
+[sub_resource type="LabelSettings" id="LabelSettings_nkvu5"]
+font_size = 29
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iecin"]
+load_path = "res://.godot/imported/duck.png-f518fe58fad0c89f16337c41000e8e9f.ctex"
+
+[node name="ExchangeUi" type="Control" unique_id=1214968568 node_paths=PackedStringArray("spin_button", "reel_1", "reel_2", "reel_3") groups=["ExchangeUI"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ehxxv")
+spin_button = NodePath("Button")
+reel_1 = NodePath("ReelLeft/VBoxContainer")
+reel_2 = NodePath("ReelMiddle/VBoxContainer")
+reel_3 = NodePath("ReelRight/VBoxContainer")
+rewards = Array[ExtResource("2_yfydb")]([SubResource("Resource_ehxxv"), SubResource("Resource_iecin"), SubResource("Resource_b1dss"), SubResource("Resource_yfydb")])
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=86691700]
 layout_mode = 0
-offset_left = 257.0
-offset_top = 25.0
-offset_right = 921.0
-offset_bottom = 606.0
-texture = SubResource("AtlasTexture_avn1j")
+offset_left = 131.0
+offset_top = 28.0
+offset_right = 1070.0
+offset_bottom = 603.0
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect2" unique_id=2093756344]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 67.0
+offset_right = 828.0
+offset_bottom = 544.0
+color = Color(0.4536903, 0.26313737, 0, 1)
+
+[node name="bar" type="ColorRect" parent="TextureRect2" unique_id=967329581]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 74.0
+offset_right = 356.0
+offset_bottom = 539.0
+
+[node name="bar2" type="ColorRect" parent="TextureRect2" unique_id=423338650]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 72.0
+offset_right = 597.0
+offset_bottom = 543.0
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2" unique_id=1004699844]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -9.0
+offset_right = 942.0
+offset_bottom = 625.0
+texture = ExtResource("1_ljb2u")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="." unique_id=1621819971]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 565.0
+offset_right = 654.0
+offset_bottom = 621.0
+icon = ExtResource("4_nkvu5")
+
+[node name="Shinies" type="Label" parent="." unique_id=511695673]
+layout_mode = 0
+offset_left = 682.0
+offset_top = 571.0
+offset_right = 888.0
+offset_bottom = 611.0
+text = "0 Shinies"
+label_settings = SubResource("LabelSettings_nkvu5")
+horizontal_alignment = 2
+
+[node name="ReelLeft" type="Control" parent="." unique_id=1418271954]
+anchors_preset = 0
+offset_left = 301.0
+offset_top = 115.0
+offset_right = 301.0
+offset_bottom = 115.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReelLeft" unique_id=1308797460]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 144.0
+offset_bottom = 440.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ReelLeft/VBoxContainer" unique_id=1514796161]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="ReelLeft/VBoxContainer" unique_id=1043360356]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="ReelLeft/VBoxContainer" unique_id=1258948839]
+layout_mode = 2
+texture = ExtResource("5_4fh2a")
+expand_mode = 5
+
+[node name="ReelMiddle" type="Control" parent="." unique_id=580450536]
+anchors_preset = 0
+offset_left = 523.0
+offset_top = 115.0
+offset_right = 523.0
+offset_bottom = 115.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReelMiddle" unique_id=469820735]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 144.0
+offset_bottom = 440.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ReelMiddle/VBoxContainer" unique_id=1751148612]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="ReelMiddle/VBoxContainer" unique_id=1111159118]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="ReelMiddle/VBoxContainer" unique_id=890293298]
+layout_mode = 2
+texture = ExtResource("5_4fh2a")
+expand_mode = 5
+
+[node name="ReelRight" type="Control" parent="." unique_id=537796037]
+anchors_preset = 0
+offset_left = 748.0
+offset_top = 115.0
+offset_right = 748.0
+offset_bottom = 115.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReelRight" unique_id=1434625122]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 144.0
+offset_bottom = 440.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ReelRight/VBoxContainer" unique_id=120459024]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="ReelRight/VBoxContainer" unique_id=498476510]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_iecin")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="ReelRight/VBoxContainer" unique_id=299427712]
+layout_mode = 2
+texture = ExtResource("5_4fh2a")
+expand_mode = 5

@@ -9,6 +9,10 @@ signal wave_cleared
 @export_group("Global Variables")
 @export var is_day_time = true
 
+@export_group("Player Stats")
+@export var trash: int = 0
+@export var shinies: int = 0
+
 @export_group("Character Stats")
 @export var fly_time_left: float = 0.0
 @export var fly_add_time: float = 0.25
