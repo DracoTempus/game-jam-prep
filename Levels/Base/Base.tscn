@@ -521,7 +521,7 @@ position = Vector2(1386, 411)
 scale = Vector2(1.2734375, 1.2734375)
 sprite_frames = SubResource("SpriteFrames_hdstr")
 autoplay = "default"
-frame_progress = 0.3626691
+frame_progress = 0.6090954
 
 [node name="MainLevelArea" type="Node" parent="World/Level" unique_id=731106569]
 

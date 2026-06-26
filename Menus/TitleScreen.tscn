@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bogmab38q5u8c"]
+
+[ext_resource type="Script" uid="uid://de61voyyxf4kp" path="res://Menus/title_screen.gd" id="1_ceki1"]
+[ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="2_nx5yy"]
+[ext_resource type="PackedScene" uid="uid://dixiaopgx6i75" path="res://Entities/Nest/Nest.tscn" id="2_ty4a4"]
+[ext_resource type="Texture2D" uid="uid://chquj0l10yr3x" path="res://Menus/explosion/simpleExplosion00.png" id="4_vu2q1"]
+[ext_resource type="Texture2D" uid="uid://nsffbmbkni76" path="res://Menus/explosion/simpleExplosion01.png" id="5_72ala"]
+[ext_resource type="Texture2D" uid="uid://bhy7mhtq1b2yj" path="res://Menus/explosion/simpleExplosion02.png" id="6_txut8"]
+[ext_resource type="Texture2D" uid="uid://ciyibett2jmih" path="res://Menus/explosion/simpleExplosion03.png" id="7_crsfb"]
+[ext_resource type="Texture2D" uid="uid://c3y5rudfw7jd0" path="res://Menus/explosion/simpleExplosion04.png" id="8_7v4k0"]
+[ext_resource type="Texture2D" uid="uid://cyd43ds64bmqr" path="res://Menus/explosion/simpleExplosion05.png" id="9_hj6s8"]
+[ext_resource type="Texture2D" uid="uid://evpeg3ejub1t" path="res://Menus/explosion/simpleExplosion06.png" id="10_a41he"]
+[ext_resource type="Texture2D" uid="uid://db76ksom8tyv8" path="res://Menus/explosion/simpleExplosion07.png" id="11_ehm80"]
+[ext_resource type="Texture2D" uid="uid://c6rb8fjwarktv" path="res://Menus/explosion/simpleExplosion08.png" id="12_ybnuh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nx5yy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vu2q1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_72ala")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_txut8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_crsfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7v4k0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hj6s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a41he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ehm80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ybnuh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TitleScreen" type="Control" unique_id=1458155963]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ceki1")
+enemy = ExtResource("2_nx5yy")
+
+[node name="StartButton" type="Button" parent="." unique_id=1081561132]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 469.0
+offset_right = 609.0
+offset_bottom = 538.75
+text = "START"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=734403192]
+position = Vector2(1200, 10)
+
+[node name="Nest" parent="." unique_id=1346990350 instance=ExtResource("2_ty4a4")]
+position = Vector2(-537, 456)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2048114406]
+position = Vector2(927, 421)
+sprite_frames = SubResource("SpriteFrames_nx5yy")
+autoplay = "default"
