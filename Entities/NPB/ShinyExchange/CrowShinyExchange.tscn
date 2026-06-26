@@ -1,46 +1,20 @@
 [gd_scene format=3 uid="uid://b7u4xksdoxtw2"]
 
+[ext_resource type="Shader" uid="uid://cyxo8uowfohg7" path="res://Entities/NPB/ShinyExchange/CrowShinyExchange.gdshader" id="1_7au7r"]
 [ext_resource type="Texture2D" uid="uid://c8qpiel7mkdoy" path="res://Entities/Common/Art/Birds/CasinoCrow.png" id="1_625o6"]
 [ext_resource type="Script" uid="uid://cew0h48lxs8cm" path="res://Entities/NPB/ShinyExchangeLevel.gd" id="2_5akca"]
 [ext_resource type="Texture2D" uid="uid://cn6wwkibk132x" path="res://Entities/Common/Art/keyboard_e_outline.png" id="2_5mfwi"]
 [ext_resource type="Texture2D" uid="uid://uutwvl286hql" path="res://Entities/Common/Art/keyboard_e.png" id="3_sxady"]
 
-[sub_resource type="Animation" id="Animation_m17w1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_q21v6"]
-resource_name = "crow_idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1f85"]
-_data = {
-&"RESET": SubResource("Animation_m17w1"),
-&"crow_idle": SubResource("Animation_q21v6")
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g5a4v"]
+shader = ExtResource("1_7au7r")
+shader_parameter/speed = 20.0
+shader_parameter/horizontal_amount = 1.0
+shader_parameter/vertical_amount = 1.0
+shader_parameter/pinned_from_y = 0.65
+shader_parameter/head_power = 1.0
+shader_parameter/stretch_strength = 0.5
+shader_parameter/squish_strength = 1.8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yki72"]
 size = Vector2(367, 166)
@@ -65,11 +39,8 @@ animations = [{
 
 [node name="CrowShinyExchange" type="Node2D" unique_id=1632507080 groups=["NPBs"]]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1896533432]
-libraries/ = SubResource("AnimationLibrary_h1f85")
-autoplay = &"crow_idle"
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2075672999]
+material = SubResource("ShaderMaterial_g5a4v")
 texture = ExtResource("1_625o6")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=715320000 node_paths=PackedStringArray("my_label")]

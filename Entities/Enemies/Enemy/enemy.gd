@@ -14,8 +14,6 @@ extends CharacterBody2D
 @export var contact_cooldown: float = 1.0   # seconds before it can hurt again
 
 @onready var health: Health = $Health
-# This box checks if we are touching the player.
-@onready var contact_box: Area2D = $ContactBox
 
 # Filled in _ready: the nest we are attacking.
 var nest: Node2D = null

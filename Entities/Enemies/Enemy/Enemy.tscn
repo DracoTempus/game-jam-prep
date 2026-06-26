@@ -43,7 +43,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="body_shape"]
-size = Vector2(40, 40)
+size = Vector2(40, 41)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=194447640 groups=["Enemies"]]
 collision_layer = 4
@@ -61,6 +61,7 @@ libraries/ = SubResource("AnimationLibrary_jm2y4")
 autoplay = &"FlyingAnimation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1147904022]
+position = Vector2(0, 0.5)
 shape = SubResource("body_shape")
 
 [node name="Health" type="Node" parent="." unique_id=1213500948]
