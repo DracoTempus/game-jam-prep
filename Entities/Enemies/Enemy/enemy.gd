@@ -82,19 +82,19 @@ func peck_nest() -> void:
 		nest.take_damage(GlobalSignalsManager.goose_peck_damage)
 
 func spawn_pickup() -> void:
-	if randf() > pickup_drop_chance:
+	if randf() < pickup_drop_chance:
 		return
 
 	var pickup: Node2D = pickup_scene.instantiate() as Node2D
-	if randf() > 0.3:
-		pickup.spawnSetup(false)
-	else:
-		pickup.spawnSetup(true)
-
+	if randf() < 0.25:
+		pickup.is_trash = false
+		
+	await get_tree().physics_frame
+	pickup.spawnSetup()
 	get_parent().add_child(pickup)
 	pickup.global_position = global_position
 
 func _on_died() -> void:
-	spawn_pickup()
+	await spawn_pickup()
 	GlobalSignalsManager.enemy_was_killed()
 	queue_free()
