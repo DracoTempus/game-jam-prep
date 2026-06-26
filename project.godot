@@ -13,11 +13,16 @@ config_version=5
 config/name="GameJamPrep"
 run/main_scene="uid://bogmab38q5u8c"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/bg_color=Color(1, 1, 1, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
 GlobalSignalsManager="*uid://dgoj3kql0tqis"
+
+[display]
+
+window/size/resizable=false
 
 [editor_plugins]
 

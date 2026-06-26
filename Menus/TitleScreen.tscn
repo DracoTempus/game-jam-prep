@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cqw51vjw3oa5w" path="res://Entities/Common/Art/Birds/Sparrow/Sparrow.png" id="14_txut8"]
 [ext_resource type="Texture2D" uid="uid://d0pd2fqcpe6ps" path="res://Entities/Common/Art/Birds/Pigeon/Pigeon.png" id="15_crsfb"]
 [ext_resource type="Texture2D" uid="uid://d1hcuuhl35ckd" path="res://Entities/Common/Art/Birds/Peacock/Peacock.png" id="16_7v4k0"]
+[ext_resource type="Script" uid="uid://crp4mcuwvtoro" path="res://Menus/seriousText.gd" id="17_hj6s8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nx5yy"]
 animations = [{
@@ -47,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_ybnuh")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -15549,7 +15550,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TitleScreen" type="Control" unique_id=1458155963 node_paths=PackedStringArray("explosion")]
+[node name="TitleScreen" type="Control" unique_id=1458155963 node_paths=PackedStringArray("explosion", "serious_panel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15559,6 +15560,7 @@ grow_vertical = 2
 script = ExtResource("1_ceki1")
 enemy = ExtResource("2_nx5yy")
 explosion = NodePath("AnimatedSprite2D")
+serious_panel = NodePath("Panel")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=734403192]
 position = Vector2(1200, 10)
@@ -15650,12 +15652,28 @@ scale = Vector2(2.7969468, 2.7969468)
 sprite_frames = SubResource("SpriteFrames_hiksj")
 autoplay = "default"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=910032346]
+[node name="Panel" type="Panel" parent="." unique_id=1232467846 node_paths=PackedStringArray("rich_text_label")]
 layout_mode = 0
-offset_left = 1227.0
-offset_top = -151.0
-offset_right = 1670.0
-offset_bottom = 292.0
-text = "\"Wow you are weird, that isn't how a bird flies\".
-But I like Helicopters.
-Now that the "
+offset_left = 32.0
+offset_top = 23.0
+offset_right = 546.0
+offset_bottom = 196.0
+script = ExtResource("17_hj6s8")
+rich_text_label = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=910032346]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 494.0
+offset_bottom = 457.0
+text = "The first time I flew, every pigeon in the park stopped eating.
+“Wow. You are weird. That isn’t how a bird flies.”
+They were right.
+I didn’t glide. I didn’t flap.
+I hovered, wobbled, and chopped through the air like the human machine.
+So the flock left me behind.
+Then the geese attacked.
+Now the \"day birds\" are almost extinct, and only a few pigeon eggs remain.
+The crows say they can make me stronger, if I bring them things worth trading.
+Whether it’s soaring through the air, gambling with crows, or fighting with geese, the only way forward is to spin."
