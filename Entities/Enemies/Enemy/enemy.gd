@@ -14,6 +14,9 @@ extends CharacterBody2D
 @export var contact_cooldown: float = 1.0   # seconds before it can hurt again
 
 @onready var health: Health = $Health
+@export var pickup_scene: PackedScene
+
+var pickup_drop_chance: float = 0.3
 
 # Filled in _ready: the nest we are attacking.
 var nest: Node2D = null
@@ -78,6 +81,20 @@ func peck_nest() -> void:
 	if nest != null and nest.has_method("take_damage"):
 		nest.take_damage(GlobalSignalsManager.goose_peck_damage)
 
+func spawn_pickup() -> void:
+	if randf() > pickup_drop_chance:
+		return
+
+	var pickup: Node2D = pickup_scene.instantiate() as Node2D
+	if randf() > 0.3:
+		pickup.spawnSetup(false)
+	else:
+		pickup.spawnSetup(true)
+
+	get_parent().add_child(pickup)
+	pickup.global_position = global_position
+
 func _on_died() -> void:
+	spawn_pickup()
 	GlobalSignalsManager.enemy_was_killed()
 	queue_free()

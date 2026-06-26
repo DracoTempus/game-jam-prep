@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kiuto6pq7dt1" path="res://Entities/Enemies/Enemy/enemy.gd" id="1_enemy"]
 [ext_resource type="Script" uid="uid://cngpidv61ibx1" path="res://Entities/Common/Scripts/Health/Health.gd" id="2_health"]
+[ext_resource type="PackedScene" uid="uid://b8r8bb5o4s5sd" path="res://Entities/Props/pickup.tscn" id="2_m5euc"]
 [ext_resource type="Texture2D" uid="uid://dpj3fifuaqvvi" path="res://Entities/Common/Art/Birds/GymBroGoose.png" id="2_umbwq"]
 
 [sub_resource type="Animation" id="Animation_m5euc"]
@@ -49,6 +50,7 @@ size = Vector2(40, 41)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_enemy")
+pickup_scene = ExtResource("2_m5euc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=906358451]
 z_index = 25
