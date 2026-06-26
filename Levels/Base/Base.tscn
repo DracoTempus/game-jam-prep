@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dgoj3kql0tqis" path="res://Globals/GlobalSignalsManager/GlobalSignalsManager.gd" id="2_r3r0t"]
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
 [ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
+[ext_resource type="Texture2D" uid="uid://nkqj5m38tq7w" path="res://Levels/Common/Art/CorvidCasino.png" id="5_2g55m"]
 [ext_resource type="Texture2D" uid="uid://05ge6sw6t6mj" path="res://Levels/Common/Art/SlotMachine.png" id="5_y2sk1"]
 [ext_resource type="PackedScene" uid="uid://bjeqhgkg3158y" path="res://UI/TheHUD.tscn" id="6_7sk74"]
 [ext_resource type="Texture2D" uid="uid://d210wmslgivl4" path="res://Levels/Common/Art/retro-pixel-art-casino-table-with-chips-and-cards-in-a-vintage-gaming-setting-free-vector.jpg" id="6_l73k5"]
@@ -24,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aygd2"]
-size = Vector2(1679, 123)
+size = Vector2(2153.5, 123)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eu82j"]
 size = Vector2(50, 3128)
@@ -33,7 +34,7 @@ size = Vector2(50, 3128)
 size = Vector2(39, 3113)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2l1"]
-size = Vector2(1493, 3115)
+size = Vector2(2039, 403)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_domu3"]
 size = Vector2(51.200165, 99.70543)
@@ -340,7 +341,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="ground_shape"]
-size = Vector2(4546, 160)
+size = Vector2(5724, 160)
 
 [sub_resource type="Shader" id="Shader_ptnsy"]
 code = "shader_type canvas_item;
@@ -374,6 +375,9 @@ shader_parameter/speed = 1.5
 shader_parameter/sway_amount = 25.0
 shader_parameter/pinned_from_y = 0.55
 shader_parameter/top_power = 1.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2sk1"]
+size = Vector2(1553, 3142)
 
 [node name="Base" type="Node2D" unique_id=1102677110]
 
@@ -430,7 +434,7 @@ position = Vector2(2977, 35)
 position = Vector2(-40, 560)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/TopWall" unique_id=2043595730]
-position = Vector2(798, -657)
+position = Vector2(1035, -511)
 shape = SubResource("RectangleShape2D_aygd2")
 
 [node name="LeftWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=797644873]
@@ -441,7 +445,7 @@ position = Vector2(-5, -1164)
 shape = SubResource("RectangleShape2D_eu82j")
 
 [node name="RightWall" type="StaticBody2D" parent="World/Level/InsideCasinoBorders" unique_id=30917801]
-position = Vector2(1504, 295)
+position = Vector2(2024, 295)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/RightWall" unique_id=1300500384]
 position = Vector2(-0.5, -1197.5)
@@ -450,18 +454,28 @@ shape = SubResource("wall_shape")
 [node name="CasinoCameraBounds" type="Area2D" parent="World/Level/InsideCasinoBorders" unique_id=756403717]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/CasinoCameraBounds" unique_id=740865986]
-position = Vector2(736.5, -1033.5)
+position = Vector2(999.5, 317.5)
 shape = SubResource("RectangleShape2D_vt2l1")
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Level/InsideCasinoBorders" unique_id=1546228994]
-position = Vector2(-50, -35)
-color = Color(0.6453327, 0.15074736, 0, 1)
-polygon = PackedVector2Array(2, 0, 1576, -2, 1574, 578, -1, 585)
+[node name="CorvidCasino" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=726357901]
+position = Vector2(1683.8, 317.75)
+scale = Vector2(0.6960938, 0.6960938)
+texture = ExtResource("5_2g55m")
+hframes = 2
 
-[node name="Polygon2D2" type="Polygon2D" parent="World/Level/InsideCasinoBorders" unique_id=1526186430]
-position = Vector2(-101, -79)
-color = Color(1.2032688e-08, 0.41441408, 0.14524108, 1)
-polygon = PackedVector2Array(1, 552, 1630, 552, 1632, 612, 0, 615)
+[node name="CorvidCasino2" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=2132838662]
+position = Vector2(976, 318.00003)
+scale = Vector2(0.6960938, 0.6960938)
+texture = ExtResource("5_2g55m")
+hframes = 2
+frame = 1
+
+[node name="CorvidCasino3" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=1769691008]
+position = Vector2(269, 318.00003)
+scale = Vector2(0.6960938, 0.6960938)
+texture = ExtResource("5_2g55m")
+hframes = 2
+frame = 1
 
 [node name="RetroPixelArtCasinoTableWithChipsAndCardsInAVintageGamingSettingFreeVector" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=946023866]
 position = Vector2(871.5, 404)
@@ -521,7 +535,7 @@ position = Vector2(1386, 411)
 scale = Vector2(1.2734375, 1.2734375)
 sprite_frames = SubResource("SpriteFrames_hdstr")
 autoplay = "default"
-frame_progress = 0.6090954
+frame_progress = 0.12325235
 
 [node name="MainLevelArea" type="Node" parent="World/Level" unique_id=731106569]
 
@@ -556,7 +570,7 @@ texture = ExtResource("9_55lwj")
 position = Vector2(1200, 600)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/Ground" unique_id=1137871754]
-position = Vector2(1073, 0)
+position = Vector2(1662, 0)
 shape = SubResource("ground_shape")
 
 [node name="MainBorders" type="Node2D" parent="World/Level/MainLevelArea" unique_id=1097991594]
@@ -620,8 +634,8 @@ position = Vector2(1810, 875)
 [node name="MainCameraBounds" type="Area2D" parent="World/Level/MainLevelArea" unique_id=785004763]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/MainCameraBounds" unique_id=444997525]
-position = Vector2(736.5, -1033.5)
-shape = SubResource("RectangleShape2D_vt2l1")
+position = Vector2(713.5, -932)
+shape = SubResource("RectangleShape2D_y2sk1")
 
 [node name="Entities" type="Node2D" parent="." unique_id=483649982]
 
