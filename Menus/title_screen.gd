@@ -7,10 +7,34 @@ extends Control
 @export var enemy : PackedScene
 @export var explosion : AnimatedSprite2D
 @export var serious_panel: Panel
+@export var bird_container: Node2D
+@export var fade_out: ColorRect
+
+@export var music: AudioStream
+@export var bad_music: AudioStream
+@export var volume_db: float = 0.0
+@export var autoplay: bool = true
+@export var loop: bool = true
+
+var music_player: AudioStreamPlayer
 
 func _ready() -> void:
+	music_player = AudioStreamPlayer.new()
+	add_child(music_player)
+
+	if music is AudioStreamOggVorbis:
+		music.loop = loop
+
+	music_player.stream = music
+	music_player.volume_db = volume_db
+
+	if autoplay and music != null:
+		music_player.play()
+	
 	start_button.pressed.connect(_on_start_button_pressed)
 	serious_panel.hide()
+	fade_out.modulate.a = 0.0
+	fade_out.visible = true
 
 func _on_start_button_pressed() -> void:
 	start_button.disabled = true
@@ -18,13 +42,17 @@ func _on_start_button_pressed() -> void:
 	await serious_panel.say("The first time I flew, every pigeon in the park stopped eating.'Wow. You are weird. That isn’t how a bird flies.'")
 	await serious_panel.say("They were right. I didn’t glide. I didn’t flap.")
 	await serious_panel.say("I hovered, wobbled, and chopped through the air like the human machine.")
+	music_player.stop()
 	await serious_panel.say("So... the flock left me behind.")
-
+	
+	music_player.stream = bad_music
 	GlobalSignalsManager.goose_fly_speed = 500
 	for i in range(30):
 		var enemy_object = enemy.instantiate()
 		enemy_object.global_position = Vector2(1000.0 + (25*i), -500+ (50.0 * i))
 		add_child(enemy_object)
+		
+	music_player.play(30)
 	await get_tree().create_timer(3).timeout
 	
 	for i in range(55):
@@ -36,6 +64,16 @@ func _on_start_button_pressed() -> void:
 		explosion_object.play()
 
 		explosion_object.animation_finished.connect(explosion_object.queue_free)
+		
+	fade_out.visible = true
+	fade_out.modulate.a = 0.0
+
+	var tween := create_tween()
+	tween.tween_property(fade_out, "modulate:a", 1.0, 1.5)
+	
+	for child in bird_container.get_children():
+		child.queue_free()
+	
 	await get_tree().create_timer(3).timeout
 	
 	await serious_panel.say("Then the geese attacked.")
@@ -44,5 +82,7 @@ func _on_start_button_pressed() -> void:
 	await serious_panel.say("Crow magic is always a gamble")
 	await serious_panel.say("Whether it’s soaring through the air, gambling with crows, or fighting with geese, the only way forward is to spin.")
 	
+	serious_panel.say("A Serious Game, for a Serious Game Jam")
+	await get_tree().create_timer(2).timeout
 	GlobalSignalsManager.goose_fly_speed = 90
 	get_tree().change_scene_to_file(main)

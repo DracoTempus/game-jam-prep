@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://de61voyyxf4kp" path="res://Menus/title_screen.gd" id="1_ceki1"]
 [ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="2_nx5yy"]
 [ext_resource type="PackedScene" uid="uid://dixiaopgx6i75" path="res://Entities/Nest/Nest.tscn" id="2_ty4a4"]
+[ext_resource type="AudioStream" uid="uid://b1w45urdia6xo" path="res://Menus/Cute RPG - Dreamy Days (Loopable).ogg" id="3_a41he"]
+[ext_resource type="AudioStream" uid="uid://c7fsegburwycl" path="res://Menus/RPG Medieval Fantasy - Hymn Of Eternal Glory (Loopable).ogg" id="4_ehm80"]
 [ext_resource type="Texture2D" uid="uid://chquj0l10yr3x" path="res://Menus/explosion/simpleExplosion00.png" id="4_vu2q1"]
 [ext_resource type="Texture2D" uid="uid://nsffbmbkni76" path="res://Menus/explosion/simpleExplosion01.png" id="5_72ala"]
 [ext_resource type="Texture2D" uid="uid://bhy7mhtq1b2yj" path="res://Menus/explosion/simpleExplosion02.png" id="6_txut8"]
@@ -15075,9 +15077,6 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_txut8")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72ala"]
-bg_color = Color(0.17245829, 0.10855947, 0.28176475, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_crsfb"]
 atlas = ExtResource("14_txut8")
 region = Rect2(0, 0, 64, 64)
@@ -15550,7 +15549,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TitleScreen" type="Control" unique_id=1458155963 node_paths=PackedStringArray("explosion", "serious_panel")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72ala"]
+bg_color = Color(0.17245829, 0.10855947, 0.28176475, 1)
+
+[node name="TitleScreen" type="Control" unique_id=1458155963 node_paths=PackedStringArray("explosion", "serious_panel", "bird_container", "fade_out")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15561,6 +15563,10 @@ script = ExtResource("1_ceki1")
 enemy = ExtResource("2_nx5yy")
 explosion = NodePath("AnimatedSprite2D")
 serious_panel = NodePath("Panel")
+bird_container = NodePath("Birds")
+fade_out = NodePath("fadeout")
+music = ExtResource("3_a41he")
+bad_music = ExtResource("4_ehm80")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=734403192]
 position = Vector2(1200, 10)
@@ -15580,17 +15586,6 @@ tile_set = SubResource("TileSet_crsfb")
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1631515227]
 tile_map_data = PackedByteArray("AAADAAIAAAAKAAUAAAAEAAIAAAALAAUAAAADAAEAAAAKAAQAAAADAAMAAAAKAAYAAAAEAAEAAAALAAQAAAAEAAMAAAALAAYAAAA=")
 tile_set = SubResource("TileSet_crsfb")
-
-[node name="StartButton" type="Button" parent="." unique_id=1081561132]
-layout_mode = 0
-offset_left = 876.0
-offset_top = 507.0
-offset_right = 1108.0
-offset_bottom = 599.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 41
-theme_override_styles/normal = SubResource("StyleBoxFlat_72ala")
-text = "START"
 
 [node name="Birds" type="Node2D" parent="." unique_id=494376537]
 
@@ -15652,6 +15647,14 @@ scale = Vector2(2.7969468, 2.7969468)
 sprite_frames = SubResource("SpriteFrames_hiksj")
 autoplay = "default"
 
+[node name="fadeout" type="ColorRect" parent="." unique_id=693268412]
+visible = false
+layout_mode = 0
+offset_left = -97.0
+offset_top = -96.0
+offset_right = 1211.0
+offset_bottom = 717.0
+
 [node name="Panel" type="Panel" parent="." unique_id=1232467846 node_paths=PackedStringArray("rich_text_label")]
 layout_mode = 0
 offset_left = 32.0
@@ -15677,3 +15680,14 @@ Then the geese attacked.
 Now the \"day birds\" are almost extinct, and only a few pigeon eggs remain.
 The crows say they can make me stronger, if I bring them things worth trading.
 Whether it’s soaring through the air, gambling with crows, or fighting with geese, the only way forward is to spin."
+
+[node name="StartButton" type="Button" parent="." unique_id=1081561132]
+layout_mode = 0
+offset_left = 876.0
+offset_top = 507.0
+offset_right = 1108.0
+offset_bottom = 599.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_72ala")
+text = "START"
