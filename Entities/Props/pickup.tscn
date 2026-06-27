@@ -29,6 +29,8 @@ size = Vector2(22, 37)
 radius = 30.066593
 
 [node name="Pickup" type="RigidBody2D" unique_id=1710539211 node_paths=PackedStringArray("sprite", "pickup_area")]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_1jmn3")
 trash = Array[Texture2D]([ExtResource("2_ehxvg"), ExtResource("3_cdtke"), ExtResource("4_ocox4"), ExtResource("5_cj8p1"), ExtResource("6_h625p"), ExtResource("7_ixwht"), ExtResource("8_qjd6l"), ExtResource("9_0mtdw"), ExtResource("10_gp0uo")])
 shiny = Array[Texture2D]([ExtResource("11_vg5ld"), ExtResource("12_dmhd8"), ExtResource("13_tx2c3"), ExtResource("14_2hxt8"), ExtResource("15_mme3a"), ExtResource("16_2sbmg"), ExtResource("17_b7agu"), ExtResource("18_l055d"), ExtResource("19_recgk"), ExtResource("20_2brun"), ExtResource("21_kfkep")])
@@ -36,6 +38,7 @@ sprite = NodePath("Sprite2D")
 pickup_area = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=808059164]
+z_index = 100
 scale = Vector2(3, 3)
 texture = ExtResource("2_ehxvg")
 

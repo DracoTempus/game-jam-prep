@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdwt1aabrjpj8"
-path="res://.godot/imported/door_open_top.png-7e39581e162ab0d2f2af1d275b801e5b.ctex"
+uid="uid://bc5w0gx1asula"
+path="res://.godot/imported/PigeonNest.png-593b0fe904742a12f0f653ee77c235b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Common/Art/door_open_top.png"
-dest_files=["res://.godot/imported/door_open_top.png-7e39581e162ab0d2f2af1d275b801e5b.ctex"]
+source_file="res://Levels/Common/Art/PigeonNest.png"
+dest_files=["res://.godot/imported/PigeonNest.png-593b0fe904742a12f0f653ee77c235b4.ctex"]
 
 [params]
 

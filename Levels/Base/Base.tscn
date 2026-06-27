@@ -5,21 +5,22 @@
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
 [ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
 [ext_resource type="Texture2D" uid="uid://nkqj5m38tq7w" path="res://Levels/Common/Art/CorvidCasino.png" id="5_2g55m"]
+[ext_resource type="Script" uid="uid://bqljwgl4n3f4a" path="res://Levels/Base/startup.gd" id="5_n3211"]
 [ext_resource type="Texture2D" uid="uid://05ge6sw6t6mj" path="res://Levels/Common/Art/SlotMachine.png" id="5_y2sk1"]
 [ext_resource type="PackedScene" uid="uid://bjeqhgkg3158y" path="res://UI/TheHUD.tscn" id="6_7sk74"]
-[ext_resource type="Texture2D" uid="uid://d210wmslgivl4" path="res://Levels/Common/Art/retro-pixel-art-casino-table-with-chips-and-cards-in-a-vintage-gaming-setting-free-vector.jpg" id="6_l73k5"]
-[ext_resource type="Texture2D" uid="uid://bx5roto7tl2jd" path="res://Levels/Common/Art/tree1.png" id="7_domu3"]
+[ext_resource type="Script" uid="uid://c62kp2xyqn1us" path="res://Levels/Base/casinoDoorOut.gd" id="7_2g55m"]
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://bqcso6aj8cpyc" path="res://Levels/Common/Art/foreground-empty.png" id="9_55lwj"]
 [ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
 [ext_resource type="Texture2D" uid="uid://bc284pfo7ckh5" path="res://Levels/Common/Art/skyline-a.png" id="9_se8fb"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://bfsslvodkq3ts" path="res://Levels/Common/Art/skyline-b.png" id="10_n3211"]
-[ext_resource type="Texture2D" uid="uid://cdwt1aabrjpj8" path="res://Levels/Common/Art/door_open_top.png" id="13_n3211"]
 [ext_resource type="Shader" uid="uid://bqb05spb0tfru" path="res://Levels/Base/Tree.gdshader" id="13_ptnsy"]
 [ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPB/Sparrow/Sparrow.tscn" id="15_l73k5"]
 [ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPB/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
 [ext_resource type="PackedScene" uid="uid://dsq1gbp6oo6xp" path="res://UI/ExchangeUI.tscn" id="20_se8fb"]
+[ext_resource type="Texture2D" uid="uid://cn6wwkibk132x" path="res://Entities/Common/Art/keyboard_e_outline.png" id="22_y2sk1"]
+[ext_resource type="Texture2D" uid="uid://uutwvl286hql" path="res://Entities/Common/Art/keyboard_e.png" id="23_2g55m"]
 [ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
 [ext_resource type="PackedScene" uid="uid://dixiaopgx6i75" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
@@ -36,8 +37,25 @@ size = Vector2(39, 3113)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2l1"]
 size = Vector2(2039, 403)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y2sk1"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_domu3"]
-size = Vector2(51.200165, 99.70543)
+size = Vector2(156.71313, 152.3027)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2g55m"]
+resource_name = "Blink"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_y2sk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2g55m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2g55m"]
 atlas = ExtResource("5_y2sk1")
@@ -343,31 +361,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="ground_shape"]
 size = Vector2(5724, 160)
 
-[sub_resource type="Shader" id="Shader_ptnsy"]
-code = "shader_type canvas_item;
-
-uniform float speed = 1.5;
-uniform float sway_amount = 65.0;
-
-uniform float pinned_from_y = 0.55;
-
-uniform float top_power = 1.5;
-
-void vertex() {
-	float wave = sin(TIME * speed);
-
-	float top_weight = clamp((pinned_from_y - UV.y) / pinned_from_y, 0.0, 1.0);
-	top_weight = pow(top_weight, top_power);
-
-	VERTEX.x += wave * sway_amount * top_weight;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2sk1"]
-shader = SubResource("Shader_ptnsy")
-shader_parameter/speed = 1.5
-shader_parameter/sway_amount = 65.0
-shader_parameter/pinned_from_y = 0.65
-shader_parameter/top_power = 1.5
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g55m"]
+size = Vector2(91, 15)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ptnsy"]
 shader = ExtResource("13_ptnsy")
@@ -379,6 +374,24 @@ shader_parameter/top_power = 1.5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2sk1"]
 size = Vector2(1553, 3142)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3211"]
+bg_color = Color(0.94586056, 0.8088882, 0.42037296, 0.13725491)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxws1"]
+resource_name = "Blink"
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_y2sk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2g55m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Base" type="Node2D" unique_id=1102677110]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1987423094]
@@ -387,24 +400,21 @@ position = Vector2(65, -2165)
 [node name="Systems" type="Node" parent="." unique_id=600708282]
 
 [node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent") instance=ExtResource("spawner_scene")]
-position = Vector2(1221, 0)
+position = Vector2(1111, -1770)
 enemy_object = ExtResource("enemy_scene")
 entities_parent = NodePath("../../Entities/Enemies")
-min_x = 50.0
-max_x = 1200.0
+min_x = 100.0
+max_x = 1000.0
 min_y = -2000.0
 max_y = -400.0
-spawn_interval = 3.0
-auto_spawn = true
-
-[node name="BGMusic" type="AudioStreamPlayer" parent="Systems" unique_id=444833261]
-stream = ExtResource("1_aygd2")
-volume_db = -10.0
-autoplay = true
-mix_target = 1
+wave_enemy_counts = Array[int]([10, 25, 40, 75, 100])
 
 [node name="GlobalSignalsManager" type="Node" parent="Systems" unique_id=1940544452]
 script = ExtResource("2_r3r0t")
+
+[node name="StartupLevel" type="Node" parent="Systems" unique_id=2007595335]
+script = ExtResource("5_n3211")
+bg_music = ExtResource("1_aygd2")
 
 [node name="World" type="Node2D" parent="." unique_id=1407682078]
 
@@ -461,44 +471,45 @@ shape = SubResource("RectangleShape2D_vt2l1")
 position = Vector2(1683.8, 317.75)
 scale = Vector2(0.6960938, 0.6960938)
 texture = ExtResource("5_2g55m")
-hframes = 2
+hframes = 3
+frame = 1
 
 [node name="CorvidCasino2" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=2132838662]
 position = Vector2(976, 318.00003)
 scale = Vector2(0.6960938, 0.6960938)
 texture = ExtResource("5_2g55m")
-hframes = 2
-frame = 1
+hframes = 3
+frame = 2
 
 [node name="CorvidCasino3" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=1769691008]
 position = Vector2(269, 318.00003)
 scale = Vector2(0.6960938, 0.6960938)
 texture = ExtResource("5_2g55m")
-hframes = 2
-frame = 1
-
-[node name="RetroPixelArtCasinoTableWithChipsAndCardsInAVintageGamingSettingFreeVector" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=946023866]
-position = Vector2(871.5, 404)
-scale = Vector2(0.21632653, 0.21632653)
-texture = ExtResource("6_l73k5")
+hframes = 3
 
 [node name="CasinoOutDoor" type="Sprite2D" parent="World/Level/InsideCasinoBorders" unique_id=492895542]
-position = Vector2(-18, 427.00003)
-scale = Vector2(0.7421869, 0.7421869)
-texture = ExtResource("13_n3211")
+position = Vector2(959.0001, 343)
+scale = Vector2(1.7420373, 1.7420373)
+texture = SubResource("CompressedTexture2D_y2sk1")
 
 [node name="Area2D" type="Area2D" parent="World/Level/InsideCasinoBorders/CasinoOutDoor" unique_id=727205521 node_paths=PackedStringArray("target", "camera", "camera_bounds")]
-script = ExtResource("10_7p5xg")
+script = ExtResource("7_2g55m")
 target = NodePath("InsideCasino")
 camera = NodePath("../../../../../Entities/Player/AlfredHitchcock")
 camera_bounds = NodePath("../../../MainLevelArea/MainCameraBounds")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/InsideCasinoBorders/CasinoOutDoor/Area2D" unique_id=1475972874]
-position = Vector2(8.0842285, 13.473694)
+position = Vector2(7.175537, -12.824936)
 shape = SubResource("RectangleShape2D_domu3")
 
 [node name="InsideCasino" type="Marker2D" parent="World/Level/InsideCasinoBorders/CasinoOutDoor/Area2D" unique_id=781310901]
-position = Vector2(-2186.7808, -816.506)
+position = Vector2(-1481.0245, -278.98364)
+
+[node name="blinkingE" type="AnimatedSprite2D" parent="World/Level/InsideCasinoBorders/CasinoOutDoor/Area2D" unique_id=1642729738]
+position = Vector2(9.184603, -22.38758)
+scale = Vector2(0.46874997, 0.46874997)
+sprite_frames = SubResource("SpriteFrames_2g55m")
+autoplay = "default"
 
 [node name="SlotMachine3" type="AnimatedSprite2D" parent="World/Level/InsideCasinoBorders" unique_id=1855940157]
 position = Vector2(678, 428)
@@ -507,7 +518,7 @@ autoplay = "default"
 frame_progress = 0.90451163
 
 [node name="SlotMachine4" type="AnimatedSprite2D" parent="World/Level/InsideCasinoBorders" unique_id=1429155793]
-position = Vector2(1108, 428)
+position = Vector2(1374, 428)
 sprite_frames = SubResource("SpriteFrames_pllbf")
 autoplay = "default"
 frame_progress = 0.90451163
@@ -525,13 +536,13 @@ autoplay = "default"
 frame_progress = 0.90451163
 
 [node name="SlotMachine7" type="AnimatedSprite2D" parent="World/Level/InsideCasinoBorders" unique_id=1589137722]
-position = Vector2(1108, 428)
+position = Vector2(1560, 428)
 sprite_frames = SubResource("SpriteFrames_pllbf")
 autoplay = "default"
 frame_progress = 0.90451163
 
 [node name="SlotMachine8" type="AnimatedSprite2D" parent="World/Level/InsideCasinoBorders" unique_id=447053167]
-position = Vector2(1386, 411)
+position = Vector2(1957, 409)
 scale = Vector2(1.2734375, 1.2734375)
 sprite_frames = SubResource("SpriteFrames_hdstr")
 autoplay = "default"
@@ -568,6 +579,8 @@ texture = ExtResource("9_55lwj")
 
 [node name="Ground" type="StaticBody2D" parent="World/Level/MainLevelArea" unique_id=36474092]
 position = Vector2(1200, 600)
+collision_layer = 4294967295
+collision_mask = 4294967295
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/Ground" unique_id=1137871754]
 position = Vector2(1662, 0)
@@ -597,16 +610,26 @@ position = Vector2(-0.5, -1197.5)
 shape = SubResource("wall_shape")
 
 [node name="Props" type="Node2D" parent="World/Level/MainLevelArea" unique_id=2001031275]
+z_as_relative = false
 
-[node name="Nest" parent="World/Level/MainLevelArea/Props" unique_id=22503869 instance=ExtResource("nest_scene")]
+[node name="Nest" parent="World/Level/MainLevelArea/Props" unique_id=22503869 node_paths=PackedStringArray("Daytime_fake_panel", "sleep_ui", "dont_wave", "wave_spawner") instance=ExtResource("nest_scene")]
 z_index = 25
-position = Vector2(347, 291)
+position = Vector2(333, 290)
+Daytime_fake_panel = NodePath("../../../../../HUDLayer/HudRoot/Panel")
+sleep_ui = NodePath("../../../../../HUDLayer/HudRoot/StartWave")
+dont_wave = NodePath("../../../../../HUDLayer/HudRoot/DontWave")
+wave_spawner = NodePath("../../../../../Systems/Spawner")
 
-[node name="Tree1" type="Sprite2D" parent="World/Level/MainLevelArea/Props" unique_id=1074996878]
-material = SubResource("ShaderMaterial_y2sk1")
-position = Vector2(238, 278.00003)
-scale = Vector2(0.17381658, 0.17381658)
-texture = ExtResource("7_domu3")
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Level/MainLevelArea/Props" unique_id=713626716]
+position = Vector2(1362, -308)
+scale = Vector2(1.7420373, 1.7420373)
+collision_layer = 301989887
+collision_mask = 838860799
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Level/MainLevelArea/Props/StaticBody2D" unique_id=527031254]
+position = Vector2(0.5, 28.5)
+shape = SubResource("RectangleShape2D_2g55m")
+one_way_collision = true
 
 [node name="Tree2" type="Sprite2D" parent="World/Level/MainLevelArea/Props" unique_id=1049208972]
 material = SubResource("ShaderMaterial_ptnsy")
@@ -629,7 +652,7 @@ position = Vector2(0, 62.25)
 shape = SubResource("RectangleShape2D_domu3")
 
 [node name="InsideCasino" type="Marker2D" parent="World/Level/MainLevelArea/Casinoplaceholder/Area2D" unique_id=887802340]
-position = Vector2(1810, 875)
+position = Vector2(2590, 839)
 
 [node name="MainCameraBounds" type="Area2D" parent="World/Level/MainLevelArea" unique_id=785004763]
 
@@ -645,10 +668,10 @@ shape = SubResource("RectangleShape2D_y2sk1")
 position = Vector2(3469, 443)
 
 [node name="SparrowNPC2" parent="Entities/NPCs" unique_id=683011082 instance=ExtResource("15_l73k5")]
-position = Vector2(4026, 443)
+position = Vector2(4276, 443)
 
 [node name="CrowShinyExchange" parent="Entities/NPCs" unique_id=1477779174 instance=ExtResource("16_55lwj")]
-position = Vector2(4309, 483)
+position = Vector2(4888, 483)
 
 [node name="Player" type="Node" parent="Entities" unique_id=1538828935]
 
@@ -661,7 +684,8 @@ script = ExtResource("4_eu82j")
 target = NodePath("../TheRealMc")
 current_bounds = NodePath("../../../World/Level/MainLevelArea/MainCameraBounds")
 
-[node name="Enemies" type="Node" parent="Entities" unique_id=494760497]
+[node name="Enemies" type="Node2D" parent="Entities" unique_id=654977489]
+z_index = 30
 
 [node name="Effects" type="Node2D" parent="." unique_id=822866659]
 
@@ -673,12 +697,72 @@ anchors_preset = 0
 offset_left = -3.0
 offset_right = -3.0
 
+[node name="Panel" type="Panel" parent="HUDLayer/HudRoot" unique_id=1800747838]
+layout_mode = 0
+offset_left = -55.0
+offset_top = -2794.0
+offset_right = 1561.0
+offset_bottom = 688.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n3211")
+
 [node name="TheHud" parent="HUDLayer/HudRoot" unique_id=302070295 instance=ExtResource("6_7sk74")]
 layout_mode = 1
+offset_top = 2.0
+offset_bottom = 2.0
 
 [node name="ExchangeUi" parent="HUDLayer/HudRoot" unique_id=1214968568 instance=ExtResource("20_se8fb")]
 visible = false
 layout_mode = 1
+
+[node name="StartWave" type="Control" parent="HUDLayer/HudRoot" unique_id=968781810]
+anchors_preset = 0
+offset_left = 243.0
+offset_top = 190.0
+offset_right = 620.0
+offset_bottom = 331.0
+
+[node name="Panel" type="Panel" parent="HUDLayer/HudRoot/StartWave" unique_id=1701632452]
+layout_mode = 0
+offset_right = 362.0
+offset_bottom = 81.0
+
+[node name="Label" type="Label" parent="HUDLayer/HudRoot/StartWave/Panel" unique_id=2016227685]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 354.0
+offset_bottom = 78.0
+text = "Sleep till daytime? (Geese attack in the day)"
+
+[node name="blinkingE" type="AnimatedSprite2D" parent="HUDLayer/HudRoot/StartWave/Panel" unique_id=226967397]
+position = Vector2(318, 58)
+scale = Vector2(0.46874997, 0.46874997)
+sprite_frames = SubResource("SpriteFrames_oxws1")
+autoplay = "default"
+
+[node name="DontWave" type="Control" parent="HUDLayer/HudRoot" unique_id=880064611]
+anchors_preset = 0
+offset_left = 243.0
+offset_top = 190.0
+offset_right = 620.0
+offset_bottom = 331.0
+
+[node name="Panel" type="Panel" parent="HUDLayer/HudRoot/DontWave" unique_id=148759940]
+layout_mode = 0
+offset_right = 362.0
+offset_bottom = 81.0
+
+[node name="Label" type="Label" parent="HUDLayer/HudRoot/DontWave/Panel" unique_id=1046298392]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 354.0
+offset_bottom = 78.0
+text = "I shouldn't sleep before trading my shinies to the crows at the casino."
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="HUDLayer/HudRoot" unique_id=1137413695]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]
 

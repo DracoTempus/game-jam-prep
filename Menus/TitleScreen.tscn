@@ -15792,7 +15792,8 @@ Thanks to Juniper Dev
 ansimuz.itch.io - Cyber Street Background
 aeynit.itch.io - trees
 Kenny - input icons
-Jon Murphy and Dana Dolat - Cheerleading"
+Jon Murphy and Dana Dolat - Cheerleading
+Nouh Al-Qudah - Idea to do the Jam and some scipts to get started"
 label_settings = SubResource("LabelSettings_ybnuh")
 horizontal_alignment = 1
 
@@ -15821,8 +15822,10 @@ Then the geese attacked.
 Now the \"day birds\" are almost extinct, and only a few pigeon eggs remain.
 The crows say they can make me stronger, if I bring them things worth trading.
 Whether it’s soaring through the air, gambling with crows, or fighting with geese, the only way forward is to spin."
+scroll_active = false
+shortcut_keys_enabled = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel" unique_id=1137757677]
+[node name="spacebar" type="AnimatedSprite2D" parent="Panel" unique_id=1137757677]
 position = Vector2(452.00003, 136)
 scale = Vector2(0.9140625, 0.7265624)
 sprite_frames = SubResource("SpriteFrames_pwxu7")

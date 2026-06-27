@@ -9,6 +9,7 @@ var waiting_for_input := false
 
 func _ready() -> void:
 	hide()
+	rich_text_label.add_theme_font_size_override("normal_font_size", 22)
 
 
 func say(text: String) -> void:

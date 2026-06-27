@@ -43,17 +43,16 @@ _data = {
 &"RESET": SubResource("Animation_umbwq")
 }
 
-[sub_resource type="RectangleShape2D" id="body_shape"]
-size = Vector2(40, 41)
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5euc"]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=194447640 groups=["Enemies"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 4
 script = ExtResource("1_enemy")
 pickup_scene = ExtResource("2_m5euc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=906358451]
-z_index = 25
+z_index = 45
 texture = ExtResource("2_umbwq")
 hframes = 5
 vframes = 2
@@ -62,9 +61,9 @@ vframes = 2
 libraries/ = SubResource("AnimationLibrary_jm2y4")
 autoplay = &"FlyingAnimation"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1147904022]
-position = Vector2(0, 0.5)
-shape = SubResource("body_shape")
-
 [node name="Health" type="Node" parent="." unique_id=1213500948]
 script = ExtResource("2_health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1656593209]
+scale = Vector2(2.8400002, 2.8400002)
+shape = SubResource("CircleShape2D_m5euc")

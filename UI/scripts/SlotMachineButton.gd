@@ -205,33 +205,28 @@ func check_each_cell() -> void:
 			var reward_string: String = ""
 			match reward_name:
 				"Duck":
-					print("Duck found at reel ", reel_index, " row ", row_index)
 					reward_string = "Fly Speed+ and Nest+"
-					GlobalSignalsManager.fly_speed += 3
+					GlobalSignalsManager.fly_speed += 6
 					GlobalSignalsManager.nest_max_health +=1
 
 				"Penguin":
-					print("Penguin found at reel ", reel_index, " row ", row_index)
 					reward_string = "Ground Speed++ and Nest+"
-					GlobalSignalsManager.ground_speed +=6
+					GlobalSignalsManager.ground_speed +=12
 					GlobalSignalsManager.nest_max_health +=1
 				
 				"Parrot":
-					print("Penguin found at reel ", reel_index, " row ", row_index)
 					reward_string = "Shiny +1"
 					shinies +=1
 					update_shiny_label()
 				
 				"Owl":
-					print("Penguin found at reel ", reel_index, " row ", row_index)
 					reward_string = "Damage+ and Fly Speed+"
-					GlobalSignalsManager.fly_speed += 3
+					GlobalSignalsManager.fly_speed += 5
 					GlobalSignalsManager.attack_damage += .1
 					
 				"Chicken":
-					print("Penguin found at reel ", reel_index, " row ", row_index)
 					reward_string = "Damage++"
-					GlobalSignalsManager.attack_damage += .2
+					GlobalSignalsManager.attack_damage += .3
 					
 				"Giraffe":
 					is_bad = true
@@ -240,8 +235,9 @@ func check_each_cell() -> void:
 					
 				"Buffalo":
 					is_bad = true
-					reward_string = "Geese Speed+"
-					GlobalSignalsManager.goose_fly_speed += 1
+					reward_string = "Geese Speed+ and Geese Health+"
+					GlobalSignalsManager.goose_fly_speed += 5
+					GlobalSignalsManager.goose_start_health += 0.25
 					
 				"Hippo":
 					is_bad = true
@@ -276,18 +272,18 @@ func check_each_row() -> void:
 			match reward_name:
 				"Duck":
 					reward_string = "Fly Speed++++ and Nest++++"
-					GlobalSignalsManager.fly_speed += 45
+					GlobalSignalsManager.fly_speed += 66
 					GlobalSignalsManager.nest_max_health +=5
 
 				"Penguin":
 					reward_string = "Ground Speed+++ and Nest++"
-					GlobalSignalsManager.ground_speed +=32
+					GlobalSignalsManager.ground_speed +=55
 					GlobalSignalsManager.nest_max_health +=3
 					
 				"Parrot":
 					reward_string = "Thrust Power+++ and Flight Time+++"
-					GlobalSignalsManager.fly_add_time +=.25
-					GlobalSignalsManager.max_fly_time +=.5
+					GlobalSignalsManager.fly_add_time +=.35
+					GlobalSignalsManager.max_fly_time += 1
 					
 				"Owl":
 					reward_string = "Goose Damage--"
@@ -315,7 +311,7 @@ func check_each_row() -> void:
 				"Sloth":
 					is_bad = true
 					reward_string = "Fly Speed-- and Ground Speed--"
-					GlobalSignalsManager.fly_speed -= 20
+					GlobalSignalsManager.fly_speed -= 10
 					GlobalSignalsManager.ground_speed -= 10
 				_:
 					print("Unknown reward: ", reward_name)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d210wmslgivl4"
-path="res://.godot/imported/retro-pixel-art-casino-table-with-chips-and-cards-in-a-vintage-gaming-setting-free-vector.jpg-6d546e71d4b0f3e28415377cb04aa66c.ctex"
+uid="uid://hcpouk5e3o23"
+path="res://.godot/imported/yellowHappy.png-669a51f2c9b8f82cd4f8a1c0dabfe51c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Common/Art/retro-pixel-art-casino-table-with-chips-and-cards-in-a-vintage-gaming-setting-free-vector.jpg"
-dest_files=["res://.godot/imported/retro-pixel-art-casino-table-with-chips-and-cards-in-a-vintage-gaming-setting-free-vector.jpg-6d546e71d4b0f3e28415377cb04aa66c.ctex"]
+source_file="res://Menus/yellowHappy.png"
+dest_files=["res://.godot/imported/yellowHappy.png-669a51f2c9b8f82cd4f8a1c0dabfe51c.ctex"]
 
 [params]
 

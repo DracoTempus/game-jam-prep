@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform float speed = 1.5;
-uniform float sway_amount = 25.0;
+uniform float speed = .75;
+uniform float sway_amount = 15.0;
 
 uniform float pinned_from_y = 0.55;
 

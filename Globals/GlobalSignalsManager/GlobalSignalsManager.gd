@@ -4,14 +4,30 @@ signal player_health_changed(current: float, max: float)
 signal player_died
 signal nest_health_changed(current: float, max: float)
 signal nest_destroyed
-signal wave_cleared
+signal day_finished
+signal day_started
+signal game_win
+signal shinies_changed(current: int)
+signal trash_changed(current: int)
+signal enemies_changed(current: int)
 
-@export_group("Global Variables")
-@export var is_day_time = true
 
 @export_group("Player Stats")
-@export var trash: int = 0
-@export var shinies: int = 1
+@export var trash: int = 0:
+	set(value):
+		if trash == value:
+			return
+
+		trash = value
+		trash_changed.emit(trash)
+
+@export var shinies: int = 0:
+	set(value):
+		if shinies == value:
+			return
+
+		shinies = value
+		shinies_changed.emit(shinies)
 
 @export_group("Nest Stats")
 @export var nest_max_health: float = 3.0
@@ -28,15 +44,16 @@ signal wave_cleared
 @export var attack_damage: float = 1.0
 
 @export_group("Wave")
+@export var is_day_time = false
 @export var wave_size: int = 5
 @export var goose_fly_speed: float = 90.0
 @export var goose_peck_damage: float = 1.0
 @export var goose_start_health: float = 3.0
 
-var _enemies_killed: int = 0
+@export var enemies: int = 0:
+	set(value):
+		if enemies == value:
+			return
 
-func enemy_was_killed() -> void:
-	_enemies_killed += 1
-	if _enemies_killed >= wave_size:
-		_enemies_killed = 0
-		wave_cleared.emit()
+		enemies = value
+		enemies_changed.emit(enemies)

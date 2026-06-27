@@ -1,42 +1,25 @@
 extends CharacterBody2D
 
-# A simple enemy.
-# It flies toward the nest, pecks the nest when it gets there,
-# and hurts the player if they touch it. The player can kill it
-# with melee attacks (see MeleeAttack.gd).
+@export var peck_interval: float = 1.0 
+@export var peck_range: float = 60.0
 
-# Nest pecking.
-@export var peck_interval: float = 1.0    # seconds between pecks
-@export var peck_range: float = 60.0      # how close it must be to peck
-
-# Touching the player.
-@export var contact_damage: float = 1.0     # damage when it touches the player
-@export var contact_cooldown: float = 1.0   # seconds before it can hurt again
+@export var contact_damage: float = 1.0
+@export var contact_cooldown: float = 1.0 
 
 @onready var health: Health = $Health
 @export var pickup_scene: PackedScene
 
 var pickup_drop_chance: float = 0.3
-
-# Filled in _ready: the nest we are attacking.
 var nest: Node2D = null
-
-# Timers that count down.
 var peck_timer: float = 0.0
 var contact_timer: float = 0.0
 
-
 func _ready() -> void:
-	# When our health runs out, die.
-	# (The spawner sets the total wave size, not each enemy.)
 	health.died.connect(_on_died)
-
-	# Find the nest by its group.
 	nest = get_tree().get_first_node_in_group("nest")
 
 
 func _physics_process(delta: float) -> void:
-	# Tick down our timers.
 	if peck_timer > 0.0:
 		peck_timer -= delta
 	if contact_timer > 0.0:
@@ -96,5 +79,4 @@ func spawn_pickup() -> void:
 
 func _on_died() -> void:
 	await spawn_pickup()
-	GlobalSignalsManager.enemy_was_killed()
 	queue_free()

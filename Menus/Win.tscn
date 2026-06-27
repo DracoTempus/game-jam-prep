@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ci5aljcp56d7u"]
+
+[ext_resource type="Texture2D" uid="uid://hcpouk5e3o23" path="res://Menus/yellowHappy.png" id="1_ojoh4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_towt6"]
+font_size = 24
+font_color = Color(1, 0.64705884, 1, 1)
+
+[node name="Win" type="Control" unique_id=1945812634]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=996089795]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 80.0
+offset_right = 982.0
+offset_bottom = 571.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=873398841]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 73.0
+offset_right = 800.0
+offset_bottom = 339.0
+text = "You won and saved the pigeons and got rid of those geese
+
+Thanks for playing
+By Jasmin and Matthew Fonggrasin
+--KawaiiMeCreations--"
+label_settings = SubResource("LabelSettings_towt6")
+horizontal_alignment = 1
+
+[node name="YellowHappy" type="Sprite2D" parent="Panel" unique_id=837519049]
+position = Vector2(410, 368)
+scale = Vector2(0.120204374, 0.1202044)
+texture = ExtResource("1_ojoh4")

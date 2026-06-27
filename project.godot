@@ -10,18 +10,22 @@ config_version=5
 
 [application]
 
-config/name="GameJamPrep"
+config/name="GameJamPigeonCopter"
+config/description="Game made for the Very Serious Game Jam"
 run/main_scene="uid://bogmab38q5u8c"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-boot_splash/bg_color=Color(1, 1, 1, 1)
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(1, 1, 0.5294118, 1)
+boot_splash/image="uid://hcpouk5e3o23"
+config/icon="uid://hcpouk5e3o23"
 
 [autoload]
 
 GlobalSignalsManager="*uid://dgoj3kql0tqis"
+Musicplayer="*uid://dj5al1erke8it"
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 
 [editor_plugins]

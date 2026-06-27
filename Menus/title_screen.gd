@@ -35,12 +35,12 @@ func _ready() -> void:
 	
 	start_button.pressed.connect(_on_start_button_pressed)
 	serious_panel.hide()
-	fade_out.modulate.a = 0.0
+	fade_out.modulate.a = 0
 	fade_out.visible = true
 
 func _on_start_button_pressed() -> void:
 	start_button.disabled = true
-
+	start_button.modulate.a = 0
 	await serious_panel.say("The first time I flew, every pigeon in the park stopped eating.'Wow. You are weird. That isn’t how a bird flies.'")
 	await serious_panel.say("They were right. I didn’t glide. I didn’t flap.")
 	await serious_panel.say("I hovered, wobbled, and chopped through the air like the human machine.")
@@ -90,6 +90,6 @@ func _on_start_button_pressed() -> void:
 	var intro_tween := create_tween()
 	intro_tween.tween_property(intro, "modulate:a", 1.0, 1.2)
 
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(5).timeout
 	GlobalSignalsManager.goose_fly_speed = 90
 	get_tree().change_scene_to_file(main)
