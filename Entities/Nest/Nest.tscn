@@ -15,9 +15,6 @@ shader_parameter/top_power = 1.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytn2g"]
 radius = 144.12494
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_20jrx"]
-size = Vector2(91, 15)
-
 [node name="Nest" type="Node2D" unique_id=1346990350 node_paths=PackedStringArray("health", "interact_area") groups=["nest"]]
 script = ExtResource("1_nest")
 health = NodePath("Health")
@@ -37,12 +34,3 @@ script = ExtResource("2_ytn2g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=111896838]
 z_index = 100
 shape = SubResource("CircleShape2D_ytn2g")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1416057408]
-collision_layer = 301989887
-collision_mask = 838860799
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1965794416]
-position = Vector2(0.5, 28.5)
-shape = SubResource("RectangleShape2D_20jrx")
-one_way_collision = true

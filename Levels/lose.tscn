@@ -52,9 +52,9 @@ autowrap_mode = 3
 
 [node name="Button" type="Button" parent="Control" unique_id=1233950948]
 layout_mode = 0
-offset_left = 419.0
+offset_left = 412.0
 offset_top = 213.0
-offset_right = 537.5484
+offset_right = 579.0
 offset_bottom = 262.0
-text = "RESTART"
+text = "Refresh to try again"
 script = ExtResource("2_sddk2")

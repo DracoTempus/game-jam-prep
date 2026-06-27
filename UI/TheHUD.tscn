@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://byrof55di523r" path="res://UI/shinies_label.gd" id="3_6q56h"]
 [ext_resource type="Texture2D" uid="uid://bc5w0gx1asula" path="res://Levels/Common/Art/PigeonNest.png" id="3_no0yg"]
 [ext_resource type="Script" uid="uid://bndtwsb3w3eji" path="res://UI/trash_label.gd" id="3_oqgkd"]
+[ext_resource type="Texture2D" uid="uid://c1hkfws7d7tgd" path="res://Entities/Common/Art/Trash/box.png" id="4_vdka8"]
 [ext_resource type="Script" uid="uid://lnnl5edyxg18" path="res://UI/enemies_label.gd" id="5_k851w"]
+[ext_resource type="Texture2D" uid="uid://ggo8elpcjquw" path="res://Entities/Common/Art/shiny/ShinyDrops2.png" id="8_tsgo2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no0yg"]
 bg_color = Color(1, 1, 1, 0.7254902)
@@ -69,21 +71,40 @@ show_percentage = false
 script = ExtResource("2_health")
 target = "nest"
 
+[node name="Panel" type="Panel" parent="." unique_id=1688972609]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 594.0
+offset_right = 1128.0
+offset_bottom = 637.0
+
 [node name="trash" type="Label" parent="." unique_id=2096427140]
 layout_mode = 0
-offset_left = 869.0
-offset_top = 598.0
-offset_right = 981.0
-offset_bottom = 642.0
+offset_left = 890.0
+offset_top = 604.0
+offset_right = 1002.0
+offset_bottom = 648.0
+text = "Trash: 1"
 script = ExtResource("3_oqgkd")
+
+[node name="Box" type="Sprite2D" parent="trash" unique_id=761816940]
+position = Vector2(-20, 11)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("4_vdka8")
 
 [node name="Shinies" type="Label" parent="." unique_id=1931466719]
 layout_mode = 0
 offset_left = 1027.0
-offset_top = 598.0
+offset_top = 603.0
 offset_right = 1139.0
-offset_bottom = 642.0
+offset_bottom = 647.0
+text = "Shinies:1"
 script = ExtResource("3_6q56h")
+
+[node name="ShinyDrops2" type="Sprite2D" parent="Shinies" unique_id=738734645]
+position = Vector2(-21, 13)
+scale = Vector2(0.859375, 0.859375)
+texture = ExtResource("8_tsgo2")
 
 [node name="PigeonNest" type="Sprite2D" parent="." unique_id=1260845077]
 position = Vector2(67, 35)

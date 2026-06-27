@@ -388,7 +388,7 @@ font_size = 11
 size = Vector2(43.989532, 46.554832)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3211"]
-bg_color = Color(0.94586056, 0.8088882, 0.42037296, 0.13725491)
+bg_color = Color(0.89411765, 0.74509805, 0.30980393, 0.3137255)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oxws1"]
 resource_name = "Blink"
@@ -422,17 +422,17 @@ position = Vector2(65, -2165)
 [node name="Systems" type="Node" parent="." unique_id=600708282]
 
 [node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent", "wave_panel", "wave_label") instance=ExtResource("spawner_scene")]
-position = Vector2(1111, -1770)
+position = Vector2(324, 300)
 enemy_object = ExtResource("enemy_scene")
 entities_parent = NodePath("../../Entities/Enemies")
-min_x = 100.0
+min_x = -300.0
 max_x = 1000.0
-min_y = -2000.0
-max_y = -400.0
-wave_enemy_counts = Array[int]([15, 31, 62, 125, 253, 514])
+min_y = -1500.0
+max_y = 450.0
+wave_enemy_counts = Array[int]([15, 25, 55, 85, 115, 145])
 wave_panel = NodePath("../../HUDLayer/HudRoot/WaveLabel")
 wave_label = NodePath("../../HUDLayer/HudRoot/WaveLabel/Label")
-text_lines = Array[String](["Crows said, the geese will quit coming if enough are defeated...", "Morning, here they come.", "Thats a lot. You brought a gaggle. I brought rotors.", "Now they are getting serious.", "How many more will they lose to my wings.", "That many honks means they’re scared. This should be the end."])
+text_lines = Array[String](["Crows said, the geese will quit coming if enough are defeated...", "Morning, here they come.", "Thats a lot. You brought a gaggle. I brought rotors.", "Now they are getting serious.", "How many more geese will they lose to my wings.", "That many honks means they’re scared. This should be the end."])
 
 [node name="GlobalSignalsManager" type="Node" parent="Systems" unique_id=1940544452]
 script = ExtResource("2_r3r0t")
@@ -986,7 +986,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_oxws1")
 [node name="Label" type="Label" parent="HUDLayer/HudRoot/HowToPlay" unique_id=1938463659]
 layout_mode = 0
 offset_left = -70.0
-offset_top = 30.0
+offset_top = 26.0
 offset_right = 713.0
 offset_bottom = 461.0
 text = "Geese will attack during the day.  
@@ -995,7 +995,8 @@ Trash repairs your nest at the end of the day.
 
 Use shinies picked up from fighting geese to use corvid magic and upgrade stats.
 
-You need to keep constant thrust to stay flying. Press SPACE to fly.
+You need to keep constant thrust to stay flying. Press SPACE to add thrust. 
+WASD to move in the air.
 
 Nest is to the left, and the casino is high up to the right.
 
@@ -1024,7 +1025,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]
-process_mode = 2
 
 [node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=1501450840]
 visible = false

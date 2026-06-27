@@ -43,14 +43,32 @@ func spawn_enemy() -> Node:
 		push_warning("Spawner has no enemy_object assigned.")
 		return null
 
-	var enemy := enemy_object.instantiate()
+	var forbidden_center := Vector2(350, 300)
+	var forbidden_radius := 500.0
+	var spawn_position := Vector2.ZERO
 
-	var random_x := randf_range(min_x, max_x)
-	var random_y := randf_range(min_y, max_y)
-	enemy.global_position = Vector2(random_x, random_y)
+	var max_attempts := 50
+	var found_position := false
+
+	for i in max_attempts:
+		var random_x := randf_range(min_x, max_x)
+		var random_y := randf_range(min_y, max_y)
+		spawn_position = Vector2(random_x, random_y)
+
+		if spawn_position.distance_to(forbidden_center) >= forbidden_radius:
+			found_position = true
+			break
+
+	if not found_position:
+		push_warning("Could not find valid spawn position outside forbidden radius.")
+		return null
+
+	var enemy := enemy_object.instantiate()
 
 	var parent := entities_parent if entities_parent != null else get_parent()
 	parent.add_child(enemy)
+
+	enemy.global_position = spawn_position
 
 	return enemy
 
@@ -84,7 +102,7 @@ func run_wave(wave_index: int) -> void:
 
 	GlobalSignalsManager.day_started.emit()
 
-	await show_wave_panel(text_lines[wave_index])
+	await show_wave_panel("Day "+ str(wave_number) +" of " + str(wave_enemy_counts.size()) +"\n" + text_lines[wave_index])
 
 	alive_enemies = 0
 	GlobalSignalsManager.enemies = enemy_count

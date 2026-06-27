@@ -30,8 +30,8 @@ signal stats_changed
 		shinies_changed.emit(shinies)
 
 @export_group("Nest Stats")
-@export var nest_max_health: float = 3.0
-@export var nest_current_health: float = 3.0
+@export var nest_max_health: float = 10.0
+@export var nest_current_health: float = 10.0
 
 @export_group("Character Stats")
 @export var fly_time_left: float = 0.0

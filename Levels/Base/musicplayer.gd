@@ -13,7 +13,7 @@ func play_music(track: AudioStream, volume_db: float = -10.0) -> void:
 
 	music_player.stop()
 	music_player.stream = track
-	music_player.volume_db = volume_db
+	music_player.volume_db = -6.0
 	music_player.play()
 
 
