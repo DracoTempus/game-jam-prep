@@ -9,6 +9,7 @@ extends Control
 @export var serious_panel: Panel
 @export var bird_container: Node2D
 @export var fade_out: ColorRect
+@export var intro: Label
 
 @export var music: AudioStream
 @export var bad_music: AudioStream
@@ -19,6 +20,7 @@ extends Control
 var music_player: AudioStreamPlayer
 
 func _ready() -> void:
+	intro.modulate.a = 0.0
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
 
@@ -44,7 +46,7 @@ func _on_start_button_pressed() -> void:
 	await serious_panel.say("I hovered, wobbled, and chopped through the air like the human machine.")
 	music_player.stop()
 	await serious_panel.say("So... the flock left me behind.")
-	
+	serious_panel.modulate.a = 0.0
 	music_player.stream = bad_music
 	GlobalSignalsManager.goose_fly_speed = 500
 	for i in range(30):
@@ -68,21 +70,26 @@ func _on_start_button_pressed() -> void:
 	fade_out.visible = true
 	fade_out.modulate.a = 0.0
 
-	var tween := create_tween()
-	tween.tween_property(fade_out, "modulate:a", 1.0, 1.5)
+	var fade_out_tween := create_tween()
+	fade_out_tween.tween_property(fade_out, "modulate:a", 1.0, 1.5)
 	
 	for child in bird_container.get_children():
 		child.queue_free()
 	
 	await get_tree().create_timer(3).timeout
 	
+	serious_panel.modulate.a = 1.0
 	await serious_panel.say("Then the geese attacked.")
 	await serious_panel.say("Now 'day birds' are almost extinct, and only a few pigeon eggs remain")
 	await serious_panel.say("The crows say they can make me stronger, if I bring them things worth trading.")
 	await serious_panel.say("Crow magic is always a gamble")
 	await serious_panel.say("Whether it’s soaring through the air, gambling with crows, or fighting with geese, the only way forward is to spin.")
-	
-	serious_panel.say("A Serious Game, for a Serious Game Jam")
-	await get_tree().create_timer(2).timeout
+	serious_panel.modulate.a = 0.0
+	intro.visible = true
+
+	var intro_tween := create_tween()
+	intro_tween.tween_property(intro, "modulate:a", 1.0, 1.2)
+
+	await get_tree().create_timer(3).timeout
 	GlobalSignalsManager.goose_fly_speed = 90
 	get_tree().change_scene_to_file(main)

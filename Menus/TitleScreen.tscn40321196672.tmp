@@ -19,8 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://d0pd2fqcpe6ps" path="res://Entities/Common/Art/Birds/Pigeon/Pigeon.png" id="15_crsfb"]
 [ext_resource type="Texture2D" uid="uid://d1hcuuhl35ckd" path="res://Entities/Common/Art/Birds/Peacock/Peacock.png" id="16_7v4k0"]
 [ext_resource type="Script" uid="uid://crp4mcuwvtoro" path="res://Menus/seriousText.gd" id="17_hj6s8"]
-[ext_resource type="Texture2D" uid="uid://mfybyf6f8tjn" path="res://Menus/keyboard_space.png" id="20_cvobf"]
-[ext_resource type="Texture2D" uid="uid://dxf6sn6k8a1q5" path="res://Menus/keyboard_space_outline.png" id="21_rhf2i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nx5yy"]
 animations = [{
@@ -15642,28 +15640,10 @@ font = SubResource("FontFile_ehm80")
 font_size = 45
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ybnuh"]
-font_size = 25
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pwxu7"]
-animations = [{
-"frames": [{
-"duration": 4.0,
-"texture": ExtResource("20_cvobf")
-}, {
-"duration": 4.0,
-"texture": ExtResource("21_rhf2i")
-}],
-"loop": true,
-"name": &"default",
-"speed": 3.0
-}]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72ala"]
 bg_color = Color(0.17245829, 0.10855947, 0.28176475, 1)
 
-[node name="TitleScreen" type="Control" unique_id=1458155963 node_paths=PackedStringArray("explosion", "serious_panel", "bird_container", "fade_out", "intro")]
+[node name="TitleScreen" type="Control" unique_id=1458155963 node_paths=PackedStringArray("explosion", "serious_panel", "bird_container", "fade_out")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15676,7 +15656,6 @@ explosion = NodePath("AnimatedSprite2D")
 serious_panel = NodePath("Panel")
 bird_container = NodePath("Birds")
 fade_out = NodePath("fadeout")
-intro = NodePath("intro")
 music = ExtResource("3_a41he")
 bad_music = ExtResource("4_ehm80")
 
@@ -15759,6 +15738,20 @@ scale = Vector2(2.7969468, 2.7969468)
 sprite_frames = SubResource("SpriteFrames_hiksj")
 autoplay = "default"
 
+[node name="intro" type="Label" parent="." unique_id=256514314]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 187.0
+offset_right = 1098.0
+offset_bottom = 460.0
+text = "A serious game 
+for a Very Serious Game Jam
+
+-Thanks to Juniper Dev"
+label_settings = SubResource("LabelSettings_ehm80")
+horizontal_alignment = 1
+uppercase = true
+
 [node name="fadeout" type="ColorRect" parent="." unique_id=693268412]
 visible = false
 layout_mode = 0
@@ -15767,41 +15760,12 @@ offset_top = -96.0
 offset_right = 1211.0
 offset_bottom = 717.0
 
-[node name="intro" type="Label" parent="." unique_id=256514314]
-layout_mode = 0
-offset_left = 1.085083
-offset_top = 124.0
-offset_right = 1153.0725
-offset_bottom = 504.0
-text = "A serious game 
-for a Very Serious Game Jam
-"
-label_settings = SubResource("LabelSettings_ehm80")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="Label" type="Label" parent="intro" unique_id=120073862]
-layout_mode = 0
-offset_left = -5.085083
-offset_top = 245.0
-offset_right = 1142.8298
-offset_bottom = 485.0
-text = "
-Thanks to Juniper Dev
-ansimuz.itch.io - Cyber Street Background
-aeynit.itch.io - trees
-Kenny - input icons
-Jon Murphy and Dana Dolat - Cheerleading"
-label_settings = SubResource("LabelSettings_ybnuh")
-horizontal_alignment = 1
-
 [node name="Panel" type="Panel" parent="." unique_id=1232467846 node_paths=PackedStringArray("rich_text_label")]
 layout_mode = 0
-offset_left = 336.0
-offset_top = 458.0
-offset_right = 850.0
-offset_bottom = 631.0
+offset_left = 32.0
+offset_top = 23.0
+offset_right = 546.0
+offset_bottom = 196.0
 script = ExtResource("17_hj6s8")
 rich_text_label = NodePath("RichTextLabel")
 
@@ -15821,12 +15785,6 @@ Then the geese attacked.
 Now the \"day birds\" are almost extinct, and only a few pigeon eggs remain.
 The crows say they can make me stronger, if I bring them things worth trading.
 Whether it’s soaring through the air, gambling with crows, or fighting with geese, the only way forward is to spin."
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel" unique_id=1137757677]
-position = Vector2(452.00003, 136)
-scale = Vector2(0.9140625, 0.7265624)
-sprite_frames = SubResource("SpriteFrames_pwxu7")
-autoplay = "default"
 
 [node name="StartButton" type="Button" parent="." unique_id=1081561132]
 layout_mode = 0
