@@ -129,6 +129,7 @@ func spin() -> void:
 	is_spinning = false
 	spin_button.disabled = false
 	spin_button_all.disabled = false
+	GlobalSignalsManager.update_stats_ui()
 
 func check_shinies() -> void:
 	if shinies <= 0:
@@ -217,7 +218,7 @@ func check_each_cell() -> void:
 			match reward_name:
 				"Duck":
 					reward_string = "Fly Speed+ and Nest+"
-					GlobalSignalsManager.fly_speed += 6 * current_bet
+					GlobalSignalsManager.fly_speed += 4 * current_bet
 					GlobalSignalsManager.nest_max_health +=1 * current_bet
 
 				"Penguin":
@@ -227,12 +228,13 @@ func check_each_cell() -> void:
 				
 				"Parrot":
 					reward_string = "Shiny +1"
-					shinies +=1
+					shinies +=min(1, 1 * (current_bet * 0.5))
 					update_shiny_label()
 				
 				"Owl":
-					reward_string = "Damage+ and Fly Speed+"
-					GlobalSignalsManager.fly_speed += 5 * current_bet
+					reward_string = "Damage+ and Fly Speed+ amd Thrust Addition"
+					GlobalSignalsManager.fly_add_time += 0.075 * current_bet
+					GlobalSignalsManager.fly_speed += 3 * current_bet
 					GlobalSignalsManager.attack_damage += .1 * current_bet
 					
 				"Chicken":
@@ -242,23 +244,23 @@ func check_each_cell() -> void:
 				"Giraffe":
 					is_bad = true
 					reward_string = "Launch Time+"
-					GlobalSignalsManager.launch_off_time += .01 * current_bet
+					GlobalSignalsManager.launch_off_time += .05 * current_bet
 					
 				"Buffalo":
 					is_bad = true
 					reward_string = "Geese Speed+ and Geese Health+"
-					GlobalSignalsManager.goose_fly_speed += 5 * current_bet
-					GlobalSignalsManager.goose_start_health += 0.25 * current_bet
+					GlobalSignalsManager.goose_fly_speed += 8 * current_bet
+					GlobalSignalsManager.goose_start_health += 0.5 * current_bet
 					
 				"Hippo":
 					is_bad = true
 					reward_string = "Geese Damage+"
-					GlobalSignalsManager.goose_peck_damage += .05 * current_bet
+					GlobalSignalsManager.goose_peck_damage += .25 * current_bet
 					
 				"Sloth":
 					is_bad = true
-					reward_string = "Fly Speed- and Ground Speed-"
-					GlobalSignalsManager.fly_speed -= 2 * current_bet
+					reward_string = "Max Thrust Time- and Ground Speed-"
+					GlobalSignalsManager.max_fly_time -= min(0.75, 0.25 * current_bet)
 					GlobalSignalsManager.ground_speed -= 3 * current_bet
 					
 			create_floating_label(cell, reward_string, is_bad)
@@ -283,7 +285,7 @@ func check_each_row() -> void:
 			match reward_name:
 				"Duck":
 					reward_string = "Fly Speed++++ and Nest++++"
-					GlobalSignalsManager.fly_speed += 66 * current_bet
+					GlobalSignalsManager.fly_speed += 33 * current_bet
 					GlobalSignalsManager.nest_max_health +=5 * current_bet
 
 				"Penguin":
@@ -312,7 +314,7 @@ func check_each_row() -> void:
 				"Buffalo":
 					is_bad = true
 					reward_string = "Geese Speed++"
-					GlobalSignalsManager.goose_fly_speed += 20 * current_bet
+					GlobalSignalsManager.goose_fly_speed += 45 * current_bet
 					
 				"Hippo":
 					is_bad = true
@@ -321,8 +323,8 @@ func check_each_row() -> void:
 					
 				"Sloth":
 					is_bad = true
-					reward_string = "Fly Speed-- and Ground Speed--"
-					GlobalSignalsManager.fly_speed -= 10 * current_bet
+					reward_string = "Max Thrust Time- and Ground Speed-"
+					GlobalSignalsManager.max_fly_time -= min(0.75, 0.5 * current_bet)
 					GlobalSignalsManager.ground_speed -= 10 * current_bet
 				_:
 					print("Unknown reward: ", reward_name)
@@ -365,12 +367,12 @@ func check_each_diagonal() -> void:
 				"Duck":
 					reward_string = "Fly Speed++++ and Nest++++"
 					GlobalSignalsManager.fly_speed += 55 * current_bet
-					GlobalSignalsManager.nest_max_health += 3 * current_bet
+					GlobalSignalsManager.nest_max_health += 5 * current_bet
 
 				"Penguin":
 					reward_string = "Ground Speed+++ and Nest++"
 					GlobalSignalsManager.ground_speed += 60 * current_bet
-					GlobalSignalsManager.nest_max_health += 5 * current_bet
+					GlobalSignalsManager.nest_max_health += 3 * current_bet
 					
 				"Parrot":
 					reward_string = "Thrust Power+++ and Flight Time+++"
@@ -393,7 +395,7 @@ func check_each_diagonal() -> void:
 				"Buffalo":
 					is_bad = true
 					reward_string = "Geese Speed++"
-					GlobalSignalsManager.goose_fly_speed += 20 * current_bet
+					GlobalSignalsManager.goose_fly_speed += 40 * current_bet
 					
 				"Hippo":
 					is_bad = true
@@ -402,8 +404,8 @@ func check_each_diagonal() -> void:
 					
 				"Sloth":
 					is_bad = true
-					reward_string = "Fly Speed-- and Ground Speed--"
-					GlobalSignalsManager.fly_speed -= 20 * current_bet
+					reward_string = "Max Thrust Time- and Ground Speed-"
+					GlobalSignalsManager.max_fly_time -= min(0.75, 0.5 * current_bet)
 					GlobalSignalsManager.ground_speed -= 10 * current_bet
 
 				_:
@@ -440,8 +442,8 @@ func check_each_column() -> void:
 					
 				"Parrot":
 					reward_string = "Thrust Power+++ and Flight Time+++"
-					GlobalSignalsManager.fly_add_time +=.25 * current_bet
-					GlobalSignalsManager.max_fly_time +=.5 * current_bet
+					GlobalSignalsManager.fly_add_time += 0.25 * current_bet
+					GlobalSignalsManager.max_fly_time += 0.5 * current_bet
 					
 				"Owl":
 					reward_string = "Goose Damage--"
@@ -468,8 +470,8 @@ func check_each_column() -> void:
 					
 				"Sloth":
 					is_bad = true
-					reward_string = "Fly Speed-- and Ground Speed--"
-					GlobalSignalsManager.fly_speed -= 20 * current_bet
+					reward_string = "Max Thrust Time- and Ground Speed-"
+					GlobalSignalsManager.max_fly_time -= min(0.75, 0.5 * current_bet)
 					GlobalSignalsManager.ground_speed -= 10 * current_bet
 				_:
 					print("Unknown reward: ", reward_name)

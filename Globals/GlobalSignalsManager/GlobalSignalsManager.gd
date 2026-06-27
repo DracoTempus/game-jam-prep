@@ -10,7 +10,7 @@ signal game_win
 signal shinies_changed(current: int)
 signal trash_changed(current: int)
 signal enemies_changed(current: int)
-
+signal stats_changed
 
 @export_group("Player Stats")
 @export var trash: int = 0:
@@ -49,6 +49,9 @@ signal enemies_changed(current: int)
 @export var goose_fly_speed: float = 90.0
 @export var goose_peck_damage: float = 1.0
 @export var goose_start_health: float = 3.0
+
+func update_stats_ui() -> void:
+	stats_changed.emit()
 
 @export var enemies: int = 0:
 	set(value):

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b5a3y6lkvjmdt"]
 
 [ext_resource type="Texture2D" uid="uid://cqw51vjw3oa5w" path="res://Entities/Common/Art/Birds/Sparrow/Sparrow.png" id="1_5e37s"]
+[ext_resource type="Script" uid="uid://b3b8sylj8ld6o" path="res://Levels/Base/npcSpeech.gd" id="1_8m2ai"]
 
 [sub_resource type="Animation" id="Animation_m17w1"]
 length = 0.001
@@ -40,12 +41,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yki72"]
-size = Vector2(367, 166)
+size = Vector2(164, 64)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yki72"]
 font_size = 11
 
 [node name="SparrowNPC" type="Node2D" unique_id=1632507080]
+script = ExtResource("1_8m2ai")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1896533432]
 libraries/ = SubResource("AnimationLibrary_h1f85")
@@ -61,7 +63,7 @@ vframes = 10
 [node name="Area2D" type="Area2D" parent="." unique_id=715320000]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1187478558]
-position = Vector2(-0.5, -16)
+position = Vector2(5, 35)
 shape = SubResource("RectangleShape2D_yki72")
 
 [node name="textBox" type="ColorRect" parent="." unique_id=2113316602]

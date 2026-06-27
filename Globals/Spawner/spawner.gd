@@ -24,8 +24,9 @@ var min_y: float = -100.0
 @export var wave_panel: Control
 @export var wave_label: Label
 @export var panel_fade_duration: float = 0.5
-@export var panel_show_time: float = 2.0
+@export var panel_show_time: float = 2.5
 
+@export var text_lines: Array[String] = []
 var current_wave_index: int = -1
 var alive_enemies: int = 0
 var wave_running: bool = false
@@ -83,7 +84,7 @@ func run_wave(wave_index: int) -> void:
 
 	GlobalSignalsManager.day_started.emit()
 
-	await show_wave_panel("Wave " + str(wave_number))
+	await show_wave_panel(text_lines[wave_index])
 
 	alive_enemies = 0
 	GlobalSignalsManager.enemies = enemy_count

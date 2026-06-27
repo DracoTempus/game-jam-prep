@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var health: Health = $Health
 @export var pickup_scene: PackedScene
 
-var pickup_drop_chance: float = 0.3
+var pickup_drop_chance: float = 0.4
 var nest: Node2D = null
 var peck_timer: float = 0.0
 var contact_timer: float = 0.0
@@ -70,7 +70,7 @@ func spawn_pickup() -> void:
 		return
 
 	var pickup: Node2D = pickup_scene.instantiate() as Node2D
-	if randf() < 0.25:
+	if randf() < 0.33:
 		pickup.is_trash = false
 		
 	await get_tree().physics_frame

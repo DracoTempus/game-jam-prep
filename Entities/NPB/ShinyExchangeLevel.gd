@@ -19,6 +19,7 @@ func _process(_delta: float) -> void:
 		GlobalSignalsManager.shinies = 0
 		my_label.text = "Thanks for playing"
 		slotUI.update_shiny_label()
+		GlobalSignalsManager.update_stats_ui()
 
 func _on_body_entered(body: Node2D) -> void:
 	if GlobalSignalsManager.shinies > 0:

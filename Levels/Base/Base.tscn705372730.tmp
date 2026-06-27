@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://uutwvl286hql" path="res://Entities/Common/Art/keyboard_e.png" id="23_2g55m"]
 [ext_resource type="Texture2D" uid="uid://bvces1v6cm6ol" path="res://Entities/Common/Art/Birds/CasinoBlueJayMon.png" id="23_pllbf"]
 [ext_resource type="Script" uid="uid://b3b8sylj8ld6o" path="res://Levels/Base/npcSpeech.gd" id="26_xtvqh"]
-[ext_resource type="PackedScene" uid="uid://dvgrh4mqtvxv7" path="res://UI/Stats.tscn" id="31_mf2ns"]
 [ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
 [ext_resource type="PackedScene" uid="uid://dixiaopgx6i75" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
@@ -385,7 +384,7 @@ size = Vector2(1553, 3142)
 font_size = 11
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf2ns"]
-size = Vector2(43.989532, 46.554832)
+size = Vector2(34.547607, 37.17807)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3211"]
 bg_color = Color(0.94586056, 0.8088882, 0.42037296, 0.13725491)
@@ -411,9 +410,6 @@ bg_color = Color(0.20152655, 0.20152661, 0.20152646, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_oxws1"]
 font_size = 20
 
-[sub_resource type="LabelSettings" id="LabelSettings_mf2ns"]
-font_size = 20
-
 [node name="Base" type="Node2D" unique_id=1102677110]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1987423094]
@@ -421,7 +417,7 @@ position = Vector2(65, -2165)
 
 [node name="Systems" type="Node" parent="." unique_id=600708282]
 
-[node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent", "wave_panel", "wave_label") instance=ExtResource("spawner_scene")]
+[node name="Spawner" parent="Systems" unique_id=1222193254 node_paths=PackedStringArray("entities_parent") instance=ExtResource("spawner_scene")]
 position = Vector2(1111, -1770)
 enemy_object = ExtResource("enemy_scene")
 entities_parent = NodePath("../../Entities/Enemies")
@@ -429,10 +425,7 @@ min_x = 100.0
 max_x = 1000.0
 min_y = -2000.0
 max_y = -400.0
-wave_enemy_counts = Array[int]([15, 31, 62, 125, 253, 514])
-wave_panel = NodePath("../../HUDLayer/HudRoot/WaveLabel")
-wave_label = NodePath("../../HUDLayer/HudRoot/WaveLabel/Label")
-text_lines = Array[String](["Crows said, the geese will quit coming if enough are defeated...", "Morning, here they come.", "Thats a lot. You brought a gaggle. I brought rotors.", "Now they are getting serious.", "How many more will they lose to my wings.", "That many honks means they’re scared. This should be the end."])
+wave_enemy_counts = Array[int]([10, 25, 40, 75, 100])
 
 [node name="GlobalSignalsManager" type="Node" parent="Systems" unique_id=1940544452]
 script = ExtResource("2_r3r0t")
@@ -731,7 +724,7 @@ autowrap_mode = 1
 [node name="Area2D" type="Area2D" parent="Entities/NPCs/CasinoBlueJay" unique_id=75504250]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/NPCs/CasinoBlueJay/Area2D" unique_id=110410143]
-position = Vector2(-30.376953, 6.2260437)
+position = Vector2(7.27417, 8.58902)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_mf2ns")
 
@@ -762,17 +755,16 @@ autowrap_mode = 1
 [node name="Area2D" type="Area2D" parent="Entities/NPCs/CasinoBlueJay2" unique_id=1271258111]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/NPCs/CasinoBlueJay2/Area2D" unique_id=705884330]
-position = Vector2(24.393555, 7.496582)
+position = Vector2(7.27417, 8.58902)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_mf2ns")
 
 [node name="CasinoBlueJayMon" type="Sprite2D" parent="Entities/NPCs" unique_id=2143697386]
-position = Vector2(3302, 470)
+position = Vector2(3101, 466)
 scale = Vector2(1.1406236, 1.1406236)
 texture = ExtResource("23_pllbf")
 flip_h = true
 script = ExtResource("26_xtvqh")
-text_lines = Array[String](["I handle the casino's shinies.", "But I want to help more.", "Peck the crown. Break the cage.", "Wings up. Talons ready."])
 
 [node name="textBox" type="ColorRect" parent="Entities/NPCs/CasinoBlueJayMon" unique_id=1743512126]
 offset_left = -75.39725
@@ -787,14 +779,15 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 108.7124
 offset_bottom = 32.438385
-text = "I handle the casino's shinies."
+text = "I handle the 
+casino's shinies."
 label_settings = SubResource("LabelSettings_umcc6")
-autowrap_mode = 2
+autowrap_mode = 1
 
 [node name="Area2D" type="Area2D" parent="Entities/NPCs/CasinoBlueJayMon" unique_id=739080309]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/NPCs/CasinoBlueJayMon/Area2D" unique_id=394639313]
-position = Vector2(32.36133, 7.8904724)
+position = Vector2(7.27417, 8.58902)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_mf2ns")
 
@@ -825,49 +818,7 @@ autowrap_mode = 2
 [node name="Area2D" type="Area2D" parent="Entities/NPCs/CasinoBlueJay3" unique_id=707482090]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/NPCs/CasinoBlueJay3/Area2D" unique_id=1175169131]
-position = Vector2(32.438156, 7.8903885)
-scale = Vector2(0.9999999, 0.9999999)
-shape = SubResource("RectangleShape2D_mf2ns")
-
-[node name="CasinoBlueJayMonStats" type="Sprite2D" parent="Entities/NPCs" unique_id=2007670673]
-z_index = 158
-position = Vector2(3072.0002, 470)
-scale = Vector2(1.1406236, 1.1406236)
-texture = ExtResource("23_pllbf")
-flip_h = true
-script = ExtResource("26_xtvqh")
-text_lines = Array[String](["Here is how our Magic has helped"])
-
-[node name="textBox" type="ColorRect" parent="Entities/NPCs/CasinoBlueJayMonStats" unique_id=876807799]
-z_index = 2
-offset_left = -89.42509
-offset_top = -73.64391
-offset_right = 20.612381
-offset_bottom = -38.986443
-color = Color(0, 0, 0, 1)
-
-[node name="text" type="Label" parent="Entities/NPCs/CasinoBlueJayMonStats/textBox" unique_id=1818419497]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 108.7124
-offset_bottom = 32.438385
-text = "I handle the casino's shinies."
-label_settings = SubResource("LabelSettings_umcc6")
-autowrap_mode = 2
-
-[node name="Stats" parent="Entities/NPCs/CasinoBlueJayMonStats/textBox" unique_id=2003687994 instance=ExtResource("31_mf2ns")]
-z_index = -6
-layout_mode = 1
-offset_left = 186.73988
-offset_top = -184.10982
-offset_right = 186.73975
-offset_bottom = -184.10982
-
-[node name="Area2D" type="Area2D" parent="Entities/NPCs/CasinoBlueJayMonStats" unique_id=729444606]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/NPCs/CasinoBlueJayMonStats/Area2D" unique_id=843204699]
-position = Vector2(32.36133, 7.8904724)
+position = Vector2(7.27417, 8.58902)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_mf2ns")
 
@@ -911,18 +862,8 @@ offset_bottom = 2.0
 [node name="ExchangeUi" parent="HUDLayer/HudRoot" unique_id=1214968568 instance=ExtResource("20_se8fb")]
 visible = false
 layout_mode = 1
-offset_left = 30.0
-offset_right = 30.0
-
-[node name="Stats" parent="HUDLayer/HudRoot/ExchangeUi" unique_id=1082738045 instance=ExtResource("31_mf2ns")]
-layout_mode = 1
-offset_left = 910.0
-offset_top = 179.0
-offset_right = 910.0
-offset_bottom = 179.0
 
 [node name="StartWave" type="Control" parent="HUDLayer/HudRoot" unique_id=968781810]
-visible = false
 anchors_preset = 0
 offset_left = 243.0
 offset_top = 190.0
@@ -948,7 +889,6 @@ sprite_frames = SubResource("SpriteFrames_oxws1")
 autoplay = "default"
 
 [node name="DontWave" type="Control" parent="HUDLayer/HudRoot" unique_id=880064611]
-visible = false
 anchors_preset = 0
 offset_left = 243.0
 offset_top = 190.0
@@ -969,7 +909,6 @@ text = "I shouldn't sleep before trading my shinies to the crows at the casino."
 autowrap_mode = 2
 
 [node name="HowToPlay" type="Control" parent="HUDLayer/HudRoot" unique_id=1137413695]
-visible = false
 anchors_preset = 0
 offset_left = 340.0
 offset_right = 862.0
@@ -1006,37 +945,11 @@ label_settings = SubResource("LabelSettings_oxws1")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="WaveLabel" type="Panel" parent="HUDLayer/HudRoot" unique_id=228013821]
-layout_mode = 0
-offset_left = 385.0
-offset_top = 220.0
-offset_right = 993.0
-offset_bottom = 350.0
-
-[node name="Label" type="Label" parent="HUDLayer/HudRoot/WaveLabel" unique_id=10115048]
-layout_mode = 0
-offset_right = 608.0
-offset_bottom = 129.0
-text = "I only need to defeat 1000"
-label_settings = SubResource("LabelSettings_mf2ns")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]
-process_mode = 2
 
 [node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=1501450840]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-
-[node name="Stats" parent="PauseLayer/PauseRoot" unique_id=246189432 instance=ExtResource("31_mf2ns")]
-layout_mode = 1
-offset_left = 615.0
-offset_top = 169.0
-offset_right = 615.0
-offset_bottom = 169.0
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1240786418]
 

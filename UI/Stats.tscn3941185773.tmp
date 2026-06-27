@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dvgrh4mqtvxv7"]
+
+[ext_resource type="Script" uid="uid://coq35xr6cxsv" path="res://UI/stats_UI.gd" id="1_d3txq"]
+[ext_resource type="Script" uid="uid://dqtswtipu4wyt" path="res://UI/bad_label.gd" id="2_qe7p8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qe7p8"]
+font_size = 14
+font_color = Color(0.5832685, 0.9999997, 0.54955053, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d3txq"]
+font_size = 14
+font_color = Color(1, 0.56864405, 0.45863682, 1)
+
+[node name="Stats" type="Control" unique_id=2003687994]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -934.0
+offset_bottom = -363.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2027849079]
+layout_mode = 0
+offset_right = 204.0
+offset_bottom = 287.7857
+color = Color(0.32740235, 0.087735005, 0, 1)
+
+[node name="GoodLabel" type="Label" parent="ColorRect" unique_id=1120813856]
+layout_mode = 0
+offset_right = 205.0
+offset_bottom = 155.0
+label_settings = SubResource("LabelSettings_qe7p8")
+clip_text = true
+script = ExtResource("1_d3txq")
+
+[node name="BadLabel" type="Label" parent="ColorRect" unique_id=109912603]
+layout_mode = 0
+offset_top = 144.0
+offset_right = 205.0
+offset_bottom = 299.0
+label_settings = SubResource("LabelSettings_d3txq")
+clip_text = true
+script = ExtResource("2_qe7p8")
