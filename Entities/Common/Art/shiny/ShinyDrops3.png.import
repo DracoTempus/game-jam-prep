@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g0jioweb8au8"
-path="res://.godot/imported/icons_8_2_10.png-563583099b50709515dca9c20c8fc716.ctex"
+uid="uid://d4kghf1ax11j2"
+path="res://.godot/imported/ShinyDrops3.png-023a81808a32920814e3428fd5f98d56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Common/Art/shiny/icons_8_2_10.png"
-dest_files=["res://.godot/imported/icons_8_2_10.png-563583099b50709515dca9c20c8fc716.ctex"]
+source_file="res://Entities/Common/Art/shiny/ShinyDrops3.png"
+dest_files=["res://.godot/imported/ShinyDrops3.png-023a81808a32920814e3428fd5f98d56.ctex"]
 
 [params]
 

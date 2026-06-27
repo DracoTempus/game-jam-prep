@@ -10,17 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b4f3gefcrh4de" path="res://Entities/Common/Art/Trash/juice.png" id="8_qjd6l"]
 [ext_resource type="Texture2D" uid="uid://bsoy63il3m4k" path="res://Entities/Common/Art/Trash/paper2.png" id="9_0mtdw"]
 [ext_resource type="Texture2D" uid="uid://css4oy6onxl4e" path="res://Entities/Common/Art/Trash/paper.png" id="10_gp0uo"]
-[ext_resource type="Texture2D" uid="uid://dn1iflxknrdtw" path="res://Entities/Common/Art/shiny/icons_8_2_02.png" id="11_vg5ld"]
-[ext_resource type="Texture2D" uid="uid://cnnj2qkt5q6fd" path="res://Entities/Common/Art/shiny/icons_8_2_06.png" id="12_dmhd8"]
-[ext_resource type="Texture2D" uid="uid://b33nib8n4knsa" path="res://Entities/Common/Art/shiny/icons_8_2_07.png" id="13_tx2c3"]
-[ext_resource type="Texture2D" uid="uid://g0jioweb8au8" path="res://Entities/Common/Art/shiny/icons_8_2_10.png" id="14_2hxt8"]
-[ext_resource type="Texture2D" uid="uid://bh6n8x1xffggk" path="res://Entities/Common/Art/shiny/icons_8_2_15.png" id="15_mme3a"]
-[ext_resource type="Texture2D" uid="uid://diaxod5nqbkis" path="res://Entities/Common/Art/shiny/icons_8_2_20.png" id="16_2sbmg"]
-[ext_resource type="Texture2D" uid="uid://dnkdtinlojtvw" path="res://Entities/Common/Art/shiny/icons_8_22.png" id="17_b7agu"]
-[ext_resource type="Texture2D" uid="uid://dudhnjh2h3krj" path="res://Entities/Common/Art/shiny/tile000.png" id="18_l055d"]
-[ext_resource type="Texture2D" uid="uid://bs7ore3aqmte6" path="res://Entities/Common/Art/shiny/tile001.png" id="19_recgk"]
-[ext_resource type="Texture2D" uid="uid://djrtfu70q6cng" path="res://Entities/Common/Art/shiny/tile014.png" id="20_2brun"]
-[ext_resource type="Texture2D" uid="uid://dbpd4jqsqbr2i" path="res://Entities/Common/Art/shiny/tile015.png" id="21_kfkep"]
+[ext_resource type="Texture2D" uid="uid://c8w5ejlao0r24" path="res://Entities/Common/Art/shiny/ShinyDrops1.png" id="11_h625p"]
+[ext_resource type="Texture2D" uid="uid://ggo8elpcjquw" path="res://Entities/Common/Art/shiny/ShinyDrops2.png" id="12_ixwht"]
+[ext_resource type="Texture2D" uid="uid://d4kghf1ax11j2" path="res://Entities/Common/Art/shiny/ShinyDrops3.png" id="13_qjd6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehxvg"]
 size = Vector2(22, 37)
@@ -33,7 +25,7 @@ collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_1jmn3")
 trash = Array[Texture2D]([ExtResource("2_ehxvg"), ExtResource("3_cdtke"), ExtResource("4_ocox4"), ExtResource("5_cj8p1"), ExtResource("6_h625p"), ExtResource("7_ixwht"), ExtResource("8_qjd6l"), ExtResource("9_0mtdw"), ExtResource("10_gp0uo")])
-shiny = Array[Texture2D]([ExtResource("11_vg5ld"), ExtResource("12_dmhd8"), ExtResource("13_tx2c3"), ExtResource("14_2hxt8"), ExtResource("15_mme3a"), ExtResource("16_2sbmg"), ExtResource("17_b7agu"), ExtResource("18_l055d"), ExtResource("19_recgk"), ExtResource("20_2brun"), ExtResource("21_kfkep")])
+shiny = Array[Texture2D]([ExtResource("11_h625p"), ExtResource("12_ixwht"), ExtResource("13_qjd6l")])
 sprite = NodePath("Sprite2D")
 pickup_area = NodePath("Area2D")
 

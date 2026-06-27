@@ -49,4 +49,5 @@ func spawnSetup() -> void:
 	else:
 		var random_index: int = randi_range(0, shiny.size() - 1)
 		sprite.texture = shiny[random_index]
+		sprite.scale = Vector2(0.5,0.5)
 	

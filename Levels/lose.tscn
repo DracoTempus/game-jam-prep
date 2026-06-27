@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c3kao2yfr545w"]
+
+[ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="1_uiynl"]
+[ext_resource type="Script" uid="uid://dc0akmcgw4bow" path="res://Levels/restart.gd" id="2_sddk2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uiynl"]
+bg_color = Color(0.14406255, 0.14406255, 0.14406249, 1)
+
+[node name="Lose" type="Node2D" unique_id=1927310567]
+
+[node name="Enemy" parent="." unique_id=194447640 instance=ExtResource("1_uiynl")]
+position = Vector2(939, 477)
+scale = Vector2(5.159999, 5.159999)
+
+[node name="Enemy2" parent="." unique_id=1645703393 instance=ExtResource("1_uiynl")]
+position = Vector2(186.00006, 181.00003)
+scale = Vector2(5.159999, 5.159999)
+
+[node name="Enemy3" parent="." unique_id=96314523 instance=ExtResource("1_uiynl")]
+position = Vector2(673.00006, 192.00002)
+scale = Vector2(5.159999, 5.159999)
+
+[node name="Enemy4" parent="." unique_id=1758616685 instance=ExtResource("1_uiynl")]
+position = Vector2(436.00006, 410.00003)
+scale = Vector2(5.159999, 5.159999)
+
+[node name="Control" type="Control" parent="." unique_id=336398015]
+z_index = 80
+layout_mode = 3
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 41.0
+offset_right = 1175.0
+offset_bottom = 685.0
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1234494377]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 409.0
+offset_right = 814.0
+offset_bottom = 626.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uiynl")
+
+[node name="Label" type="Label" parent="Control/Panel" unique_id=860764052]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 20.0
+offset_right = 487.0
+offset_bottom = 153.0
+text = "You are now the last pigeon.  The geese ate all the eggs and had their protein.  You have failed"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="Control" unique_id=1233950948]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 213.0
+offset_right = 537.5484
+offset_bottom = 262.0
+text = "RESTART"
+script = ExtResource("2_sddk2")

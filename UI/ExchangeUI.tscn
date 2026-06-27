@@ -85,7 +85,15 @@ load_path = "res://.godot/imported/duck.png-f518fe58fad0c89f16337c41000e8e9f.cte
 [sub_resource type="LabelSettings" id="LabelSettings_nkvu5"]
 font_size = 29
 
-[node name="ExchangeUi" type="Control" unique_id=1214968568 node_paths=PackedStringArray("shiny_label", "spin_button", "reel_1", "reel_2", "reel_3") groups=["ExchangeUI"]]
+[sub_resource type="LabelSettings" id="LabelSettings_0ncio"]
+font_size = 38
+font_color = Color(0.99999994, 0.082853176, 0.08260616, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwjla"]
+font_size = 38
+font_color = Color(0.19315684, 0.64818835, 0.085560106, 1)
+
+[node name="ExchangeUi" type="Control" unique_id=1214968568 node_paths=PackedStringArray("shiny_label", "spin_button", "spin_button_all", "reel_1", "reel_2", "reel_3") groups=["ExchangeUI"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,6 +105,7 @@ good_sound = ExtResource("2_0ncio")
 bad_sound = ExtResource("3_nwjla")
 shiny_label = NodePath("Shinies")
 spin_button = NodePath("Button")
+spin_button_all = NodePath("BetAllButton")
 reel_1 = NodePath("TextureRect2/ReelLeft/VBoxContainer")
 reel_2 = NodePath("TextureRect2/ReelMiddle/VBoxContainer")
 reel_3 = NodePath("TextureRect2/ReelRight/VBoxContainer")
@@ -246,8 +255,103 @@ horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="." unique_id=1621819971]
 layout_mode = 0
-offset_left = 550.0
+offset_left = 603.0
 offset_top = 565.0
-offset_right = 654.0
+offset_right = 707.0
 offset_bottom = 621.0
 icon = ExtResource("4_nkvu5")
+
+[node name="Label" type="Label" parent="Button" unique_id=1308739117]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 17.0
+offset_right = 70.0
+offset_bottom = 40.0
+text = "Bet 1"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1185376171]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 100.0
+offset_right = 266.0
+offset_bottom = 567.0
+color = Color(0.45840502, 0.45840508, 0.45840502, 1)
+
+[node name="Chicken" type="Sprite2D" parent="." unique_id=329455428]
+position = Vector2(88, 204)
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("2_avn1j")
+
+[node name="Duck" type="Sprite2D" parent="." unique_id=2103074350]
+position = Vector2(181, 263)
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("2_7oiyf")
+
+[node name="Owl" type="Sprite2D" parent="." unique_id=1767744979]
+position = Vector2(112, 261)
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("4_yfydb")
+
+[node name="Parrot" type="Sprite2D" parent="." unique_id=1915103748]
+position = Vector2(211.00002, 202.00002)
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("5_bh6fo")
+
+[node name="Penguin" type="Sprite2D" parent="." unique_id=1424685576]
+position = Vector2(150, 202)
+scale = Vector2(0.39999998, 0.39999998)
+texture = ExtResource("6_3qupn")
+
+[node name="Buffalo" type="Sprite2D" parent="." unique_id=277329478]
+position = Vector2(81.72004, 421.72003)
+scale = Vector2(0.48000062, 0.48000062)
+texture = ExtResource("7_4fh2a")
+
+[node name="Giraffe" type="Sprite2D" parent="." unique_id=1800184604]
+position = Vector2(150, 493)
+scale = Vector2(0.48000062, 0.48000062)
+texture = ExtResource("5_4fh2a")
+
+[node name="Hippo" type="Sprite2D" parent="." unique_id=1088387397]
+position = Vector2(221, 422)
+scale = Vector2(0.48000062, 0.48000062)
+texture = ExtResource("6_bh6fo")
+
+[node name="Sloth" type="Sprite2D" parent="." unique_id=1568963005]
+position = Vector2(152, 422)
+scale = Vector2(0.48000062, 0.48000062)
+texture = ExtResource("10_rep84")
+
+[node name="Bad" type="Label" parent="." unique_id=1742277752]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 334.0
+offset_right = 207.0
+offset_bottom = 387.0
+text = "Bad"
+label_settings = SubResource("LabelSettings_0ncio")
+
+[node name="Good" type="Label" parent="." unique_id=1754317729]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 121.0
+offset_right = 200.0
+offset_bottom = 174.0
+text = "Good"
+label_settings = SubResource("LabelSettings_nwjla")
+
+[node name="BetAllButton" type="Button" parent="." unique_id=1965139623]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 565.0
+offset_right = 539.0
+offset_bottom = 621.0
+icon = ExtResource("4_nkvu5")
+
+[node name="Label" type="Label" parent="BetAllButton" unique_id=1986737131]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 17.0
+offset_right = 70.0
+offset_bottom = 40.0
+text = "Bet All"

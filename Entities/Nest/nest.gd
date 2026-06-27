@@ -48,7 +48,7 @@ func _on_health_changed(current: float, max: float) -> void:
 	GlobalSignalsManager.nest_health_changed.emit(current, max)
 
 func _on_died() -> void:
-	GlobalSignalsManager.nest_destroyed.emit()
+	get_tree().change_scene_to_file("res://Levels/lose.tscn")
 
 func _on_interact_area_body_entered(body: Node) -> void:
 	if body.is_in_group("Player") && GlobalSignalsManager.is_day_time == false && GlobalSignalsManager.shinies <= 0:

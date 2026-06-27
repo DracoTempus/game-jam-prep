@@ -14,7 +14,8 @@ config/name="GameJamPigeonCopter"
 config/description="Game made for the Very Serious Game Jam"
 run/main_scene="uid://bogmab38q5u8c"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-boot_splash/bg_color=Color(1, 1, 0.5294118, 1)
+boot_splash/bg_color=Color(1, 0.99215686, 0.7529412, 1)
+boot_splash/use_filter=false
 boot_splash/image="uid://hcpouk5e3o23"
 config/icon="uid://hcpouk5e3o23"
 
@@ -89,3 +90,6 @@ interact={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/lossless_compression/force_png=true
+textures/webp_compression/compression_method=1
+textures/webp_compression/lossless_compression_factor=10.0
