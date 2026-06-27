@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqq3votjyf7dh"
+path="res://.godot/imported/Cute RPG - Butterfly Hunt (Loopable).ogg-9cab89d104741c488145dbf5ee26f8b4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Levels/Common/Cute RPG - Butterfly Hunt (Loopable).ogg"
+dest_files=["res://.godot/imported/Cute RPG - Butterfly Hunt (Loopable).ogg-9cab89d104741c488145dbf5ee26f8b4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

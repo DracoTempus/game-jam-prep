@@ -2,7 +2,7 @@ extends Node
 
 @export_group("Background Music")
 @export var bg_music: AudioStream
-@export var volume_db: float = -10.0
+@export var volume_db: float = 0
 @export var autoplay_music: bool = true
 
 @export_group("Startup UI")

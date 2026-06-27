@@ -65,10 +65,11 @@ position = Vector2(-0.5, -16)
 shape = SubResource("RectangleShape2D_yki72")
 
 [node name="textBox" type="ColorRect" parent="." unique_id=2113316602]
-offset_left = -84.0
-offset_top = -82.0
-offset_right = 43.0
-offset_bottom = -42.0
+offset_left = -68.0
+offset_top = -39.0
+offset_right = 59.0
+offset_bottom = 1.0
+scale = Vector2(0.84000003, 0.84000003)
 color = Color(0, 0, 0, 1)
 
 [node name="text" type="Label" parent="textBox" unique_id=447974479]

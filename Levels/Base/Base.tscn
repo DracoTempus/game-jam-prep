@@ -1,27 +1,31 @@
 [gd_scene format=3 uid="uid://7y6w2delx47m"]
 
-[ext_resource type="AudioStream" uid="uid://c8gmcewgw5xmk" path="res://Levels/Common/Town_-_Neo_Tokyo.ogg" id="1_aygd2"]
 [ext_resource type="Script" uid="uid://dgoj3kql0tqis" path="res://Globals/GlobalSignalsManager/GlobalSignalsManager.gd" id="2_r3r0t"]
 [ext_resource type="PackedScene" uid="uid://bxbtspbcq4qy3" path="res://Entities/Player/theRealMC.tscn" id="3_codtk"]
 [ext_resource type="Script" uid="uid://c1tk1c4lu54xa" path="res://Entities/Player/scripts/CameraHitchcock.gd" id="4_eu82j"]
 [ext_resource type="Texture2D" uid="uid://nkqj5m38tq7w" path="res://Levels/Common/Art/CorvidCasino.png" id="5_2g55m"]
+[ext_resource type="AudioStream" uid="uid://bw4kfbh0mjieq" path="res://Levels/Common/Menu_-_Thought_Patterns.ogg" id="5_fphfx"]
 [ext_resource type="Script" uid="uid://bqljwgl4n3f4a" path="res://Levels/Base/startup.gd" id="5_n3211"]
 [ext_resource type="Texture2D" uid="uid://05ge6sw6t6mj" path="res://Levels/Common/Art/SlotMachine.png" id="5_y2sk1"]
 [ext_resource type="PackedScene" uid="uid://bjeqhgkg3158y" path="res://UI/TheHUD.tscn" id="6_7sk74"]
 [ext_resource type="Script" uid="uid://c62kp2xyqn1us" path="res://Levels/Base/casinoDoorOut.gd" id="7_2g55m"]
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
+[ext_resource type="AudioStream" uid="uid://dqq3votjyf7dh" path="res://Levels/Common/Cute RPG - Butterfly Hunt (Loopable).ogg" id="8_xtvqh"]
 [ext_resource type="Texture2D" uid="uid://bqcso6aj8cpyc" path="res://Levels/Common/Art/foreground-empty.png" id="9_55lwj"]
 [ext_resource type="Texture2D" uid="uid://bc284pfo7ckh5" path="res://Levels/Common/Art/skyline-a.png" id="9_se8fb"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://bfsslvodkq3ts" path="res://Levels/Common/Art/skyline-b.png" id="10_n3211"]
 [ext_resource type="Shader" uid="uid://bqb05spb0tfru" path="res://Levels/Base/Tree.gdshader" id="13_ptnsy"]
 [ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPB/Sparrow/Sparrow.tscn" id="15_l73k5"]
+[ext_resource type="AudioStream" uid="uid://c7fsegburwycl" path="res://Menus/RPG Medieval Fantasy - Hymn Of Eternal Glory (Loopable).ogg" id="15_o85e7"]
 [ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPB/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
 [ext_resource type="Texture2D" uid="uid://bj8xclmfwgceu" path="res://Levels/Common/Art/CorvidCasinoExternal.png" id="17_2g55m"]
 [ext_resource type="Script" uid="uid://v1ceoxflchxd" path="res://Levels/Base/casinoDayNight.gd" id="18_oxws1"]
 [ext_resource type="PackedScene" uid="uid://dsq1gbp6oo6xp" path="res://UI/ExchangeUI.tscn" id="20_se8fb"]
+[ext_resource type="Texture2D" uid="uid://da43uf3dqrfs" path="res://Entities/Common/Art/Birds/CasinoBlueJay.png" id="22_umcc6"]
 [ext_resource type="Texture2D" uid="uid://cn6wwkibk132x" path="res://Entities/Common/Art/keyboard_e_outline.png" id="22_y2sk1"]
 [ext_resource type="Texture2D" uid="uid://uutwvl286hql" path="res://Entities/Common/Art/keyboard_e.png" id="23_2g55m"]
+[ext_resource type="Texture2D" uid="uid://bvces1v6cm6ol" path="res://Entities/Common/Art/Birds/CasinoBlueJayMon.png" id="23_pllbf"]
 [ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="enemy_scene"]
 [ext_resource type="PackedScene" uid="uid://dixiaopgx6i75" path="res://Entities/Nest/Nest.tscn" id="nest_scene"]
 [ext_resource type="PackedScene" uid="uid://d03dwe7ogjh2s" path="res://Globals/Spawner/Spawner.tscn" id="spawner_scene"]
@@ -375,6 +379,9 @@ shader_parameter/top_power = 1.5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2sk1"]
 size = Vector2(1553, 3142)
 
+[sub_resource type="LabelSettings" id="LabelSettings_umcc6"]
+font_size = 11
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3211"]
 bg_color = Color(0.94586056, 0.8088882, 0.42037296, 0.13725491)
 
@@ -421,7 +428,7 @@ script = ExtResource("2_r3r0t")
 
 [node name="StartupLevel" type="Node" parent="Systems" unique_id=2007595335 node_paths=PackedStringArray("startup_panel")]
 script = ExtResource("5_n3211")
-bg_music = ExtResource("1_aygd2")
+bg_music = ExtResource("5_fphfx")
 startup_panel = NodePath("../../HUDLayer/HudRoot/HowToPlay")
 
 [node name="World" type="Node2D" parent="." unique_id=1407682078]
@@ -502,6 +509,8 @@ texture = SubResource("CompressedTexture2D_y2sk1")
 
 [node name="Area2D" type="Area2D" parent="World/Level/InsideCasinoBorders/CasinoOutDoor" unique_id=727205521 node_paths=PackedStringArray("target", "camera", "camera_bounds")]
 script = ExtResource("7_2g55m")
+casino_music = ExtResource("8_xtvqh")
+night_music = ExtResource("5_fphfx")
 target = NodePath("InsideCasino")
 camera = NodePath("../../../../../Entities/Player/AlfredHitchcock")
 camera_bounds = NodePath("../../../MainLevelArea/MainCameraBounds")
@@ -627,6 +636,8 @@ Daytime_fake_panel = NodePath("../../../../../HUDLayer/HudRoot/Panel")
 sleep_ui = NodePath("../../../../../HUDLayer/HudRoot/StartWave")
 dont_wave = NodePath("../../../../../HUDLayer/HudRoot/DontWave")
 wave_spawner = NodePath("../../../../../Systems/Spawner")
+day_music = ExtResource("15_o85e7")
+night_music = ExtResource("5_fphfx")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World/Level/MainLevelArea/Props" unique_id=713626716]
 position = Vector2(1362, -308)
@@ -682,6 +693,75 @@ position = Vector2(4276, 443)
 
 [node name="CrowShinyExchange" parent="Entities/NPCs" unique_id=1477779174 instance=ExtResource("16_55lwj")]
 position = Vector2(4888, 483)
+
+[node name="CasinoBlueJay" type="Sprite2D" parent="Entities/NPCs" unique_id=702304953]
+position = Vector2(4130, 470)
+scale = Vector2(1.1406236, 1.1406236)
+texture = ExtResource("22_umcc6")
+
+[node name="textBox" type="ColorRect" parent="Entities/NPCs/CasinoBlueJay" unique_id=1041572697]
+offset_left = -75.39725
+offset_top = -67.50694
+offset_right = 34.64022
+offset_bottom = -32.849472
+color = Color(0, 0, 0, 1)
+
+[node name="text" type="Label" parent="Entities/NPCs/CasinoBlueJay/textBox" unique_id=282786153]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 108.7124
+offset_bottom = 32.438385
+text = "Stay out of trouble"
+label_settings = SubResource("LabelSettings_umcc6")
+autowrap_mode = 1
+
+[node name="CasinoBlueJay2" type="Sprite2D" parent="Entities/NPCs" unique_id=1235299372]
+position = Vector2(3777.0005, 465)
+scale = Vector2(1.1406236, 1.1406236)
+texture = ExtResource("22_umcc6")
+flip_h = true
+
+[node name="textBox" type="ColorRect" parent="Entities/NPCs/CasinoBlueJay2" unique_id=1061083866]
+offset_left = -75.39725
+offset_top = -67.50694
+offset_right = 34.64022
+offset_bottom = -32.849472
+color = Color(0, 0, 0, 1)
+
+[node name="text" type="Label" parent="Entities/NPCs/CasinoBlueJay2/textBox" unique_id=1298148025]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 108.7124
+offset_bottom = 32.438385
+text = "Oh a pigeon, eh?"
+label_settings = SubResource("LabelSettings_umcc6")
+autowrap_mode = 1
+
+[node name="CasinoBlueJayMon" type="Sprite2D" parent="Entities/NPCs" unique_id=2143697386]
+position = Vector2(3101, 466)
+scale = Vector2(1.1406236, 1.1406236)
+texture = ExtResource("23_pllbf")
+flip_h = true
+
+[node name="textBox" type="ColorRect" parent="Entities/NPCs/CasinoBlueJayMon" unique_id=1743512126]
+offset_left = -75.39725
+offset_top = -67.50694
+offset_right = 34.64022
+offset_bottom = -32.849472
+color = Color(0, 0, 0, 1)
+
+[node name="text" type="Label" parent="Entities/NPCs/CasinoBlueJayMon/textBox" unique_id=1090891634]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 108.7124
+offset_bottom = 32.438385
+text = "I handle the 
+casino's shinies."
+label_settings = SubResource("LabelSettings_umcc6")
+autowrap_mode = 1
 
 [node name="Player" type="Node" parent="Entities" unique_id=1538828935]
 
@@ -777,27 +857,29 @@ offset_bottom = 386.0
 
 [node name="Panel" type="Panel" parent="HUDLayer/HudRoot/HowToPlay" unique_id=1133317005]
 layout_mode = 0
-offset_left = 48.0
+offset_left = -94.0
 offset_top = 21.0
-offset_right = 575.0
-offset_bottom = 470.31476
+offset_right = 742.47375
+offset_bottom = 456.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oxws1")
 
 [node name="Label" type="Label" parent="HUDLayer/HudRoot/HowToPlay" unique_id=1938463659]
 layout_mode = 0
-offset_left = 73.0
+offset_left = -70.0
 offset_top = 30.0
-offset_right = 548.0
+offset_right = 713.0
 offset_bottom = 461.0
 text = "Geese will attack during the day.  
 
-Trash repairs your nest at the end of the day
+Trash repairs your nest at the end of the day.
 
-Use Shinies picked up from fighting geese to use corvid magic and upgrade stats.
+Use shinies picked up from fighting geese to use corvid magic and upgrade stats.
 
-You need to keep constant thrust to keep flying. Press SPACE to fly.
+You need to keep constant thrust to stay flying. Press SPACE to fly.
 
-Sleep till Day at the nest to the left, and the casino is high up to the right.  
+Nest is to the left, and the casino is high up to the right.
+
+Sleep at the nest to start the day.
 
 Fly to close this."
 label_settings = SubResource("LabelSettings_oxws1")

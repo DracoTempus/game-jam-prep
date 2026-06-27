@@ -18,8 +18,9 @@ radius = 144.12494
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20jrx"]
 size = Vector2(91, 15)
 
-[node name="Nest" type="Node2D" unique_id=1346990350 node_paths=PackedStringArray("interact_area") groups=["nest"]]
+[node name="Nest" type="Node2D" unique_id=1346990350 node_paths=PackedStringArray("health", "interact_area") groups=["nest"]]
 script = ExtResource("1_nest")
+health = NodePath("Health")
 interact_area = NodePath("Area2D")
 
 [node name="PigeonNest" type="Sprite2D" parent="." unique_id=1275493481]

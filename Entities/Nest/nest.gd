@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var health: NestHealth = $Health
+@export var health: NestHealth
 @export var interact_area: Area2D
 
 @export var Daytime_fake_panel: Panel
@@ -9,12 +9,17 @@ extends Node2D
 @export var dont_wave: Control
 @export var wave_spawner: Node
 
+@export var day_music: AudioStream
+@export var night_music: AudioStream
+@export var volume_db: float = 0
+
 var player_in_area := false
 
 func _ready() -> void:
 	health.health_changed.connect(_on_health_changed)
 	health.died.connect(_on_died)
-
+	
+	GlobalSignalsManager.trash_changed.connect(trash_repair)
 	GlobalSignalsManager.day_finished.connect(a_new_day)
 	interact_area.body_entered.connect(_on_interact_area_body_entered)
 	interact_area.body_exited.connect(_on_interact_area_body_exited)
@@ -25,11 +30,18 @@ func _ready() -> void:
 
 func a_new_day() -> void:
 	GlobalSignalsManager.is_day_time = false
-	
+	Musicplayer.play_music(night_music, volume_db)
 	var fade_out_tween := create_tween()
 	fade_out_tween.tween_property(Daytime_fake_panel, "modulate:a", 0, 1.5)
+	
 	health.heal(GlobalSignalsManager.trash)
 	GlobalSignalsManager.trash = 0
+
+func trash_repair(current: int) -> void:
+	if GlobalSignalsManager.trash > 0:
+		health.heal(GlobalSignalsManager.trash)
+		GlobalSignalsManager.trash = 0
+
 
 func _process(_delta: float) -> void:
 	if not player_in_area:
@@ -66,7 +78,7 @@ func _on_interact_area_body_exited(body: Node) -> void:
 
 func start_wave() -> void:
 	GlobalSignalsManager.is_day_time = true
-
+	Musicplayer.play_music(night_music, volume_db)
 	sleep_ui.visible = false
 	wave_spawner.start_waves()
 	player_in_area = false

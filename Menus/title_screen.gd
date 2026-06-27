@@ -80,9 +80,9 @@ func _on_start_button_pressed() -> void:
 	
 	serious_panel.modulate.a = 1.0
 	await serious_panel.say("Then the geese attacked.")
-	await serious_panel.say("Now 'day birds' are almost extinct, and only a few pigeon eggs remain")
+	await serious_panel.say("Now 'day birds' are almost extinct, and only a few pigeon eggs remain.")
 	await serious_panel.say("The corvids say they can make me stronger, if I bring them things worth trading.")
-	await serious_panel.say("Corvid magic is always a gamble")
+	await serious_panel.say("Corvid magic is always a gamble.")
 	await serious_panel.say("Whether it’s soaring through the air, gambling with corvids, or fighting with geese, the only way forward is to spin.")
 	serious_panel.modulate.a = 0.0
 	intro.visible = true

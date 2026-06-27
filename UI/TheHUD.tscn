@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b8u5igwhba10m" path="res://UI/scripts/HealthBar.gd" id="2_health"]
 [ext_resource type="Script" uid="uid://byrof55di523r" path="res://UI/shinies_label.gd" id="3_6q56h"]
 [ext_resource type="Texture2D" uid="uid://bc5w0gx1asula" path="res://Levels/Common/Art/PigeonNest.png" id="3_no0yg"]
+[ext_resource type="Script" uid="uid://bndtwsb3w3eji" path="res://UI/trash_label.gd" id="3_oqgkd"]
 [ext_resource type="Script" uid="uid://lnnl5edyxg18" path="res://UI/enemies_label.gd" id="5_k851w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no0yg"]
@@ -67,6 +68,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0p0on")
 show_percentage = false
 script = ExtResource("2_health")
 target = "nest"
+
+[node name="trash" type="Label" parent="." unique_id=2096427140]
+layout_mode = 0
+offset_left = 869.0
+offset_top = 598.0
+offset_right = 981.0
+offset_bottom = 642.0
+script = ExtResource("3_oqgkd")
 
 [node name="Shinies" type="Label" parent="." unique_id=1931466719]
 layout_mode = 0
