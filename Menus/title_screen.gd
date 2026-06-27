@@ -1,7 +1,6 @@
 extends Control
 
 @onready var start_button: Button = $StartButton
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var main := "res://Levels/Base/Base.tscn"
 @export var enemy : PackedScene
