@@ -25,6 +25,7 @@ func _ready() -> void:
 
 func a_new_day() -> void:
 	GlobalSignalsManager.is_day_time = false
+	
 	var fade_out_tween := create_tween()
 	fade_out_tween.tween_property(Daytime_fake_panel, "modulate:a", 0, 1.5)
 

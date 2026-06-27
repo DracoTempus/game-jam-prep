@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://de61voyyxf4kp" path="res://Menus/title_screen.gd" id="1_ceki1"]
 [ext_resource type="PackedScene" uid="uid://yvxmabtc3b18" path="res://Entities/Enemies/Enemy/Enemy.tscn" id="2_nx5yy"]
-[ext_resource type="PackedScene" uid="uid://dixiaopgx6i75" path="res://Entities/Nest/Nest.tscn" id="2_ty4a4"]
 [ext_resource type="AudioStream" uid="uid://b1w45urdia6xo" path="res://Menus/Cute RPG - Dreamy Days (Loopable).ogg" id="3_a41he"]
 [ext_resource type="AudioStream" uid="uid://c7fsegburwycl" path="res://Menus/RPG Medieval Fantasy - Hymn Of Eternal Glory (Loopable).ogg" id="4_ehm80"]
 [ext_resource type="Texture2D" uid="uid://chquj0l10yr3x" path="res://Menus/explosion/simpleExplosion00.png" id="4_vu2q1"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://d1hcuuhl35ckd" path="res://Entities/Common/Art/Birds/Peacock/Peacock.png" id="16_7v4k0"]
 [ext_resource type="Script" uid="uid://crp4mcuwvtoro" path="res://Menus/seriousText.gd" id="17_hj6s8"]
 [ext_resource type="Texture2D" uid="uid://mfybyf6f8tjn" path="res://Menus/keyboard_space.png" id="20_cvobf"]
+[ext_resource type="Texture2D" uid="uid://bc5w0gx1asula" path="res://Levels/Common/Art/PigeonNest.png" id="21_cvobf"]
 [ext_resource type="Texture2D" uid="uid://dxf6sn6k8a1q5" path="res://Menus/keyboard_space_outline.png" id="21_rhf2i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nx5yy"]
@@ -15680,11 +15680,12 @@ intro = NodePath("intro")
 music = ExtResource("3_a41he")
 bad_music = ExtResource("4_ehm80")
 
+[node name="nest" type="Sprite2D" parent="." unique_id=1240515636 groups=["nest"]]
+position = Vector2(-1492, 433)
+texture = ExtResource("21_cvobf")
+
 [node name="Node2D" type="Node2D" parent="." unique_id=734403192]
 position = Vector2(1200, 10)
-
-[node name="Nest" parent="." unique_id=1346990350 instance=ExtResource("2_ty4a4")]
-position = Vector2(-537, 456)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2048114406]
 position = Vector2(-698, 1081)

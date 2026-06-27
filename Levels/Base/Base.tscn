@@ -759,10 +759,24 @@ offset_bottom = 78.0
 text = "I shouldn't sleep before trading my shinies to the crows at the casino."
 autowrap_mode = 2
 
-[node name="Control" type="Control" parent="HUDLayer/HudRoot" unique_id=1137413695]
+[node name="HowToPlay" type="Control" parent="HUDLayer/HudRoot" unique_id=1137413695]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HUDLayer/HudRoot/HowToPlay" unique_id=1938463659]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 112.0
+offset_right = 884.0
+offset_bottom = 501.0
+
+[node name="Panel" type="Panel" parent="HUDLayer/HudRoot/HowToPlay" unique_id=1133317005]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 87.0
+offset_right = 943.0
+offset_bottom = 515.0
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]
 

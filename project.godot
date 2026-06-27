@@ -25,7 +25,6 @@ Musicplayer="*uid://dj5al1erke8it"
 
 [display]
 
-window/size/mode=3
 window/size/resizable=false
 
 [editor_plugins]

@@ -17,7 +17,8 @@ var contact_timer: float = 0.0
 func _ready() -> void:
 	health.died.connect(_on_died)
 	nest = get_tree().get_first_node_in_group("nest")
-
+	if nest == null:
+		print("FOUND NEST")
 
 func _physics_process(delta: float) -> void:
 	if peck_timer > 0.0:
