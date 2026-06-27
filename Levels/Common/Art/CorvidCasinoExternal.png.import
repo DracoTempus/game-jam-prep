@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dail8q1ecugdy"
-path="res://.godot/imported/casinoplaceholder.png-1b6e5b24ed881c14db07b13a29216806.ctex"
+uid="uid://bj8xclmfwgceu"
+path="res://.godot/imported/CorvidCasinoExternal.png-5b979354cb3c50c4800eb8484344f5a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Common/Art/casinoplaceholder.png"
-dest_files=["res://.godot/imported/casinoplaceholder.png-1b6e5b24ed881c14db07b13a29216806.ctex"]
+source_file="res://Levels/Common/Art/CorvidCasinoExternal.png"
+dest_files=["res://.godot/imported/CorvidCasinoExternal.png-5b979354cb3c50c4800eb8484344f5a2.ctex"]
 
 [params]
 

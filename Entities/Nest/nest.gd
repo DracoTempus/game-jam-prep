@@ -28,6 +28,8 @@ func a_new_day() -> void:
 	
 	var fade_out_tween := create_tween()
 	fade_out_tween.tween_property(Daytime_fake_panel, "modulate:a", 0, 1.5)
+	health.heal(GlobalSignalsManager.trash)
+	GlobalSignalsManager.trash = 0
 
 func _process(_delta: float) -> void:
 	if not player_in_area:
@@ -64,6 +66,7 @@ func _on_interact_area_body_exited(body: Node) -> void:
 
 func start_wave() -> void:
 	GlobalSignalsManager.is_day_time = true
+
 	sleep_ui.visible = false
 	wave_spawner.start_waves()
 	player_in_area = false

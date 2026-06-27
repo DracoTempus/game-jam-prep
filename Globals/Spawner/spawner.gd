@@ -81,7 +81,7 @@ func run_wave(wave_index: int) -> void:
 	var wave_number := wave_index + 1
 	var enemy_count := wave_enemy_counts[wave_index]
 
-	GlobalSignalsManager.day_started.emit(wave_number)
+	GlobalSignalsManager.day_started.emit()
 
 	await show_wave_panel("Wave " + str(wave_number))
 

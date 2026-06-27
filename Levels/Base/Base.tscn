@@ -11,13 +11,14 @@
 [ext_resource type="Script" uid="uid://c62kp2xyqn1us" path="res://Levels/Base/casinoDoorOut.gd" id="7_2g55m"]
 [ext_resource type="Texture2D" uid="uid://032op3c61sjt" path="res://Levels/Common/Art/tree2.png" id="8_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://bqcso6aj8cpyc" path="res://Levels/Common/Art/foreground-empty.png" id="9_55lwj"]
-[ext_resource type="Texture2D" uid="uid://dail8q1ecugdy" path="res://Levels/Common/Art/casinoplaceholder.png" id="9_ruy55"]
 [ext_resource type="Texture2D" uid="uid://bc284pfo7ckh5" path="res://Levels/Common/Art/skyline-a.png" id="9_se8fb"]
 [ext_resource type="Script" uid="uid://cxbgt2fjqo63v" path="res://Levels/scripts/CasinoDoors.gd" id="10_7p5xg"]
 [ext_resource type="Texture2D" uid="uid://bfsslvodkq3ts" path="res://Levels/Common/Art/skyline-b.png" id="10_n3211"]
 [ext_resource type="Shader" uid="uid://bqb05spb0tfru" path="res://Levels/Base/Tree.gdshader" id="13_ptnsy"]
 [ext_resource type="PackedScene" uid="uid://b5a3y6lkvjmdt" path="res://Entities/NPB/Sparrow/Sparrow.tscn" id="15_l73k5"]
 [ext_resource type="PackedScene" uid="uid://b7u4xksdoxtw2" path="res://Entities/NPB/ShinyExchange/CrowShinyExchange.tscn" id="16_55lwj"]
+[ext_resource type="Texture2D" uid="uid://bj8xclmfwgceu" path="res://Levels/Common/Art/CorvidCasinoExternal.png" id="17_2g55m"]
+[ext_resource type="Script" uid="uid://v1ceoxflchxd" path="res://Levels/Base/casinoDayNight.gd" id="18_oxws1"]
 [ext_resource type="PackedScene" uid="uid://dsq1gbp6oo6xp" path="res://UI/ExchangeUI.tscn" id="20_se8fb"]
 [ext_resource type="Texture2D" uid="uid://cn6wwkibk132x" path="res://Entities/Common/Art/keyboard_e_outline.png" id="22_y2sk1"]
 [ext_resource type="Texture2D" uid="uid://uutwvl286hql" path="res://Entities/Common/Art/keyboard_e.png" id="23_2g55m"]
@@ -392,6 +393,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxws1"]
+bg_color = Color(0.20152655, 0.20152661, 0.20152646, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oxws1"]
+font_size = 20
+
 [node name="Base" type="Node2D" unique_id=1102677110]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1987423094]
@@ -412,9 +419,10 @@ wave_enemy_counts = Array[int]([10, 25, 40, 75, 100])
 [node name="GlobalSignalsManager" type="Node" parent="Systems" unique_id=1940544452]
 script = ExtResource("2_r3r0t")
 
-[node name="StartupLevel" type="Node" parent="Systems" unique_id=2007595335]
+[node name="StartupLevel" type="Node" parent="Systems" unique_id=2007595335 node_paths=PackedStringArray("startup_panel")]
 script = ExtResource("5_n3211")
 bg_music = ExtResource("1_aygd2")
+startup_panel = NodePath("../../HUDLayer/HudRoot/HowToPlay")
 
 [node name="World" type="Node2D" parent="." unique_id=1407682078]
 
@@ -638,8 +646,10 @@ scale = Vector2(0.20280568, 0.4250784)
 texture = ExtResource("8_7p5xg")
 
 [node name="Casinoplaceholder" type="Sprite2D" parent="World/Level/MainLevelArea" unique_id=2091080163]
-position = Vector2(1362, -380)
-texture = ExtResource("9_ruy55")
+position = Vector2(1362, -396)
+texture = ExtResource("17_2g55m")
+hframes = 2
+script = ExtResource("18_oxws1")
 
 [node name="Area2D" type="Area2D" parent="World/Level/MainLevelArea/Casinoplaceholder" unique_id=1755226040 node_paths=PackedStringArray("target", "camera", "camera_bounds")]
 script = ExtResource("10_7p5xg")
@@ -761,22 +771,38 @@ autowrap_mode = 2
 
 [node name="HowToPlay" type="Control" parent="HUDLayer/HudRoot" unique_id=1137413695]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="HUDLayer/HudRoot/HowToPlay" unique_id=1938463659]
-layout_mode = 0
-offset_left = 507.0
-offset_top = 112.0
-offset_right = 884.0
-offset_bottom = 501.0
+offset_left = 340.0
+offset_right = 862.0
+offset_bottom = 386.0
 
 [node name="Panel" type="Panel" parent="HUDLayer/HudRoot/HowToPlay" unique_id=1133317005]
 layout_mode = 0
-offset_left = 441.0
-offset_top = 87.0
-offset_right = 943.0
-offset_bottom = 515.0
+offset_left = 48.0
+offset_top = 21.0
+offset_right = 575.0
+offset_bottom = 470.31476
+theme_override_styles/panel = SubResource("StyleBoxFlat_oxws1")
+
+[node name="Label" type="Label" parent="HUDLayer/HudRoot/HowToPlay" unique_id=1938463659]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 30.0
+offset_right = 548.0
+offset_bottom = 461.0
+text = "Geese will attack during the day.  
+
+Trash repairs your nest at the end of the day
+
+Use Shinies picked up from fighting geese to use crow magic and upgrade stats.
+
+You need to keep constant thrust to keep flying. Press SPACE to fly.
+
+Sleep till Day at the nest to the left, and the casino is high up to the right.  
+
+Fly to close this."
+label_settings = SubResource("LabelSettings_oxws1")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=221885338]
 

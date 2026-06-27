@@ -21,7 +21,7 @@ signal enemies_changed(current: int)
 		trash = value
 		trash_changed.emit(trash)
 
-@export var shinies: int = 0:
+@export var shinies: int = 2:
 	set(value):
 		if shinies == value:
 			return
